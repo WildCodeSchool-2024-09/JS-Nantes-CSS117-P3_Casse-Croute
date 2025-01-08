@@ -30,23 +30,23 @@ const router = createBrowserRouter([
     element: <App />, // Renders the App component for the home page
   },
   {
-    path: "/About",
+    path: "/about",
     element: <About />,
   },
   {
-    path: "/Account",
+    path: "/account",
     element: <Account />,
   },
   {
-    path: "/Catalogue",
+    path: "/catalogue",
     element: <Catalogue />,
   },
   {
-    path: "/CreerRecette",
+    path: "/creerRecette",
     element: <CreateRecipe />,
   },
   {
-    path: "/Login",
+    path: "/login",
     element: <Login />,
   },
   { path: "/voirProfil", element: <ViewProfile /> },
