@@ -3,113 +3,101 @@ DROP DATABASE IF EXISTS cassecroute_db;
 CREATE DATABASE cassecroute_db;
 USE cassecroute_db;
 
-
--- Table Utilisateur
-CREATE TABLE Utilisateur (
-    ID_Utilisateur INT PRIMARY KEY AUTO_INCREMENT,
-    Pseudo VARCHAR(50) NOT NULL,
-    Email VARCHAR(50) NOT NULL UNIQUE,
-    MotDePasse VARCHAR(255) NOT NULL,
-    DateInscription DATE NOT NULL,
-    PhotoProfil VARCHAR(255),
-    isAdmin BOOLEAN NOT NULL DEFAULT FALSE
+-- Table utilisateur
+CREATE TABLE utilisateur (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    pseudo VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    date_inscription DATE NOT NULL,
+    photo_profil VARCHAR(255),
+    est_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-
--- Table TypeRecette
-CREATE TABLE TypeRecette (
-    ID_Type INT PRIMARY KEY AUTO_INCREMENT,
-    NomType VARCHAR(50) NOT NULL,
-    ImageType VARCHAR(255) NOT NULL
+-- Table type_recette
+CREATE TABLE type_recette (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL,
+    image VARCHAR(255) NOT NULL
 );
 
-
--- Table Difficulte
-CREATE TABLE Difficulte (
-    ID_Difficulte INT PRIMARY KEY AUTO_INCREMENT,
-    NomDifficulte VARCHAR(50) NOT NULL,
-    ImageDifficulte VARCHAR(255) NOT NULL
+-- Table difficulte
+CREATE TABLE difficulte (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL,
+    image VARCHAR(255) NOT NULL
 );
 
-
--- Table TempsPreparation
-CREATE TABLE TempsPreparation (
-    ID_Temps INT PRIMARY KEY AUTO_INCREMENT,
-    Heure INT NOT NULL CHECK (Heure BETWEEN 0 AND 72),
-    Minute INT NOT NULL CHECK (Minute BETWEEN 0 AND 59),
-    ImageTemps VARCHAR(255) NOT NULL
+-- Table temps_preparation
+CREATE TABLE temps_preparation (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    heure INT NOT NULL CHECK (heure BETWEEN 0 AND 72),
+    minute INT NOT NULL CHECK (minute BETWEEN 0 AND 59),
+    image VARCHAR(255) NOT NULL
 );
 
-
--- Table Ingredient
-CREATE TABLE Ingredient (
-    ID_Ingredient INT PRIMARY KEY AUTO_INCREMENT,
-    NomIngredient VARCHAR(50) NOT NULL,
-    CategorieIngredient VARCHAR(50),
-    Saisonnalite VARCHAR(255),
-    CategorieIcone VARCHAR(255)
+-- Table ingredient
+CREATE TABLE ingredient (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL,
+    categorie VARCHAR(50),
+    saisonnalite VARCHAR(255),
+    icone_categorie VARCHAR(255)
 );
 
-
--- Table Recette
-CREATE TABLE Recette (
-    ID_Recette INT PRIMARY KEY AUTO_INCREMENT,
-    Titre VARCHAR(100) NOT NULL,
-    Description TEXT,
-    DatePublication DATE NOT NULL,
-    ID_Type INT NOT NULL,
-    ID_Difficulte INT NOT NULL,
-    ID_Temps INT NOT NULL,
-    ID_Utilisateur INT NOT NULL,
-    FOREIGN KEY (ID_Type) REFERENCES TypeRecette(ID_Type),
-    FOREIGN KEY (ID_Difficulte) REFERENCES Difficulte(ID_Difficulte),
-    FOREIGN KEY (ID_Temps) REFERENCES TempsPreparation(ID_Temps),
-    FOREIGN KEY (ID_Utilisateur) REFERENCES Utilisateur(ID_Utilisateur)
+-- Table recette
+CREATE TABLE recette (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titre VARCHAR(100) NOT NULL,
+    description TEXT,
+    date_publication DATE NOT NULL,
+    type_id INT NOT NULL,
+    difficulte_id INT NOT NULL,
+    temps_id INT NOT NULL,
+    utilisateur_id INT NOT NULL,
+    FOREIGN KEY (type_id) REFERENCES type_recette(id),
+    FOREIGN KEY (difficulte_id) REFERENCES difficulte(id),
+    FOREIGN KEY (temps_id) REFERENCES temps_preparation(id),
+    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
 );
 
-
--- Table CompositionRecette
-CREATE TABLE CompositionRecette (
-    ID_Recette INT NOT NULL,
-    ID_Ingredient INT NOT NULL,
-    Quantite FLOAT NOT NULL,
-    Unite VARCHAR(50),
-    PRIMARY KEY (ID_Recette, ID_Ingredient),
-    FOREIGN KEY (ID_Recette) REFERENCES Recette(ID_Recette),
-    FOREIGN KEY (ID_Ingredient) REFERENCES Ingredient(ID_Ingredient)
+-- Table composition_recette
+CREATE TABLE composition_recette (
+    recette_id INT NOT NULL,
+    ingredient_id INT NOT NULL,
+    quantite FLOAT NOT NULL,
+    unite VARCHAR(50),
+    PRIMARY KEY (recette_id, ingredient_id),
+    FOREIGN KEY (recette_id) REFERENCES recette(id),
+    FOREIGN KEY (ingredient_id) REFERENCES ingredient(id)
 );
-
 
 -- Insertion des données initiales
 -- Utilisateurs
-INSERT INTO Utilisateur (Pseudo, Email, MotDePasse, DateInscription, isAdmin) VALUES
+INSERT INTO utilisateur (pseudo, email, mot_de_passe, date_inscription, est_admin) VALUES
 ('admin', 'admin@example.com', 'adminpasswordhash', CURDATE(), TRUE),
 ('user1', 'user1@example.com', 'user1passwordhash', CURDATE(), FALSE),
 ('user2', 'user2@example.com', 'user2passwordhash', CURDATE(), FALSE);
 
-
 -- Types de recettes
-INSERT INTO TypeRecette (NomType, ImageType) VALUES
+INSERT INTO type_recette (nom, image) VALUES
 ('Entrée', '/images/types/entree.jpg'),
 ('Plat', '/images/types/plat.jpg'),
 ('Dessert', '/images/types/dessert.jpg'),
 ('Boisson', '/images/types/boisson.jpg');
 
-
 -- Niveaux de difficulté
-INSERT INTO Difficulte (NomDifficulte, ImageDifficulte) VALUES
+INSERT INTO difficulte (nom, image) VALUES
 ('Facile', '/images/difficulte/niveau.jpg'),
 ('Moyen', '/images/difficulte/niveau.jpg'),
 ('Difficile', '/images/difficulte/niveau.jpg');
 
-
 -- Temps de préparation
-INSERT INTO TempsPreparation (Heure, Minute, ImageTemps) VALUES
+INSERT INTO temps_preparation (heure, minute, image) VALUES
 (0, 30, '/images/temps/icone.jpg'),
 (1, 0, '/images/temps/icone.jpg'),
 (1, 30, '/images/temps/icone.jpg'),
 (2, 0, '/images/temps/icone.jpg');
-
 
 -- Ingrédients
 INSERT INTO Ingredient (NomIngredient, CategorieIngredient, CategorieIcone, Saisonnalite) VALUES
