@@ -37,12 +37,12 @@ function LoginFormula() {
           name="password"
           onChange={handleInputChangePassword}
         />
-        <label htmlFor="login">se connecter:</label>
-
-        <input type="submit" value="Submit" />
+        <button type="submit" id="login" aria-label="login">
+          se connecter
+        </button>
       </form>
-      <p>{password}</p>
       <p>{username}</p>
+      <p>{password}</p>
     </>
   );
 }
