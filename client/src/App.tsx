@@ -6,7 +6,6 @@ function App() {
     <>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
         <Link to="/account">Account</Link>
         <Link to="/catalogue">Catalogue</Link>
         <Link to="/creerRecette">Create Recipe</Link>
