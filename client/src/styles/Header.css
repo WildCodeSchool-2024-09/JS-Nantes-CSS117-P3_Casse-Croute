@@ -1,0 +1,43 @@
+/* <------ Nav ----->*/
+
+nav {
+  background-color: var(--primary-color);
+  color: var(--secondary-color-2);
+}
+
+.logo-header {
+  width: 100px;
+}
+
+button {
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0 40px;
+}
+
+header nav ul li:first-child {
+  padding-right: 30px;
+}
+
+/* Barre de recherche */
+
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  margin-bottom: 29px;
+  width: 85%;
+  height: 40px;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: large;
+}

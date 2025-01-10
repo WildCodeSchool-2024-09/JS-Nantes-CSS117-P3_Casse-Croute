@@ -1,10 +1,11 @@
 import "./App.css";
+import Header from "./components/globals/Header";
 
 function App() {
   return (
     <>
       <section>
-        <h1>Casse-croûte</h1>
+        <Header />
       </section>
     </>
   );
