@@ -30,7 +30,7 @@ function CreateAccount() {
           className="login-input"
         />
         <br />
-        <label htmlFor="username">Identifiant:</label>
+        <label htmlFor="pseudo">Identifiant:</label>
         <input
           type="text"
           id="pseudo"
@@ -48,7 +48,7 @@ function CreateAccount() {
           className="login-input"
         />
         <br />
-        <label htmlFor="password">Confirmer le mot de passe:</label>
+        <label htmlFor="passwordConfirm">Confirmer le mot de passe:</label>
         <input
           type="passwordConfirm"
           id="passwordConfirm"

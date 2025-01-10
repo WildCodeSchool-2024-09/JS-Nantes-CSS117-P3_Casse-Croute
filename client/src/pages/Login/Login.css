@@ -29,7 +29,7 @@ label {
   background-color: var(--principalElements);
   width: 80%;
   height: 32px;
-  border-radius: 16px;
+  border-radius: 10px;
   border: none;
 }
 
