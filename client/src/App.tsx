@@ -5,9 +5,7 @@ import Header from "./components/globals/Header";
 function App() {
   return (
     <>
-      <section>
-        <Header />
-      </section>
+      <Header />
       <nav>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
