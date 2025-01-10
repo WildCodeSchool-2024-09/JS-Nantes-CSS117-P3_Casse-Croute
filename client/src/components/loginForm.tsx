@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "..pages/Login/Login.css";
 
 function LoginFormula() {
   const [username, setUsername] = useState("");
@@ -39,6 +40,9 @@ function LoginFormula() {
         />
         <button type="submit" id="login" aria-label="login">
           se connecter
+        </button>
+        <button type="button" id="create" aria-label="create account">
+          s'inscrire
         </button>
       </form>
       <p>{username}</p>

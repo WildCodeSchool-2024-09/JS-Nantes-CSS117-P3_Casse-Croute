@@ -10,15 +10,12 @@ import App from "./App";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
+import CreateRecipe from "./pages/CreateRecipe/CreateRecipe";
+import Login from "./pages/Login/Login";
+import ViewProfile from "./pages/ViewProfile/ViewProfile";
 import About from "./pages/about/About";
 import Account from "./pages/account/Account";
 import Catalogue from "./pages/catalogue/Catalogue";
-import CreateRecipe from "./pages/createRecipe/CreateRecipe";
-import Login from "./pages/login/Login";
-import ViewProfile from "./pages/viewProfile/ViewProfile";
-
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
 
 /* ************************************************************************* */
 

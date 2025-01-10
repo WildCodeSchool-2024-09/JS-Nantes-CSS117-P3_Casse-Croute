@@ -17,44 +17,46 @@ function CreateAccount() {
     });
   };
 
-  // const handleInputPassword = (
-  //   e: React.ChangeEvent<HTMLInputElement>,
-  // ) => {
-  //   const { value } = e.target;
-  //   setPassword(value);
-  // };
   console.warn(userData);
   return (
     <>
-      <form>
+      <form className="login-form">
         <label htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
           name="email"
           onChange={handleInputUserData}
+          className="login-input"
         />
+        <br />
         <label htmlFor="username">Identifiant:</label>
         <input
           type="text"
           id="pseudo"
           name="pseudo"
           onChange={handleInputUserData}
+          className="login-input"
         />
-        <label htmlFor="password">mot de passe:</label>
+        <br />
+        <label htmlFor="password">Mot de passe:</label>
         <input
           type="password"
           id="password"
           name="password"
           onChange={handleInputUserData}
+          className="login-input"
         />
+        <br />
         <label htmlFor="password">Confirmer le mot de passe:</label>
         <input
           type="passwordConfirm"
           id="passwordConfirm"
           name="passwordConfirm"
           onChange={handleInputUserData}
+          className="login-input"
         />
+        <br />
         <fieldset>
           <input
             type="radio"
@@ -62,8 +64,9 @@ function CreateAccount() {
             name="gender"
             value="male"
             onChange={handleInputUserData}
+            className="login-radio"
           />
-          <label htmlFor="cuisiner">cuisiner</label>
+          <label htmlFor="cuisiner">Cuisiner</label>
 
           <input
             type="radio"
@@ -71,13 +74,29 @@ function CreateAccount() {
             name="gender"
             value="female"
             onChange={handleInputUserData}
+            className="login-radio"
           />
-          <label htmlFor="cuisinere">cuisinère</label>
+          <label htmlFor="cuisinere">Cuisinère</label>
         </fieldset>
-
-        <button type="submit" id="login" aria-label="login">
-          se connecter
-        </button>
+        <br />
+        <fieldset>
+          <button
+            type="button"
+            id="login"
+            aria-label="login"
+            className="submit-button"
+          >
+            Page d' acceuil
+          </button>
+          <button
+            type="submit"
+            id="login"
+            aria-label="login"
+            className="submit-button"
+          >
+            S'inscrire
+          </button>
+        </fieldset>
       </form>
     </>
   );
