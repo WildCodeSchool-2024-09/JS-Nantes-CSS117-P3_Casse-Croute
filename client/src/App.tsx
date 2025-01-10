@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
+// import SearchFilter from "./components/SearchFilter";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Link to="/login">Login</Link>
         <Link to="/voirProfil">Voir Profile</Link>
       </nav>
+      {/* <SearchFilter /> */}
       <main>
         <Outlet />
       </main>
