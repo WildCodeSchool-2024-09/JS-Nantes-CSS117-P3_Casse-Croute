@@ -1,5 +1,5 @@
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
-import Login from "../pages/Login/Login";
+import Login from "../pages/Login/AuthForm";
 import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import About from "../pages/about/About";
 import Account from "../pages/account/Account";
