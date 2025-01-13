@@ -1,0 +1,16 @@
+/*VARIABLES*/
+:root {
+  /*COLOR*/
+  --principalColor: #1b3041;
+  --intenseHighlight: #adb445;
+  --background: #fffdf6;
+  --principalElements: #ffeed5;
+  --secondaryElements: #ffe2bc;
+  --secondaryColor: #e08548;
+  /*TEXT CONFIGURATION*/
+  --general-font: "Abyssinica SIL", serif;
+  --body-font-size: 1rem;
+  --body-font-bold: 600;
+  --title-font-size: 1rem;
+  --title-font-bold: 400;
+}
