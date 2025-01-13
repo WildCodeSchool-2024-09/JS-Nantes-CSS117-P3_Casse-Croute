@@ -1,12 +1,9 @@
 import { useState } from "react";
 import "..pages/Login/Login.css";
 
-function LoginFormula() {
+export function LoginFormula() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // useEffect(() => {
-  //   console.log("username", username);
-  // }
 
   const handleInputChangeUsername = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -21,6 +18,7 @@ function LoginFormula() {
     const { value } = e.target;
     setPassword(value);
   };
+
   return (
     <>
       <form>
@@ -44,10 +42,11 @@ function LoginFormula() {
         <button type="button" id="create" aria-label="create account">
           s'inscrire
         </button>
+        {username ? (
+          <p>nom d'utilisateur: {username} est deja inscrit </p>
+        ) : null}
+        {password ? <p>veuillez renseigner un mot de passe </p> : null}
       </form>
-      <p>{username}</p>
-      <p>{password}</p>
     </>
   );
 }
-export default LoginFormula;

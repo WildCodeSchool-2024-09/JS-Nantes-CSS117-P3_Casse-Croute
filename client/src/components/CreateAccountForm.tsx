@@ -17,7 +17,6 @@ function CreateAccount() {
     });
   };
 
-  console.warn(userData);
   return (
     <>
       <form className="login-form">
@@ -29,7 +28,7 @@ function CreateAccount() {
           onChange={handleInputUserData}
           className="login-input"
         />
-        <br />
+
         <label htmlFor="pseudo">Identifiant:</label>
         <input
           type="text"
@@ -38,7 +37,7 @@ function CreateAccount() {
           onChange={handleInputUserData}
           className="login-input"
         />
-        <br />
+
         <label htmlFor="password">Mot de passe:</label>
         <input
           type="password"
@@ -47,7 +46,7 @@ function CreateAccount() {
           onChange={handleInputUserData}
           className="login-input"
         />
-        <br />
+
         <label htmlFor="passwordConfirm">Confirmer le mot de passe:</label>
         <input
           type="passwordConfirm"
@@ -56,7 +55,7 @@ function CreateAccount() {
           onChange={handleInputUserData}
           className="login-input"
         />
-        <br />
+
         <fieldset>
           <input
             type="radio"
@@ -78,7 +77,7 @@ function CreateAccount() {
           />
           <label htmlFor="cuisinere">Cuisinère</label>
         </fieldset>
-        <br />
+
         <fieldset>
           <button
             type="button"

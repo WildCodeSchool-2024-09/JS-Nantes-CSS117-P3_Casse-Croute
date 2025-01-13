@@ -9,7 +9,6 @@ function Login() {
         <h2 className="login-subheading">
           Rejoignez la communauté Casse Croûte
         </h2>
-        {/* <img src="{`${import.meta.env.VITE_API_URL}/assets/images/favicon.png`}"alt="logo" /> */}
         <CreateAccount />
       </main>
     </>
