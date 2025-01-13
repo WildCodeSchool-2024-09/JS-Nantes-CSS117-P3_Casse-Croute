@@ -1,10 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
 import VerticalRecipeCard from "./components/VerticalRecipeCard";
+import Header from "./components/globals/Header";
 
 function App() {
   return (
     <>
+      <Header />
       <nav>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
