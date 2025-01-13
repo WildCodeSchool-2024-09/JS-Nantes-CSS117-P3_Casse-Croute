@@ -1,12 +1,13 @@
 import Hamburger from "hamburger-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../../styles/HamburgerMenu.css";
 
 function HamburgerMenu() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div>
+    <div className="menu-container">
       <Hamburger size={40} toggled={open} toggle={setOpen} />
       {open && (
         <div className="open-menu">
@@ -14,11 +15,21 @@ function HamburgerMenu() {
             <Hamburger size={40} toggled={open} toggle={setOpen} />
           </header>
           <ul className="category-list">
-            <li>Catégorie 1</li>
-            <li>Catégorie 2</li>
-            <li>Catégorie 3</li>
-            <li>Catégorie 4</li>
-            <li>Catégorie 5</li>
+            <li>
+              <Link to="/">Catégorie 1</Link>
+            </li>
+            <li>
+              <Link to="/">Catégorie 2</Link>
+            </li>
+            <li>
+              <Link to="/">Catégorie 3</Link>
+            </li>
+            <li>
+              <Link to="/">Catégorie 4</Link>
+            </li>
+            <li>
+              <Link to="/">Catégorie 5</Link>
+            </li>
           </ul>
         </div>
       )}

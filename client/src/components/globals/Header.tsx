@@ -6,7 +6,7 @@ import HamburgerMenu from "./HamburgerMenu";
 function Header() {
   return (
     <header>
-      <nav main-nav>
+      <nav className="main-nav">
         <ul>
           <li>
             <HamburgerMenu />

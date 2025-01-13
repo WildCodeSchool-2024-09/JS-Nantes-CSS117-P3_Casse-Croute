@@ -1,6 +1,6 @@
 /* <------ Nav ----->*/
 
-nav {
+.main-nav {
   background-color: var(--primary-color);
   color: var(--secondary-color-2);
 }
@@ -9,7 +9,7 @@ nav {
   width: 100px;
 }
 
-button {
+.identify {
   padding: 5px 15px;
   border-radius: 10px;
 }

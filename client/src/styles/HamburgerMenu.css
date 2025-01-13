@@ -1,6 +1,6 @@
 /* Police */
 
-* {
+.menu-container {
   font-family: var(--font-primary);
   font-size: large;
 }
