@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
-
+import Footer from "./components/globals/Footer";
 function App() {
   return (
     <>
@@ -16,6 +16,7 @@ function App() {
       <main>
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 }
