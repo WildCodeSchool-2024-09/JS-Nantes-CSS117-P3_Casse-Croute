@@ -1,11 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: var(--general-font);
-  background-color: var(--background);
-}
-main {
+.login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +14,7 @@ main {
   padding-bottom: 36px;
 }
 
-label {
+.login-label {
   font-size: 1rem;
 }
 .login-input {
@@ -54,7 +47,7 @@ input[type="radio"]:checked:before {
   background: var(--secondaryColor);
 }
 
-fieldset {
+.login-fieldset {
   border: none;
   display: flex;
   gap: 32px;

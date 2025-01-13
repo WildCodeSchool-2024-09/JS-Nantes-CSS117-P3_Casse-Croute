@@ -1,22 +1,15 @@
 import { useState } from "react";
-import "..pages/Login/Login.css";
+import type { loginDataTypes } from "../types/LoginData";
 
 export function LoginFormula() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginData, setLoginData] = useState<loginDataTypes>({});
 
-  const handleInputChangeUsername = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const { value } = e.target;
-    setUsername(value);
-  };
-
-  const handleInputChangePassword = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const { value } = e.target;
-    setPassword(value);
+  const handleInputLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLoginData({
+      ...loginData,
+      [name]: value,
+    });
   };
 
   return (
@@ -27,14 +20,14 @@ export function LoginFormula() {
           type="text"
           id="username"
           name="username"
-          onChange={handleInputChangeUsername}
+          onChange={handleInputLogin}
         />
         <label htmlFor="password">mot de passe:</label>
         <input
           type="password"
           id="submit"
           name="password"
-          onChange={handleInputChangePassword}
+          onChange={handleInputLogin}
         />
         <button type="submit" id="login" aria-label="login">
           se connecter
@@ -42,10 +35,6 @@ export function LoginFormula() {
         <button type="button" id="create" aria-label="create account">
           s'inscrire
         </button>
-        {username ? (
-          <p>nom d'utilisateur: {username} est deja inscrit </p>
-        ) : null}
-        {password ? <p>veuillez renseigner un mot de passe </p> : null}
       </form>
     </>
   );

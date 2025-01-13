@@ -20,7 +20,9 @@ function CreateAccount() {
   return (
     <>
       <form className="login-form">
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email" className="login-label">
+          Email:
+        </label>
         <input
           type="email"
           id="email"
@@ -29,7 +31,9 @@ function CreateAccount() {
           className="login-input"
         />
 
-        <label htmlFor="pseudo">Identifiant:</label>
+        <label htmlFor="pseudo" className="login-label">
+          Identifiant:
+        </label>
         <input
           type="text"
           id="pseudo"
@@ -38,7 +42,9 @@ function CreateAccount() {
           className="login-input"
         />
 
-        <label htmlFor="password">Mot de passe:</label>
+        <label htmlFor="password" className="login-label">
+          Mot de passe:
+        </label>
         <input
           type="password"
           id="password"
@@ -47,7 +53,9 @@ function CreateAccount() {
           className="login-input"
         />
 
-        <label htmlFor="passwordConfirm">Confirmer le mot de passe:</label>
+        <label htmlFor="passwordConfirm" className="login-label">
+          Confirmer le mot de passe:
+        </label>
         <input
           type="passwordConfirm"
           id="passwordConfirm"
@@ -65,7 +73,9 @@ function CreateAccount() {
             onChange={handleInputUserData}
             className="login-radio"
           />
-          <label htmlFor="cuisiner">Cuisiner</label>
+          <label htmlFor="cuisiner" className="login-label">
+            Cuisiner
+          </label>
 
           <input
             type="radio"
@@ -75,10 +85,12 @@ function CreateAccount() {
             onChange={handleInputUserData}
             className="login-radio"
           />
-          <label htmlFor="cuisinere">Cuisinère</label>
+          <label htmlFor="cuisinere" className="login-label">
+            Cuisinère
+          </label>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="login-fieldset">
           <button
             type="button"
             id="login"
