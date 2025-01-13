@@ -9,8 +9,8 @@ function Carousel() {
           <li className="carousel-item">
             <div id="point1" className="slide-item">
               <img
-                src="/src/public/assets/images/image-1-carousel.jpg"
-                alt=""
+                src="/assets/images/image-1-carousel.jpg"
+                alt="sauté de légumes"
               />
               <section className="container-points">
                 <ul className="first-carousel">
@@ -30,8 +30,8 @@ function Carousel() {
           <li className="carousel-item">
             <div id="point2" className="slide-item">
               <img
-                src="/src/public/assets/images/image-2-carousell.jpg"
-                alt=""
+                src="/assets/images/image-2-carousel.jpg"
+                alt="yaourt aux noix, framboise et mûre"
               />
               <section className="container-points">
                 <ul className="second-carousel">
@@ -51,8 +51,8 @@ function Carousel() {
           <li className="carousel-item">
             <div id="point3" className="slide-item">
               <img
-                src="/src/public/assets/images/image-3-carousel.jpg"
-                alt=""
+                src="/assets/images/image-3-carousel.jpg"
+                alt="Des ribs accompagnés de frites et sa sauce barbecue"
               />
               <section className="container-points">
                 <ul className="third-carousel">
