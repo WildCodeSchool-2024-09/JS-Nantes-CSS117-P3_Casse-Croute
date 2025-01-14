@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
+import TopRecettes from "./components/TopRecettes";
 import Header from "./components/globals/Header";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       </nav>
       <main>
         <Outlet />
+        <TopRecettes />
       </main>
     </>
   );
