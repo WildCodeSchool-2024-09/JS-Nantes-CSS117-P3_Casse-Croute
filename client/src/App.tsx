@@ -1,6 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
-import VerticalRecipeCard from "./components/VerticalRecipeCard";
 import Header from "./components/globals/Header";
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
       <main>
         <Outlet />
       </main>
-      <VerticalRecipeCard />
     </>
   );
 }
