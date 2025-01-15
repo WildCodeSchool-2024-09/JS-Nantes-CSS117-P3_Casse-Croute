@@ -7,13 +7,12 @@ function App() {
     <>
       <Header />
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/account">Account</Link>
+        <Link to="/">Accueil</Link>
+        <Link to="/account">Compte</Link>
         <Link to="/catalogue">Catalogue</Link>
-        <Link to="/creerRecette">Create Recipe</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/voirProfil">Voir Profile</Link>
+        <Link to="/createRecipe">Créer une recette</Link>
+        <Link to="/login">Inscription</Link>
+        <Link to="/profile">Voir Profil</Link>
       </nav>
       <main>
         <Outlet />
