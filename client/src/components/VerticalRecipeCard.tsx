@@ -1,19 +1,39 @@
 import "../styles/VerticalRecipeCard.css";
+import "../styles/Global.css";
 
 function VerticalRecipeCard() {
   return (
-    <div className="container">
-      <h1>Mead glazed ham</h1>
-      <p>
-        Cider brined roast chicken, seasoned with frash orange and herbs and a
-        reduced cider maple glaze
-      </p>
-      <ul>
-        <li>30 min</li>
-        <li>Easy</li>
-        <li>Main course</li>
-      </ul>
-    </div>
+    <article className="recipe-container">
+      <div className="img-container">
+        <img
+          className="circular-img"
+          src="https://img.cuisineaz.com/660x495/2018/03/19/i137285-saute-de-porc-a-l-ananas-fait-maison.jpeg"
+          alt="/"
+        />
+      </div>
+      <section className="text-container">
+        <h1 className="title">Mead glazed ham</h1>
+        <p className="description">
+          Cider brined roast chicken, seasoned with frash orange and herbs and a
+          reduced cider maple glaze
+        </p>
+
+        <ul>
+          <li>
+            <div className="circle" />
+            <p>30 min</p>
+          </li>
+          <li>
+            <div className="circle" />
+            <p>Easy</p>
+          </li>
+          <li>
+            <div className="circle" />
+            <p>Main course</p>
+          </li>
+        </ul>
+      </section>
+    </article>
   );
 }
 
