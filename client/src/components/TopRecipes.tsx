@@ -1,4 +1,4 @@
-import "../styles/toprecettes.css";
+import "../styles/toprecipes.css";
 
 const topCard = [
   {
@@ -33,7 +33,7 @@ const topCard = [
   },
 ];
 
-function TopRecettes() {
+function TopRecipes() {
   return (
     <>
       <section className="container-titre">
@@ -50,4 +50,4 @@ function TopRecettes() {
     </>
   );
 }
-export default TopRecettes;
+export default TopRecipes;
