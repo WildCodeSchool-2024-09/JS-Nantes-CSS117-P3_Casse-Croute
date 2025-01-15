@@ -66,3 +66,24 @@
 .recipe-container ul li p {
   padding-top: 5px;
 }
+
+.time {
+  background-image: url("../../public/assets/images/icone-horloge.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
+
+.difficulty {
+  background-image: url("../../public/assets/images/icone-difficulty.png");
+  background-repeat: no-repeat;
+  background-position: center -0px;
+  background-size: 30px;
+}
+
+.type {
+  background-image: url("../../public/assets/images/icone-chicken.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}

@@ -20,15 +20,17 @@ function VerticalRecipeCard() {
 
         <ul>
           <li>
-            <div className="circle" />
+            <div className="circle time">
+              <img src="" alt="" />
+            </div>
             <p>30 min</p>
           </li>
           <li>
-            <div className="circle" />
+            <div className="circle difficulty " />
             <p>Easy</p>
           </li>
           <li>
-            <div className="circle" />
+            <div className="circle type" />
             <p>Main course</p>
           </li>
         </ul>
