@@ -11,9 +11,9 @@ function App() {
         <Link to="/about">About</Link>
         <Link to="/account">Account</Link>
         <Link to="/catalogue">Catalogue</Link>
-        <Link to="/creerRecette">Create Recipe</Link>
+        <Link to="/createrecipe">Create Recipe</Link>
         <Link to="/login">Login</Link>
-        <Link to="/voirProfil">Voir Profile</Link>
+        <Link to="/viewprofile">Voir Profile</Link>
       </nav>
       <main>
         <Outlet />
