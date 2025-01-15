@@ -19,14 +19,14 @@ const routes = [
     element: <Catalogue />,
   },
   {
-    path: "/creerRecette",
+    path: "/create-recipe",
     element: <CreateRecipe />,
   },
   {
     path: "/login",
     element: <Login />,
   },
-  { path: "/voirProfil", element: <ViewProfile /> },
+  { path: "/view-profile", element: <ViewProfile /> },
 ];
 
 export default routes;
