@@ -12,7 +12,7 @@
 
 /* Image */
 
-.circular-img {
+.img-container > img {
   width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -68,22 +68,18 @@
 }
 
 .time {
-  background-image: url("../../public/assets/images/icone-horloge.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 30px;
+  position: relative;
+  top: 7px;
+  height: 35px;
 }
 
 .difficulty {
-  background-image: url("../../public/assets/images/icone-difficulty.png");
-  background-repeat: no-repeat;
-  background-position: center -0px;
-  background-size: 30px;
+  position: relative;
+  top: 2px;
 }
 
 .type {
-  background-image: url("../../public/assets/images/icone-chicken.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 30px;
+  height: 35px;
+  position: relative;
+  top: 2px;
 }

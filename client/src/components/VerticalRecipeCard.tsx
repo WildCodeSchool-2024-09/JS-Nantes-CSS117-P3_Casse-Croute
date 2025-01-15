@@ -1,5 +1,4 @@
 import "../styles/VerticalRecipeCard.css";
-import "../styles/Global.css";
 
 function VerticalRecipeCard() {
   return (
@@ -8,7 +7,7 @@ function VerticalRecipeCard() {
         <img
           className="circular-img"
           src="https://img.cuisineaz.com/660x495/2018/03/19/i137285-saute-de-porc-a-l-ananas-fait-maison.jpeg"
-          alt="/"
+          alt="sauté de porc à l'ananas"
         />
       </div>
       <section className="text-container">
@@ -20,17 +19,34 @@ function VerticalRecipeCard() {
 
         <ul>
           <li>
-            <div className="circle time">
-              <img src="" alt="" />
+            <div className="circle">
+              <img
+                className="time"
+                src="../../public/assets/images/icone-horloge.png"
+                alt="logo horloge"
+              />
             </div>
             <p>30 min</p>
           </li>
           <li>
-            <div className="circle difficulty " />
+            <div className="circle">
+              <img
+                className="difficulty"
+                src="../../public/assets/images/icone-difficulty.png"
+                alt="logo indiquant un niveau de difficulté"
+              />{" "}
+            </div>
             <p>Easy</p>
           </li>
           <li>
-            <div className="circle type" />
+            <div className="circle">
+              {" "}
+              <img
+                className="type"
+                src="../../public/assets/images/icone-chicken.png"
+                alt="logo d'un poulet cuit"
+              />
+            </div>
             <p>Main course</p>
           </li>
         </ul>
