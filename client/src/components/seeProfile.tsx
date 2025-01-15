@@ -1,18 +1,14 @@
-export function seeProfile() {
+function SeeProfile() {
   const user = {
     pseudo: "Jean",
     email: "jean_moulin@ruisseau.fr",
     password: "MoulinI$DaBe$t",
     description: "Je suis un résistant",
-    profilePic: "`${import.meta.env.VITE_API_URL}/assets/images/favicon.png`",
+    profilePic: "client/src/public/assets/images/favicon.png",
   };
 
   return (
     <>
-      <nav>
-        <button type="button">Modifier mon profil</button>
-        <button type="button">Recettes</button>
-      </nav>
       <figure>
         <img src={user.profilePic} alt="profile pic" />
         <figcaption>
@@ -24,3 +20,4 @@ export function seeProfile() {
     </>
   );
 }
+export default SeeProfile;
