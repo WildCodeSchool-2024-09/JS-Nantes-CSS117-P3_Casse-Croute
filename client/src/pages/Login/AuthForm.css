@@ -24,6 +24,7 @@
   height: 32px;
   border-radius: 10px;
   border: none;
+  text-align: center;
 }
 
 .login-form {
@@ -47,7 +48,7 @@ input[type="radio"]:checked:before {
   background: var(--secondaryColor);
 }
 
-.login-fieldset {
+.login-form > fieldset {
   border: none;
   display: flex;
   gap: 32px;
