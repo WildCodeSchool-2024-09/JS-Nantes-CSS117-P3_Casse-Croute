@@ -5,7 +5,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+*:focus-visible {
+  outline-style: dashed;
+  outline-color: var(--tertiary-color);
+  outline-width: 3px;
+  outline-offset: 4px;
+}
 :root {
   /* Couleurs principales  */
   --primary-color: #1b3041;

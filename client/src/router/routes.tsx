@@ -1,5 +1,5 @@
-import Accueil from "../pages/Accueil/Accueil";
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
+import Home from "../pages/Home/Home";
 import Login from "../pages/Login/AuthForm";
 import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import Account from "../pages/account/Account";
@@ -8,7 +8,7 @@ import Catalogue from "../pages/catalogue/Catalogue";
 const routes = [
   {
     path: "/",
-    element: <Accueil />,
+    element: <Home />,
   },
   {
     path: "/account",

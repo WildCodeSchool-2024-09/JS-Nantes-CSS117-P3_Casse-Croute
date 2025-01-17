@@ -1,8 +1,8 @@
 import Carousel from "../../components/Carousel";
 import TopRecipes from "../../components/TopRecipes";
-import "./accueil.css";
+import "./home.css";
 
-function Accueil() {
+function Home() {
   return (
     <>
       <Carousel />
@@ -11,4 +11,4 @@ function Accueil() {
   );
 }
 
-export default Accueil;
+export default Home;
