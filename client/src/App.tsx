@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
+import TopRecipes from "./components/TopRecipes";
 import Header from "./components/globals/Header";
 
 function App() {
@@ -12,10 +13,11 @@ function App() {
         <Link to="/catalogue">Catalogue</Link>
         <Link to="/create-recipe">Create Recipe</Link>
         <Link to="/login">Login</Link>
-        <Link to="/viewp-profile">Voir Profile</Link>
+        <Link to="/view-profile">Voir Profile</Link>
       </nav>
       <main>
         <Outlet />
+        <TopRecipes />
       </main>
     </>
   );
