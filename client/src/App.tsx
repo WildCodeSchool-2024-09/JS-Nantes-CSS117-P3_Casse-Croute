@@ -1,5 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
+import IngredientsSeason from "./components/IngredientsSeason";
+import RecipesSeason from "./components/RecipesSeason";
 import TopRecipes from "./components/TopRecipes";
 import Header from "./components/globals/Header";
 
@@ -18,6 +20,8 @@ function App() {
       <main>
         <Outlet />
         <TopRecipes />
+        <RecipesSeason />
+        <IngredientsSeason />
       </main>
     </>
   );
