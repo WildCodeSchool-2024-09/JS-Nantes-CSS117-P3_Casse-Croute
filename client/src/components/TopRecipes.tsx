@@ -1,4 +1,4 @@
-import "../styles/toprecipes.css";
+import "../styles/top-recipes.css";
 
 const topCard = [
   {
