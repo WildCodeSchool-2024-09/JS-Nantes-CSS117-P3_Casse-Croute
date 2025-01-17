@@ -100,7 +100,7 @@ INSERT INTO temps_preparation (heure, minute, image) VALUES
 (2, 0, '/images/temps/icone.jpg');
 
 -- Ingrédients
-INSERT INTO Ingredient (NomIngredient, CategorieIngredient, CategorieIcone, Saisonnalite) VALUES
+INSERT INTO ingredient (nom, categorie, icone_categorie, saisonnalite) VALUES
 -- viandes
 ("Steak", "Viande", "/images/categories/viande.jpg", "Printemps,Été,Automne,Hiver"),
 ("Filet de poulet", "Viande", "/images/categories/viande.jpg", "Printemps,Été,Automne,Hiver"),
