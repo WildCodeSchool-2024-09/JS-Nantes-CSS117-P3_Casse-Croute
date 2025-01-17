@@ -1,0 +1,85 @@
+.recipe-container {
+  width: 203px;
+  height: 340px;
+  background-color: var(--secondary-color-2);
+  border-radius: 20px;
+  padding: 15px;
+  font-family: var(--font-primary);
+  position: relative;
+  top: 100px;
+  box-shadow: 0 0 20px rgba(181, 168, 168, 0.416);
+}
+
+/* Image */
+
+.img-container > img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.399);
+  position: relative;
+  top: -100px;
+}
+
+/* Titre et description */
+
+.text-container {
+  text-align: center;
+  position: relative;
+  top: -100px;
+}
+
+.title {
+  color: var(--quaternary-color);
+  margin: 8px 0;
+}
+
+.description {
+  font-size: small;
+}
+
+/* Logos */
+
+.recipe-container ul {
+  display: flex;
+  font-size: small;
+  margin-top: 8px;
+  position: relative;
+  top: 40px;
+}
+.recipe-container ul li {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% / 3);
+  justify-content: center;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: var(--quaternary-color);
+  border-radius: 50%;
+}
+
+.recipe-container ul li p {
+  padding-top: 5px;
+}
+
+.time {
+  position: relative;
+  top: 7px;
+  height: 35px;
+}
+
+.difficulty {
+  position: relative;
+  top: 2px;
+}
+
+.type {
+  height: 35px;
+  position: relative;
+  top: 2px;
+}
