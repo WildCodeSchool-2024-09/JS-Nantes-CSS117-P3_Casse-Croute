@@ -8,6 +8,12 @@ body {
   margin: 0;
 }
 
+*:focus-visible {
+  outline-style: dashed;
+  outline-color: var(--tertiary-color);
+  outline-width: 3px;
+  outline-offset: 4px;
+}
 :root {
   /* Couleurs principales  */
   --primary-color: #1b3041;
