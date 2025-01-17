@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { userDataTypes } from "../types/UserData";
 
-function CreateAccount() {
+function ModifyProfile() {
   const forbiddenCharacters = /[^a-zA-Z0-9]/g;
   const [userData, setUserData] = useState<userDataTypes>({
     email: "",
@@ -93,24 +93,16 @@ function CreateAccount() {
 
         <fieldset className="login-fieldset">
           <button
-            type="button"
-            id="login"
-            aria-label="login"
-            className="submit-button"
-          >
-            Page d' acceuil
-          </button>
-          <button
             type="submit"
             id="login"
             aria-label="login"
             className="submit-button"
           >
-            S'inscrire
+            Sauvegarder les modifications
           </button>
         </fieldset>
       </form>
     </>
   );
 }
-export default CreateAccount;
+export default ModifyProfile;
