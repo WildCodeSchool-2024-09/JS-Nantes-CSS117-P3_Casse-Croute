@@ -10,8 +10,8 @@ function CookingTime() {
             <input id="cooking-hours" type="number" min="0" max="24" />
           </section>
           <section>
-            <label htmlFor="cooking-minute">Minutes</label>
-            <input id="cooking-hours" type="number" min="0" max="24" />
+            <label htmlFor="cooking-minutes">Minutes</label>
+            <input id="cooking-minutes" type="number" min="0" max="59" />
           </section>
         </section>
       </section>
