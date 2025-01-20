@@ -56,3 +56,47 @@
 .profile-view > section > form > button {
   width: 256px;
 }
+
+/* Horizontal Recipie Card CSS */
+.horizontal-card {
+  background-color: var(--secondary-color-2);
+  height: 160px;
+  max-width: 295px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgb(120, 120, 120);
+  margin: 16px 16px 16px 16px;
+}
+.horizontal-card > header {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 0 8px 16px 8px;
+  justify-content: space-between;
+}
+.horizontal-card > header > button {
+  background-color: var(--secondary-color-2);
+  color: none;
+  border: none;
+  cursor: pointer;
+}
+.horizontal-card > header > h2 {
+  color: var(--quaternary-color);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.horizontal-card > figure {
+  display: flex;
+}
+.horizontal-card > figure > img {
+  max-height: 116px;
+  max-width: 116px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  box-shadow: 2px 6px 8px 0 grey;
+}
+.horizontal-card > figure > figcaption {
+  text-align: center;
+  padding: 0 8px 0 8px;
+}
