@@ -15,41 +15,42 @@ class RecetteRepository {
   async readById(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       `
-            SELECT 
-                r.*, 
-                GROUP_CONCAT(DISTINCT JSON_OBJECT('id', e.id, 'ordre', e.ordre, 'description', e.description)) AS etapes,
-                GROUP_CONCAT(DISTINCT JSON_OBJECT('id', ir.ingredient_id, 'quantite', ir.quantite, 'unite', ir.unite)) AS ingredients,
-                GROUP_CONCAT(DISTINCT JSON_OBJECT('id', a.id, 'note', a.note, 'commentaire', a.commentaire, 'date_avis', a.date_avis)) AS commentaires
-            FROM recette r
-            LEFT JOIN etape_preparation e ON r.id = e.recette_id
-            LEFT JOIN ingredient_recette ir ON r.id = ir.recette_id
-            LEFT JOIN avis a ON r.id = a.recette_id
-            WHERE r.id = ?
-            GROUP BY r.id
-            `,
+      SELECT 
+          r.id,
+          r.titre,
+          r.description,
+          r.date_publication,
+          r.image_url,
+          r.saison,
+          t.nom AS categorie, -- Récupération de la catégorie
+          (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', e.id, 'ordre', e.ordre, 'description', e.description)) 
+           FROM etape_preparation e WHERE e.recette_id = r.id) AS etapes,
+          (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', ir.ingredient_id, 'quantite', ir.quantite, 'unite', ir.unite)) 
+           FROM ingredient_recette ir WHERE ir.recette_id = r.id) AS ingredients,
+          (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', a.id, 'note', a.note, 'commentaire', a.commentaire, 'date_avis', a.date_avis)) 
+           FROM avis a WHERE a.recette_id = r.id) AS commentaires
+      FROM recette r
+      LEFT JOIN type_recette t ON r.type_id = t.id -- Jointure avec type_recette
+      WHERE r.id = ?;
+    `,
       [id],
     );
 
     if (rows.length > 0) {
-      const recette = rows[0];
-      // Parse les champs JSON (les champs joints comme étapes, ingrédients, et commentaires)
-      recette.etapes = JSON.parse(`[${recette.etapes}]`);
-      recette.ingredients = JSON.parse(`[${recette.ingredients}]`);
-      recette.commentaires = JSON.parse(`[${recette.commentaires}]`);
-      return recette;
+      return rows[0];
     }
   }
 
   // Créer une recette
   async create(recette: Recette) {
     const [row] = await databaseClient.query<Result>(
-      "INSERT INTO recette (titre, description, date_publication, image_url, saisonnalite, type_id, difficulte_id, temps_id, utilisateur_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO recette (titre, description, date_publication, image_url, saison, type_id, difficulte_id, temps_id, utilisateur_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         recette.titre,
         recette.description,
         recette.date_publication,
         recette.image_url,
-        recette.saisonnalite,
+        recette.saison,
         recette.type_id,
         recette.difficulte_id,
         recette.temps_id,
@@ -62,13 +63,13 @@ class RecetteRepository {
   // Mettre à jour une recette
   async update(recette: Recette) {
     const [result] = await databaseClient.query<Result>(
-      "UPDATE recette SET titre = ?, description = ?, date_publication = ?, image_url = ?, saisonnalite = ?, type_id = ?, difficulte_id = ?, temps_id = ?, utilisateur_id = ? WHERE id = ?",
+      "UPDATE recette SET titre = ?, description = ?, date_publication = ?, image_url = ?, saison = ?, type_id = ?, difficulte_id = ?, temps_id = ?, utilisateur_id = ? WHERE id = ?",
       [
         recette.titre,
         recette.description,
         recette.date_publication,
         recette.image_url,
-        recette.saisonnalite,
+        recette.saison,
         recette.type_id,
         recette.difficulte_id,
         recette.temps_id,

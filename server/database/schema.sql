@@ -36,7 +36,7 @@ CREATE TABLE ingredient (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
     categorie VARCHAR(50),
-    saisonnalite ENUM("printemps", "été", "automne", "hiver", "toutes saisons") NOT NULL,
+    saison ENUM("printemps", "été", "automne", "hiver", "toutes saisons") NOT NULL,
     icone_categorie VARCHAR(255)
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE recette (
     description VARCHAR(200) NOT NULL,
     date_publication DATE NOT NULL,
     image_url VARCHAR(255),
-    saisonnalite ENUM("printemps", "été", "automne", "hiver", "toutes saisons") DEFAULT NULL,
+    saison ENUM("printemps", "été", "automne", "hiver", "toutes saisons") DEFAULT NULL,
     type_id INT NOT NULL,
     difficulte_id INT NOT NULL,
     temps_id INT NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE recette (
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
 );
 
--- Table ingredient_recette (anciennement composition_recette)
+-- Table ingredient_recette
 CREATE TABLE ingredient_recette (
     recette_id INT NOT NULL,
     ingredient_id INT NOT NULL,
@@ -73,8 +73,8 @@ CREATE TABLE ingredient_recette (
 CREATE TABLE etape_preparation (
     id INT PRIMARY KEY AUTO_INCREMENT,
     recette_id INT NOT NULL,
-    ordre INT NOT NULL, -- Permet d'organiser les étapes
-    description TEXT NOT NULL, -- Conservation de TEXT pour des procédures détaillées
+    ordre INT NOT NULL,
+    description TEXT NOT NULL,
     FOREIGN KEY (recette_id) REFERENCES recette(id) ON DELETE CASCADE
 );
 
@@ -120,7 +120,7 @@ INSERT INTO temps_preparation (heure, minute, image) VALUES
 (2, 0, "/images/temps/icone.jpg");
 
 -- Table ingredient
-INSERT INTO ingredient (nom, categorie, icone_categorie, saisonnalite) VALUES
+INSERT INTO ingredient (nom, categorie, icone_categorie, saison) VALUES
 
 -- Viandes
 ("Steak", "Viande", "/images/categories/viande.jpg", "toutes saisons"),
@@ -222,7 +222,7 @@ INSERT INTO ingredient (nom, categorie, icone_categorie, saisonnalite) VALUES
 ("Coing", "Fruit", "/images/categories/fruit.jpg", "automne"),
 ("Figue", "Fruit", "/images/categories/fruit.jpg", "automne");
 -- Alcools
-INSERT INTO ingredient (nom, categorie, icone_categorie, saisonnalite) VALUES
+INSERT INTO ingredient (nom, categorie, icone_categorie, saison) VALUES
 ("Vin rouge", "Alcool", "/images/categories/alcool.jpg", "toutes saisons"),
 ("Vin blanc", "Alcool", "/images/categories/alcool.jpg", "toutes saisons"),
 ("Bière", "Alcool", "/images/categories/alcool.jpg", "toutes saisons"),
@@ -242,7 +242,7 @@ INSERT INTO ingredient (nom, categorie, icone_categorie, saisonnalite) VALUES
 
 
 -- Table recette
-INSERT INTO recette (titre, description, date_publication, image_url, saisonnalite, type_id, difficulte_id, temps_id, utilisateur_id)
+INSERT INTO recette (titre, description, date_publication, image_url, saison, type_id, difficulte_id, temps_id, utilisateur_id)
 VALUES
 ("Soupe d'hiver", "Une soupe chaude pour l'hiver.", "2025-01-15", "path/to/soupe.jpg", "hiver", 2, 2, 3, 1),
 ("Salade estivale", "Une salade fraîche pour l'été.", "2025-06-15", "path/to/salade.jpg", "été", 1, 1, 1, 2);

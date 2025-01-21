@@ -70,8 +70,7 @@ const edit: RequestHandler = async (req, res, next) => {
 // Supprimer une recette
 const del: RequestHandler = async (req, res, next) => {
   try {
-    // Validation d'ID simplifiée en prévision d'un middleware futur
-    const recipeId = Number.parseInt(req.params.id, 10); // Utilisation de Number.parseInt
+    const recipeId = Number.parseInt(req.params.id, 10);
 
     const deleted = await recetteRepository.delete(recipeId);
 

@@ -28,12 +28,12 @@ const add: RequestHandler = async (req, res) => {
 
 const edit: RequestHandler = async (req, res) => {
   try {
-    const { nom, categorie, saisonnalite, icone_categorie } = req.body;
+    const { nom, categorie, saison, icone_categorie } = req.body;
     const { id } = req.params;
     const editIngredient = await ingredientRepository.update({
       nom,
       categorie,
-      saisonnalite,
+      saison,
       icone_categorie,
     });
 
