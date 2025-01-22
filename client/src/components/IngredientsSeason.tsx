@@ -1,4 +1,4 @@
-import "../styles/ingredients-saison.css";
+import "../styles/ingredients-season.css";
 
 const ingredientsSeason = [
   {
