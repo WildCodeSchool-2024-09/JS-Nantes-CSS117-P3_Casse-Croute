@@ -6,12 +6,12 @@ USE cassecroute_db;
 -- Table utilisateur
 CREATE TABLE utilisateur (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    pseudo VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
+    pseudo VARCHAR(50),
+    email VARCHAR(255) UNIQUE,
     mot_de_passe VARCHAR(255) NOT NULL,
-    date_inscription DATE NOT NULL,
+    date_inscription DATE,
     photo_profil VARCHAR(255),
-    est_admin BOOLEAN NOT NULL DEFAULT FALSE
+    est_admin BOOLEAN DEFAULT FALSE
 );
 
 -- Table type_recette
