@@ -15,7 +15,7 @@ function Header() {
             <Link to="/">
               <img
                 className="logo-header"
-                src="http://localhost:3310/assets/images/logo.svg"
+                src="/assets/images/logo.svg"
                 alt="logo"
               />
             </Link>
