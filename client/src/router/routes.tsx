@@ -1,14 +1,14 @@
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
-import Login from "../pages/Login/Login";
+import Home from "../pages/Home/Home";
+import Login from "../pages/Login/AuthForm";
 import ViewProfile from "../pages/ViewProfile/ViewProfile";
-import About from "../pages/about/About";
 import Account from "../pages/account/Account";
 import Catalogue from "../pages/catalogue/Catalogue";
 
 const routes = [
   {
-    path: "/about",
-    element: <About />,
+    path: "/",
+    element: <Home />,
   },
   {
     path: "/account",
@@ -19,14 +19,14 @@ const routes = [
     element: <Catalogue />,
   },
   {
-    path: "/creerRecette",
+    path: "/create-recipe",
     element: <CreateRecipe />,
   },
   {
     path: "/login",
     element: <Login />,
   },
-  { path: "/voirProfil", element: <ViewProfile /> },
+  { path: "/view-profile", element: <ViewProfile /> },
 ];
 
 export default routes;
