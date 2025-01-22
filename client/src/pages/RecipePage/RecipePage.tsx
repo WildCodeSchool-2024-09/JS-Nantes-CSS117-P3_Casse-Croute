@@ -1,84 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import VerticalRecipeCard from "../../components/VerticalRecipeCard";
 import "./RecipePage.css";
 
 function RecipePage() {
-  const recipesData = [
-    {
-      id: 1,
-      name: "Salade César",
-      time: "court",
-      type: "entrée",
-      difficulty: "facile",
-    },
-    {
-      id: 2,
-      name: "Bœuf Bourguignon",
-      time: "long",
-      type: "plat",
-      difficulty: "difficile",
-    },
-    {
-      id: 3,
-      name: "Mousse au chocolat",
-      time: "moyen",
-      type: "dessert",
-      difficulty: "moyen",
-    },
-    {
-      id: 4,
-      name: "Soupe de légumes",
-      time: "moyen",
-      type: "entrée",
-      difficulty: "facile",
-    },
-    {
-      id: 5,
-      name: "Quiche Lorraine",
-      time: "moyen",
-      type: "plat",
-      difficulty: "moyen",
-    },
-    {
-      id: 6,
-      name: "Smoothie aux fruits",
-      time: "court",
-      type: "boisson",
-      difficulty: "facile",
-    },
-    {
-      id: 7,
-      name: "Gratin Dauphinois",
-      time: "long",
-      type: "accompagnement",
-      difficulty: "moyen",
-    },
-    {
-      id: 8,
-      name: "Tiramisu",
-      time: "moyen",
-      type: "dessert",
-      difficulty: "difficile",
-    },
-    {
-      id: 9,
-      name: "Poulet Rôti",
-      time: "long",
-      type: "plat",
-      difficulty: "facile",
-    },
-    {
-      id: 10,
-      name: "Cocktail Mojito",
-      time: "court",
-      type: "boisson",
-      difficulty: "facile",
-    },
-  ];
+  interface Recipe {
+    id: number;
+    titre: string;
+    temps_id: string;
+    type_id: string;
+    difficulte_id: string;
+    description: string;
+  }
 
-  const [selectedTime, setSelectedTime] = useState("Toutes");
-  const [selectedDifficulty, setSelectedDifficulty] = useState("Toutes");
-  const [selectedType, setSelectedType] = useState("Tous");
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [selectedTime, setSelectedTime] = useState("Temps");
+  const [selectedDifficulty, setSelectedDifficulty] = useState("Difficulté");
+  const [selectedType, setSelectedType] = useState("Type");
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(`${import.meta.env.VITE_API_URL}/api/recette`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Erreur lors du chargement des données");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setRecipes(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading(false);
+      });
+  }, []);
+  console.warn(recipes);
 
   function handleTimeSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     setSelectedTime(e.target.value);
@@ -92,15 +52,24 @@ function RecipePage() {
     setSelectedType(e.target.value);
   }
 
-  const filteredRecipes = recipesData.filter((recipe) => {
+  const filteredRecipes = recipes.filter((recipe: Recipe) => {
     const matchesTime =
-      selectedTime === "Toutes" || recipe.time === selectedTime;
+      selectedTime === "Temps" || recipe.temps_id === selectedTime;
     const matchesDifficulty =
-      selectedDifficulty === "Toutes" ||
-      recipe.difficulty === selectedDifficulty;
-    const matchesType = selectedType === "Tous" || recipe.type === selectedType;
+      selectedDifficulty === "Difficulté" ||
+      recipe.difficulte_id === selectedDifficulty;
+    const matchesType =
+      selectedType === "Type" || recipe.type_id === selectedType;
     return matchesTime && matchesDifficulty && matchesType;
   });
+
+  if (isLoading) {
+    return <div>Chargement en cours...</div>;
+  }
+
+  if (error) {
+    return <div>Erreur : {error}</div>;
+  }
 
   return (
     <div>
@@ -133,10 +102,11 @@ function RecipePage() {
         {filteredRecipes.map((recipe) => (
           <VerticalRecipeCard
             key={recipe.id}
-            name={recipe.name}
-            time={recipe.time}
-            difficulty={recipe.difficulty}
-            type={recipe.type}
+            titre={recipe.titre}
+            temps_id={recipe.temps_id}
+            difficulte_id={recipe.difficulte_id}
+            type_id={recipe.type_id}
+            description={recipe.description}
           />
         ))}
       </div>

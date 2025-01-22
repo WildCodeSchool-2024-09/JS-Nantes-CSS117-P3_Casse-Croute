@@ -1,13 +1,20 @@
 import "../styles/VerticalRecipeCard.css";
 
 interface RecipeCardI {
-  name: string;
-  time: string;
-  difficulty: string;
-  type: string;
+  titre: string;
+  temps_id: string;
+  difficulte_id: string;
+  type_id: string;
+  description: string;
 }
 
-function VerticalRecipeCard({ name, time, difficulty, type }: RecipeCardI) {
+function VerticalRecipeCard({
+  titre,
+  temps_id,
+  difficulte_id,
+  type_id,
+  description,
+}: RecipeCardI) {
   return (
     <article className="recipe-container">
       <div className="img-container">
@@ -18,11 +25,8 @@ function VerticalRecipeCard({ name, time, difficulty, type }: RecipeCardI) {
         />
       </div>
       <section className="text-container">
-        <h1 className="title">{name}</h1>
-        <p className="description">
-          Cider brined roast chicken, seasoned with frash orange and herbs and a
-          reduced cider maple glaze
-        </p>
+        <h1 className="title">{titre}</h1>
+        <p className="description">{description}</p>
 
         <ul>
           <li>
@@ -33,7 +37,7 @@ function VerticalRecipeCard({ name, time, difficulty, type }: RecipeCardI) {
                 alt="logo horloge"
               />
             </div>
-            <p>{time}</p>
+            <p>{temps_id}</p>
           </li>
           <li>
             <div className="circle">
@@ -43,7 +47,7 @@ function VerticalRecipeCard({ name, time, difficulty, type }: RecipeCardI) {
                 alt="logo indiquant un niveau de difficulté"
               />{" "}
             </div>
-            <p>{difficulty}</p>
+            <p>{difficulte_id}</p>
           </li>
           <li>
             <div className="circle">
@@ -54,7 +58,7 @@ function VerticalRecipeCard({ name, time, difficulty, type }: RecipeCardI) {
                 alt="logo d'un poulet cuit"
               />
             </div>
-            <p>{type}</p>
+            <p>{type_id}</p>
           </li>
         </ul>
       </section>

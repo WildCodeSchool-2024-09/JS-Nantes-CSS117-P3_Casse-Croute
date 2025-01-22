@@ -5,7 +5,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+*:focus-visible {
+  outline-style: dashed;
+  outline-color: var(--tertiary-color);
+  outline-width: 3px;
+  outline-offset: 4px;
+}
 :root {
   /* Couleurs principales  */
   --primary-color: #1b3041;
@@ -14,6 +19,7 @@
   --secondary-color-3: #fffdf6;
   --tertiary-color: #adb445;
   --quaternary-color: #e08548;
+  --shadow-color: #000000;
 
   /* Polices */
   --font-primary: "Lava Devanagari", serif;
