@@ -1,6 +1,13 @@
 import "../styles/VerticalRecipeCard.css";
 
-function VerticalRecipeCard() {
+interface RecipeCardI {
+  name: string;
+  time: string;
+  difficulty: string;
+  type: string;
+}
+
+function VerticalRecipeCard({ name, time, difficulty, type }: RecipeCardI) {
   return (
     <article className="recipe-container">
       <div className="img-container">
@@ -11,7 +18,7 @@ function VerticalRecipeCard() {
         />
       </div>
       <section className="text-container">
-        <h1 className="title">Mead glazed ham</h1>
+        <h1 className="title">{name}</h1>
         <p className="description">
           Cider brined roast chicken, seasoned with frash orange and herbs and a
           reduced cider maple glaze
@@ -26,7 +33,7 @@ function VerticalRecipeCard() {
                 alt="logo horloge"
               />
             </div>
-            <p>30 min</p>
+            <p>{time}</p>
           </li>
           <li>
             <div className="circle">
@@ -36,7 +43,7 @@ function VerticalRecipeCard() {
                 alt="logo indiquant un niveau de difficulté"
               />{" "}
             </div>
-            <p>Easy</p>
+            <p>{difficulty}</p>
           </li>
           <li>
             <div className="circle">
@@ -47,7 +54,7 @@ function VerticalRecipeCard() {
                 alt="logo d'un poulet cuit"
               />
             </div>
-            <p>Main course</p>
+            <p>{type}</p>
           </li>
         </ul>
       </section>
