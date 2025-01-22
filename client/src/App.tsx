@@ -20,7 +20,6 @@ function App() {
       <main>
         <Outlet />
         <TopRecipes />
-        
       </main>
     </>
   );
