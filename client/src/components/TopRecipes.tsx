@@ -4,31 +4,31 @@ const topCard = [
   {
     id: 1,
     top: "TOP 1",
-    image: "./assets/images/image-TOP1.jpg",
+    image: "./assets/images/top-recipes/image-TOP1.jpg",
     alt: "échine de porc confite, purée d’oignon et pommes de terre",
   },
   {
     id: 2,
     top: "TOP 2",
-    image: "./assets/images/image-TOP2.jpg",
+    image: "./assets/images/top-recipes/image-TOP2.jpg",
     alt: "Patte à la bolognaise accompagnée de ses épices",
   },
   {
     id: 3,
     top: "TOP 3",
-    image: "./assets/images/image-TOP3.jpg",
+    image: "./assets/images/top-recipes/image-TOP3.jpg",
     alt: "Pav bhaji, à base de curry de légumes épicé épais servi avec un petit pain beurré moelleux",
   },
   {
     id: 4,
     top: "TOP 4",
-    image: "./assets/images/image-TOP4.jpg",
+    image: "./assets/images/top-recipes/image-TOP4.jpg",
     alt: "Délicieux gyoza accompagné de sa sauce épicée",
   },
   {
     id: 5,
     top: "TOP 5",
-    image: "./assets/images/image-TOP5.jpg",
+    image: "./assets/images/top-recipes/image-TOP5.jpg",
     alt: "Tour de pancakes avec son sirop d'érable et ses fruits sur le dessus",
   },
 ];

@@ -9,7 +9,7 @@ function Carousel() {
           <li className="carousel-item">
             <div id="point1" className="slide-item">
               <img
-                src="/assets/images/image-1-carousel.jpg"
+                src="/assets/images/carousel-recipes/image-1-carousel.jpg"
                 alt="sauté de légumes"
               />
               <section className="container-points">
@@ -30,7 +30,7 @@ function Carousel() {
           <li className="carousel-item">
             <div id="point2" className="slide-item">
               <img
-                src="/assets/images/image-2-carousel.jpg"
+                src="/assets/images/carousel-recipes/image-2-carousel.jpg"
                 alt="yaourt aux noix, framboise et mûre"
               />
               <section className="container-points">
@@ -51,7 +51,7 @@ function Carousel() {
           <li className="carousel-item">
             <div id="point3" className="slide-item">
               <img
-                src="/assets/images/image-3-carousel.jpg"
+                src="/assets/images/carousel-recipes/image-3-carousel.jpg"
                 alt="Des ribs accompagnés de frites et sa sauce barbecue"
               />
               <section className="container-points">
