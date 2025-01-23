@@ -32,7 +32,7 @@ function VerticalRecipeCard() {
             <div className="circle">
               <img
                 className="difficulty"
-                src="../../public/assets/images/icone-difficulty.png"
+                src="assets/images/level-difficult/icon-difficult.png"
                 alt="logo indiquant un niveau de difficulté"
               />{" "}
             </div>

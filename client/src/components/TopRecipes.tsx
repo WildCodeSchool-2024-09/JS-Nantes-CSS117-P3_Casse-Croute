@@ -36,12 +36,12 @@ const topCard = [
 function TopRecipes() {
   return (
     <>
-      <section className="container-titre">
+      <section className="container-titre-accueil">
         <h2>Les recettes les mieux notées ce mois-ci</h2>
       </section>
       {topCard.map((el) => {
         return (
-          <picture key={el.id} className="container-podium">
+          <picture key={el.id} className="container-podium-accueil">
             <h3>{el.top}</h3>
             <img src={el.image} alt={el.alt} />
           </picture>

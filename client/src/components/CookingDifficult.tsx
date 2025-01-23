@@ -5,19 +5,19 @@ const difficult = [
   {
     id: "1",
     label: "Facile",
-    image: "assets/images/level-difficult/icone-difficulty.png",
+    image: "assets/images/level-difficult/icon-easy.png",
     alt: "Facile",
   },
   {
     id: "2",
     label: "Moyen",
-    image: "assets/images/level-difficult/icone-difficulty.png",
+    image: "assets/images/level-difficult/icon-medium.png",
     alt: "Moyen",
   },
   {
     id: "3",
     label: "Difficile",
-    image: "assets/images/level-difficult/icone-difficulty.png",
+    image: "assets/images/level-difficult/icon-difficult.png",
     alt: "Difficile",
   },
 ];
