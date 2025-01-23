@@ -1,18 +1,10 @@
 import { useEffect, useState } from "react";
 import VerticalRecipeCard from "../../components/VerticalRecipeCard";
 import "./RecipePage.css";
+import type { RecipeI } from "../../types/RecipeValues";
 
 function RecipePage() {
-  interface Recipe {
-    id: number;
-    titre: string;
-    temps_id: string;
-    type_id: string;
-    difficulte_id: string;
-    description: string;
-  }
-
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [recipes, setRecipes] = useState<RecipeI[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -38,7 +30,6 @@ function RecipePage() {
         setIsLoading(false);
       });
   }, []);
-  console.warn(recipes);
 
   function handleTimeSelect(e: React.ChangeEvent<HTMLSelectElement>) {
     setSelectedTime(e.target.value);
@@ -52,7 +43,7 @@ function RecipePage() {
     setSelectedType(e.target.value);
   }
 
-  const filteredRecipes = recipes.filter((recipe: Recipe) => {
+  const filteredRecipes = recipes.filter((recipe: RecipeI) => {
     const matchesTime =
       selectedTime === "Temps" || recipe.temps_id === selectedTime;
     const matchesDifficulty =

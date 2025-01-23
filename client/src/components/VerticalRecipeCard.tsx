@@ -1,12 +1,5 @@
 import "../styles/VerticalRecipeCard.css";
-
-interface RecipeCardI {
-  titre: string;
-  temps_id: string;
-  difficulte_id: string;
-  type_id: string;
-  description: string;
-}
+import type { RecipeI } from "../types/RecipeValues";
 
 function VerticalRecipeCard({
   titre,
@@ -14,7 +7,7 @@ function VerticalRecipeCard({
   difficulte_id,
   type_id,
   description,
-}: RecipeCardI) {
+}: RecipeI) {
   return (
     <article className="recipe-container">
       <div className="img-container">
