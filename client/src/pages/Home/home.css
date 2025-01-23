@@ -18,8 +18,6 @@
 
 .container-carousel {
   background-color: rgb(27, 47, 64);
-  border: solid none;
-  margin: 0;
   margin-top: -1px;
   padding: 0;
   height: 38vh;
@@ -34,7 +32,7 @@
   list-style: none;
   height: 100%;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 .carousel-item {
   height: 100%;
