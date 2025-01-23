@@ -13,6 +13,7 @@ GET http://localhost:3310/api/recette
 ### Ajouter une recette
 POST http://localhost:3310/api/recette HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJ0ZXN0NEB0ZXN0LmNvbSIsImlhdCI6MTczNzY0NjY5NSwiZXhwIjoxNzM3NjUwMjk1fQ.b-cHPISHl0pO0XtFlTq3CTKVATRcGA_zLjd-WeioixA
 
 {
   "titre": "Tarte aux pommes",
