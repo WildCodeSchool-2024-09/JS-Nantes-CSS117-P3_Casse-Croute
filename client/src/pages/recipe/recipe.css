@@ -1,0 +1,8 @@
+.container-recipe-description {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  width: 90%;
+  /* margin: 4em auto; */
+}

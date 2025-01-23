@@ -1,0 +1,80 @@
+/* Titre principal */
+.recipe-title-section {
+  background-color: rgb(27, 47, 64);
+  width: 70%;
+  height: 30px;
+  margin: 0 auto;
+  align-content: center;
+  padding: 0;
+  border-radius: 15px 15px 0 0;
+  border: none;
+}
+
+.recipe-title {
+  color: var(--secondary-color-3);
+  text-align: center;
+  margin: 0;
+  line-height: 30px;
+}
+
+/* Barre de navigation */
+.recipe-nav {
+  background-color: rgb(27, 47, 64);
+  padding: 0.5rem 0;
+}
+
+.recipe-nav-list {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recipe-nav-list a {
+  text-decoration: none;
+  color: var(--secondary-color-3);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.image-rating {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-rating img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-rating > div {
+  background-color: rgb(27, 47, 64);
+}
+
+/* Note et avis */
+.recipe-rating {
+  display: flex;
+  justify-content: end;
+}
+
+.recipe-rating > article {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  gap: 0.5rem;
+  background-color: rgb(27, 47, 64);
+  width: 40%;
+  height: 30px;
+  border-radius: 0 0 0 15px;
+  border: none;
+}
+
+.recipe-rating span {
+  color: var(--secondary-color-3);
+}
+
+.recipe-rating div {
+  color: var(--tertiary-color);
+}
