@@ -75,11 +75,17 @@
 
 .difficulty {
   position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
   top: 2px;
 }
 
 .type {
   height: 35px;
+  width: 90%;
+  height: 90%;
+  padding: 5px;
   position: relative;
   top: 2px;
 }

@@ -24,7 +24,7 @@ const ingredientsSeason = [
 function IngredientsSeason() {
   return (
     <>
-      <section className="container-titre">
+      <section className="container-titre-accueil">
         <h2>Vos ingrédients de saison</h2>
       </section>
       <section className="container-ingredients-season">
