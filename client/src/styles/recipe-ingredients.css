@@ -4,6 +4,12 @@
   border-style: solid;
 }
 
+.container-ingredient h2 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  margin-left: 32px;
+}
+
 .container-recipe-ingredients > ul {
   display: flex;
   text-align: center;

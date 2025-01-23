@@ -19,11 +19,9 @@ function Recipe() {
 
       {/* <section id="preparation">
         <Preparation />
-      </section>
+      </section> */}
 
-
-
-      <section id="reviews">
+      {/* <section id="reviews">
         <Reviews />
       </section> */}
     </>
