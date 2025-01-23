@@ -9,13 +9,31 @@ function RecipesSeason() {
       </section>
       <ul>
         <li>
-          <VerticalRecipeCard />
+          <VerticalRecipeCard
+            titre={""}
+            temps_id={""}
+            difficulte_id={""}
+            type_id={""}
+            description={""}
+          />
         </li>
         <li>
-          <VerticalRecipeCard />
+          <VerticalRecipeCard
+            titre={""}
+            temps_id={""}
+            difficulte_id={""}
+            type_id={""}
+            description={""}
+          />
         </li>
         <li>
-          <VerticalRecipeCard />
+          <VerticalRecipeCard
+            titre={""}
+            temps_id={""}
+            difficulte_id={""}
+            type_id={""}
+            description={""}
+          />
         </li>
       </ul>
     </article>
