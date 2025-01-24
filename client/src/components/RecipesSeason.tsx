@@ -15,6 +15,7 @@ function RecipesSeason() {
             difficulte_id={""}
             type_id={""}
             description={""}
+            image_url={""}
           />
         </li>
         <li>
@@ -24,6 +25,7 @@ function RecipesSeason() {
             difficulte_id={""}
             type_id={""}
             description={""}
+            image_url={""}
           />
         </li>
         <li>
@@ -33,6 +35,7 @@ function RecipesSeason() {
             difficulte_id={""}
             type_id={""}
             description={""}
+            image_url={""}
           />
         </li>
       </ul>

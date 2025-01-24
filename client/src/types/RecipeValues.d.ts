@@ -5,4 +5,5 @@ export interface RecipeI {
   type_id: string;
   difficulte_id: string;
   description: string;
+  image_url: string;
 }
