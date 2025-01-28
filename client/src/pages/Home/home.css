@@ -20,19 +20,20 @@
   background-color: rgb(27, 47, 64);
   margin-top: -1px;
   padding: 0;
-  height: 38vh;
+  height: 35vh;
   width: 100%;
 }
 
 .carousel-items {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   border: none;
   list-style: none;
   height: 100%;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 20px 0 5px 0;
 }
 .carousel-item {
   height: 100%;
@@ -52,32 +53,53 @@
   height: 18em;
 }
 .container-points {
-  height: 4vh;
-  align-content: center;
-  & .first-carousel > a:first-child {
-    border: solid orange 7px;
-  }
-  & .second-carousel > a:nth-of-type(2) {
-    border: solid orange 7px;
-  }
-  & .third-carousel > a:last-child {
-    border: solid orange 7px;
-  }
-}
-
-.container-points > ul {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 0;
-  padding: 0;
-  & a {
-    border-radius: 10px;
-    border: solid white 7px;
-  }
+  display: none;
 }
 
 ::-webkit-scrollbar {
   background-color: #f5f5f5;
   display: none;
+}
+
+/* * Responsive Desktop */
+
+@media screen and (min-width: 1440px) {
+  .home-recette-semaine {
+    width: 50%;
+    height: 50px;
+    & h2 {
+      margin: 10px auto;
+      font-size: 32px;
+    }
+  }
+  .container-carousel {
+    height: 100%;
+  }
+
+  .carousel-item > div {
+    height: 70%;
+  }
+  .carousel-item > div > img {
+    width: 100%;
+    height: 45em;
+    object-fit: cover;
+  }
+  .container-points {
+    display: block;
+    height: 5vh;
+    background-color: rgb(27, 47, 64);
+  }
+
+  .container-points > ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0;
+    padding: 0;
+    & a {
+      border-radius: 15px;
+      border: solid white 15px;
+      text-decoration: none;
+    }
+  }
 }
