@@ -6,7 +6,7 @@ import type { RecipeI } from "../types/RecipeValues";
 function RecipesSeason() {
   const [recette, setRecette] = useState([] as RecipeI[]);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/recettesaison`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/recette-saison`)
       .then((response) => response.json())
       .then((data: RecipeI[]) => {
         setRecette(data);

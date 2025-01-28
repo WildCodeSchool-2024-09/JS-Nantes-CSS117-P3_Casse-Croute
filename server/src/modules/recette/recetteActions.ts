@@ -12,6 +12,15 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
+const browseSeason: RequestHandler = async (req, res) => {
+  try {
+    const ingredient = await recetteRepository.seasonReadAll();
+    res.json(ingredient);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const browseLatestArrival: RequestHandler = async (req, res, next) => {
   try {
     const recipes = await recetteRepository.lastReadFour();
@@ -114,4 +123,5 @@ export default {
   del,
   browseLatestArrival,
   browseRecipesSeason,
+  browseSeason,
 };
