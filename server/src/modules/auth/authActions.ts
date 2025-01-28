@@ -38,7 +38,6 @@ const login: RequestHandler = async (req, res, next) => {
 const verifyToken: RequestHandler = (req, res, next) => {
   try {
     const authHeader = req.get("Authorization");
-    console.warn(authHeader);
     if (!authHeader) {
       throw new Error("No token provided");
     }
