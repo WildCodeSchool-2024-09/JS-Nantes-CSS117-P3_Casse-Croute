@@ -12,7 +12,6 @@ function LatestArrival() {
         setRecette(data);
       });
   }, []);
-  console.info(recette);
   return (
     <>
       <section className="container-titre-accueil">
