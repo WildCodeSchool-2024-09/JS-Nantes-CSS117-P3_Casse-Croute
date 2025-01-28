@@ -17,6 +17,13 @@ class RecetteRepository {
     return rows;
   }
 
+  async recipesSeason() {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM recette WHERE saison = 'hiver'",
+    );
+    return rows;
+  }
+
   // Lire une recette par ID
   async readById(id: number) {
     const [rows] = await databaseClient.query<Rows>(

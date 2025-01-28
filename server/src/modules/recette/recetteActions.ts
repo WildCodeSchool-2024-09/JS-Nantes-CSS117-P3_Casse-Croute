@@ -22,6 +22,17 @@ const browseLatestArrival: RequestHandler = async (req, res, next) => {
   }
 };
 
+const browseRecipesSeason: RequestHandler = async (req, res, next) => {
+  try {
+    const recipes = await recetteRepository.recipesSeason();
+    res.status(200).json(recipes);
+    console.info(recipes);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur serveur.");
+  }
+};
+
 // Récupérer une recette spécifique par ID
 const read: RequestHandler = async (req, res, next) => {
   try {
@@ -95,4 +106,12 @@ const del: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, edit, del, browseLatestArrival };
+export default {
+  browse,
+  read,
+  add,
+  edit,
+  del,
+  browseLatestArrival,
+  browseRecipesSeason,
+};
