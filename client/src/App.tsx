@@ -1,13 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
 import Header from "./components/globals/Header";
-import RecipePage from "./pages/RecipePage/RecipePage";
 
 function App() {
   return (
     <>
       <Header />
-      <RecipePage />
       <nav>
         <Link to="/">Accueil</Link>
         <Link to="/account">Compte</Link>
@@ -16,6 +15,7 @@ function App() {
         <Link to="/login">Login</Link>
         <Link to="/view-profile">Voir Profile</Link>
       </nav>
+      <ToastContainer />
       <main>
         <Outlet />
       </main>

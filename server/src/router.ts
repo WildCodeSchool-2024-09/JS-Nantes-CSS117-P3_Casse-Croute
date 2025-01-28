@@ -22,7 +22,12 @@ import userActions from "./modules/user/userActions";
 //Retrieve user data
 router.get("/api/users", userActions.browse);
 //Add user data
-router.post("/api/users", userActions.hashPassword, userActions.add);
+router.post(
+  "/api/users",
+  userActions.verified,
+  userActions.hashPassword,
+  userActions.add,
+);
 //Login
 router.post("/api/users/login", authActions.login);
 

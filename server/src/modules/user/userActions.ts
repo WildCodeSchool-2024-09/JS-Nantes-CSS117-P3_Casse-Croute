@@ -56,5 +56,18 @@ const hashPassword: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+const verified: RequestHandler = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const existe = await userRepository.verifiedEmail(email);
+    if (existe) {
+      res.status(409).send("Email déjà utilisé");
+      return;
+    }
+    next();
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-export default { browse, add, hashPassword };
+export default { browse, add, hashPassword, verified };

@@ -39,3 +39,4 @@ export function LoginFormula() {
     </>
   );
 }
+export default LoginFormula;
