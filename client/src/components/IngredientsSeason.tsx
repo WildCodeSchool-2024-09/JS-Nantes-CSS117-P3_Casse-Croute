@@ -1,27 +1,17 @@
+import { useEffect, useState } from "react";
 import "../styles/ingredients-season.css";
-
-const ingredientsSeason = [
-  {
-    id: "1",
-    image: "assets/images/ingredients/chou-frise.png",
-    alt: "chou frisé",
-    name: "Chou frisé",
-  },
-  {
-    id: "2",
-    image: "assets/images/ingredients/citrouille.png",
-    alt: "citrouille",
-    name: "Citrouille",
-  },
-  {
-    id: "3",
-    image: "assets/images/ingredients/chou-rouge.png",
-    alt: "chou rouge",
-    name: "Chou-rouge",
-  },
-];
+import type { ingredientI } from "../types/RecipeValues";
 
 function IngredientsSeason() {
+  const [ingredients, setIngredients] = useState([] as ingredientI[]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/ingredients-season`)
+      .then((response) => response.json())
+      .then((data: ingredientI[]) => {
+        setIngredients(data);
+      });
+  }, []);
   return (
     <>
       <section className="container-titre-accueil">
@@ -29,12 +19,12 @@ function IngredientsSeason() {
       </section>
       <section className="container-ingredients-season">
         <ul>
-          {ingredientsSeason.map((el) => {
+          {ingredients.map((el) => {
             return (
               <li key={el.id}>
                 <figure>
-                  <img src={el.image} alt="chou frisé" />
-                  <figcaption>{el.name}</figcaption>
+                  <img src={el.icone_categorie} alt="" />
+                  <figcaption>{el.nom}</figcaption>
                 </figure>
               </li>
             );

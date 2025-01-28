@@ -10,6 +10,15 @@ const browse: RequestHandler = async (req, res) => {
   }
 };
 
+const browseSeason: RequestHandler = async (req, res) => {
+  try {
+    const ingredient = await ingredientRepository.seasonReadAll();
+    res.json(ingredient);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const add: RequestHandler = async (req, res) => {
   try {
     const addIngredient = await ingredientRepository.create(req.body);
@@ -47,4 +56,4 @@ const edit: RequestHandler = async (req, res) => {
   }
 };
 
-export default { browse, add, edit };
+export default { browse, add, edit, browseSeason };
