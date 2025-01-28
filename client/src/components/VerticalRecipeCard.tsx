@@ -7,13 +7,14 @@ function VerticalRecipeCard({
   difficulte_id,
   type_id,
   description,
+  image_url,
 }: RecipeI) {
   return (
     <article className="recipe-container">
       <div className="img-container">
         <img
           className="circular-img"
-          src="https://img.cuisineaz.com/660x495/2018/03/19/i137285-saute-de-porc-a-l-ananas-fait-maison.jpeg"
+          src={image_url}
           alt="sauté de porc à l'ananas"
         />
       </div>

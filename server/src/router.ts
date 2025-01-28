@@ -37,6 +37,7 @@ router.get("/api/ingredient", ingredientActions.browse);
 
 // Routes liées aux recettes
 router.get("/api/recette", recetteActions.browse);
+router.get("/api/daterecette", recetteActions.browseLatestArrival);
 router.get("/api/recette/:id", recetteActions.read);
 
 /* ************************************************************************* */

@@ -10,6 +10,12 @@ class RecetteRepository {
     );
     return rows;
   }
+  async lastReadFour() {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM recette ORDER BY date_publication DESC LIMIT 4",
+    );
+    return rows;
+  }
 
   // Lire une recette par ID
   async readById(id: number) {

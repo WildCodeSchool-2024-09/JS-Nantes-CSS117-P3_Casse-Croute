@@ -1,0 +1,7 @@
+.container-recipes-latest-arrival {
+  display: flex;
+  justify-content: center;
+  gap: 9em 10px;
+  flex-wrap: wrap;
+  padding: 0px;
+}
