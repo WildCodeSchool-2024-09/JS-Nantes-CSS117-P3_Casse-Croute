@@ -92,6 +92,7 @@ function RecipePage() {
       <div className="main-page-recipe-container">
         {filteredRecipes.map((recipe) => (
           <VerticalRecipeCard
+            image_url={recipe.image_url}
             key={recipe.id}
             titre={recipe.titre}
             temps_id={recipe.temps_id}
