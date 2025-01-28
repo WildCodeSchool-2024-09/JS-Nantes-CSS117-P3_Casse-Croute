@@ -1,3 +1,21 @@
+const carousel = [
+  {
+    id: "point1",
+    image: "/assets/images/carousel-recipes/image-1-carousel.jpg",
+    alt: "sauté de légumes",
+  },
+  {
+    id: "point2",
+    image: "/assets/images/carousel-recipes/image-2-carousel.jpg",
+    alt: "yaourt aux noix, framboise et mûre",
+  },
+  {
+    id: "point3",
+    image: "/assets/images/carousel-recipes/image-3-carousel.jpg",
+    alt: "Des ribs accompagnés de frites et sa sauce barbecue",
+  },
+];
+
 function Carousel() {
   return (
     <>
@@ -6,30 +24,15 @@ function Carousel() {
       </section>
       <section className="container-carousel">
         <ul className="carousel-items">
-          <li id="point1" className="carousel-item">
-            <div className="slide-item">
-              <img
-                src="/assets/images/carousel-recipes/image-1-carousel.jpg"
-                alt="sauté de légumes"
-              />
-            </div>
-          </li>
-          <li id="point2" className="carousel-item">
-            <div className="slide-item">
-              <img
-                src="/assets/images/carousel-recipes/image-2-carousel.jpg"
-                alt="yaourt aux noix, framboise et mûre"
-              />
-            </div>
-          </li>
-          <li id="point3" className="carousel-item">
-            <div className="slide-item">
-              <img
-                src="/assets/images/carousel-recipes/image-3-carousel.jpg"
-                alt="Des ribs accompagnés de frites et sa sauce barbecue"
-              />
-            </div>
-          </li>
+          {carousel.map((el) => {
+            return (
+              <li key={el.id} id={el.id} className="carousel-item">
+                <div className="slide-item">
+                  <img src={el.image} alt={el.alt} />
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </section>
       <section className="container-points">
