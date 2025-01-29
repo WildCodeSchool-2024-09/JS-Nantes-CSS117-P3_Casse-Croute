@@ -18,6 +18,7 @@ const browseSeason: RequestHandler = async (req, res) => {
     res.json(ingredient);
   } catch (err) {
     console.error(err);
+    res.status(500).send("Erreur serveur.");
   }
 };
 
@@ -25,17 +26,6 @@ const browseLatestArrival: RequestHandler = async (req, res, next) => {
   try {
     const recipes = await recetteRepository.lastReadFour();
     res.status(200).json(recipes);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Erreur serveur.");
-  }
-};
-
-const browseRecipesSeason: RequestHandler = async (req, res, next) => {
-  try {
-    const recipes = await recetteRepository.recipesSeason();
-    res.status(200).json(recipes);
-    console.info(recipes);
   } catch (err) {
     console.error(err);
     res.status(500).send("Erreur serveur.");
@@ -122,6 +112,5 @@ export default {
   edit,
   del,
   browseLatestArrival,
-  browseRecipesSeason,
   browseSeason,
 };
