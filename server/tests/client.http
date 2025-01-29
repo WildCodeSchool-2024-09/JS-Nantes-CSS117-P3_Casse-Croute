@@ -27,3 +27,6 @@ Content-Type: application/json
     "password": "test"
     }
 
+##### - Recovery Recipes Season
+
+GET http://localhost:3310/api/recette-saison

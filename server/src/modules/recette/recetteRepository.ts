@@ -10,6 +10,13 @@ class RecetteRepository {
     );
     return rows;
   }
+  async seasonReadAll() {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM recette WHERE saison = ? ORDER BY nom ASC",
+    );
+    return rows;
+  }
+
   async lastReadFour() {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT * FROM recette ORDER BY date_publication DESC LIMIT 4",
