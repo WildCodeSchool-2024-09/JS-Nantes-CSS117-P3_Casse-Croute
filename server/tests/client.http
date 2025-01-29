@@ -18,3 +18,7 @@ Content-Type: application/json
    "email": "test3@test.com",
     "password": "test"
     }
+
+##### - Recovery Recipes Season
+
+GET http://localhost:3310/api/recette-saison
