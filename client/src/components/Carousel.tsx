@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const carousel = [
   {
     id: "point1",
@@ -17,6 +19,21 @@ const carousel = [
 ];
 
 function Carousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselInfinite = () => {
+    if (currentIndex === carousel.length - 1) {
+      return setCurrentIndex(0);
+    }
+    return setCurrentIndex(currentIndex + 1);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      carouselInfinite();
+    }, 5000);
+    return () => clearInterval(interval);
+  });
+
   return (
     <>
       <section className="home-recette-semaine">
@@ -26,7 +43,12 @@ function Carousel() {
         <ul className="carousel-items">
           {carousel.map((el) => {
             return (
-              <li key={el.id} id={el.id} className="carousel-item">
+              <li
+                style={{ transform: `translate(-${currentIndex * 100}%)` }}
+                key={el.id}
+                id={el.id}
+                className="carousel-item"
+              >
                 <div className="slide-item">
                   <img src={el.image} alt={el.alt} />
                 </div>
