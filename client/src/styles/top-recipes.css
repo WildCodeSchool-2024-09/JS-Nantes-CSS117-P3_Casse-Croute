@@ -12,33 +12,120 @@
   font-size: 32px;
 }
 
-.container-podium-accueil {
+.top-rank {
   display: block;
   border-radius: 10px;
   margin: 0 auto;
-  width: 80%;
-  height: 20vh;
+  width: 90%;
+  height: 25vh;
   margin-top: 5em;
 }
 
-.container-podium-accueil > h3 {
+.top-rank > h3 {
   position: absolute;
-  transform: translate(-50%, -0%);
+  transform: translate(-50%, -100%);
   left: 50%;
   text-align: center;
   background-color: white;
   border-radius: 0px 0px 10px 10px;
-  padding: 5px;
+  padding: 0px;
   width: 80px;
   z-index: 2;
 }
 
-.container-podium-accueil > img {
+.top-rank > img {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 10px;
   box-shadow: 2px 6px 8px 0px rgba(0, 0, 0, 0.45);
+}
+
+@media screen and (min-width: 1440px) {
+  .top-recipes-container {
+    margin: 0 auto;
+    width: 95%;
+  }
+  .top-rank {
+    border-radius: 10px;
+    padding: 4em 30px 0px 30px;
+    height: 70vh;
+  }
+
+  #TOP1 {
+    display: block;
+    border-radius: 10px;
+    margin: 0;
+    height: 50em;
+    margin-top: 5em;
+    width: 95vw;
+    & h3 {
+      transform: translate(-55%, -55%);
+      position: absolute;
+      align-content: center;
+      font-size: 32px;
+      width: 200px;
+      height: 60px;
+    }
+  }
+  #TOP1 > img {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  #TOP2,
+  #TOP3 {
+    display: inline-block;
+    margin: 0;
+    width: 50%;
+    & picture {
+      margin: 0;
+      width: 100%;
+      height: 50%;
+    }
+    & h3 {
+      width: 200px;
+      height: 70px;
+      font-size: 32px;
+      align-content: center;
+    }
+  }
+  #TOP2 > h3 {
+    transform: translate(-100%, -50%);
+    position: absolute;
+  }
+  #TOP3 > h3 {
+    transform: translate(360%, -50%);
+    position: absolute;
+  }
+
+  #TOP4,
+  #TOP5 {
+    display: inline-block;
+    margin: 0;
+    width: 50%;
+
+    & picture {
+      margin: 0;
+      width: 100%;
+      height: 50%;
+    }
+    & h3 {
+      align-content: center;
+      font-size: 32px;
+      width: 200px;
+      height: 70px;
+    }
+  }
+  #TOP4 > h3 {
+    transform: translate(-100%, -50%);
+    position: absolute;
+  }
+  #TOP5 > h3 {
+    transform: translate(360%, -50%);
+    position: absolute;
+  }
 }

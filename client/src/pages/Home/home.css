@@ -95,7 +95,7 @@
     justify-content: center;
     gap: 20px;
     font-size: 0;
-    padding: 0;
+    padding: 5px;
     & a {
       border-radius: 15px;
       border: solid white 15px;
