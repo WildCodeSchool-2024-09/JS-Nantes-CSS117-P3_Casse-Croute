@@ -7,6 +7,7 @@ const browse: RequestHandler = async (req, res) => {
     res.json(ingredient);
   } catch (err) {
     console.error(err);
+    res.status(500).send("Erreur serveur.");
   }
 };
 
@@ -16,6 +17,7 @@ const browseSeason: RequestHandler = async (req, res) => {
     res.json(ingredient);
   } catch (err) {
     console.error(err);
+    res.status(500).send("Erreur serveur.");
   }
 };
 
@@ -32,6 +34,7 @@ const add: RequestHandler = async (req, res) => {
     }
   } catch (err) {
     console.error(err);
+    res.status(500).send("Erreur serveur.");
   }
 };
 
@@ -53,6 +56,7 @@ const edit: RequestHandler = async (req, res) => {
     }
   } catch (err) {
     console.error(err);
+    res.status(500).send("Erreur serveur.");
   }
 };
 
