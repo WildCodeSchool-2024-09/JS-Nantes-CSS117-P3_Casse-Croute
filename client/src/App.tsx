@@ -1,23 +1,26 @@
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/globals/Footer";
+import Header from "./components/globals/Header";
 // import SearchFilter from "./components/SearchFilter";
 
 function App() {
   return (
     <>
+      <Header />
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/account">Account</Link>
+        <Link to="/">Accueil</Link>
+        <Link to="/account">Compte</Link>
         <Link to="/catalogue">Catalogue</Link>
-        <Link to="/creerRecette">Create Recipe</Link>
+        <Link to="/create-recipe">Create Recipe</Link>
         <Link to="/login">Login</Link>
-        <Link to="/voirProfil">Voir Profile</Link>
+        <Link to="/view-profile">Voir Profile</Link>
       </nav>
       {/* <SearchFilter /> */}
       <main>
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 }

@@ -1,0 +1,28 @@
+.container-cooking-difficult {
+  display: flex;
+  width: 70%;
+  text-align: center;
+}
+
+.container-cooking-difficult > section {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  & label {
+    font-size: 20px;
+    font-family: var(--font-primary);
+  }
+}
+
+.container-cooking-difficult > section > button {
+  border-radius: 50px;
+  margin: 0 0 10px 0;
+  height: 70px;
+  width: 70px;
+  & img {
+    width: 100%;
+    height: 100%;
+    border: solid red 0px;
+    padding: 7px;
+  }
+}

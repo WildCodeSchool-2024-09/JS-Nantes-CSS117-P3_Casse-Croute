@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Lava+Devanagari:wght@300;400;500;600;700&family=Enriqueta:wght@400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+*:focus-visible {
+  outline-style: dashed;
+  outline-color: var(--tertiary-color);
+  outline-width: 3px;
+  outline-offset: 4px;
+}
+:root {
+  /* Couleurs principales  */
+  --primary-color: #1b3041;
+  --secondary-color-1: #ffe2bc;
+  --secondary-color-2: #ffeed5;
+  --secondary-color-3: #fffdf6;
+  --tertiary-color: #adb445;
+  --quaternary-color: #e08548;
+  --shadow-color: #000000;
+
+  /* Polices */
+  --font-primary: "Lava Devanagari", serif;
+  --font-secondary: "Enriqueta", serif;
+
+  /* Taille des polices */
+  --font-size-small: 0.875rem;
+  --font-size-normal: 1rem;
+  --font-size-medium: 1.25rem;
+  --font-size-large: 1.5rem;
+  --font-size-xlarge: 2rem;
+}

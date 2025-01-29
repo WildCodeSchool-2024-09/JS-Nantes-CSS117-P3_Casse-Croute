@@ -1,0 +1,20 @@
+GET http://localhost:3310/api/users
+
+### - Create a new user
+POST http://localhost:3310/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+   "email": "test3@test.com",
+    "password": "test"
+    }
+
+### - Login
+
+POST http://localhost:3310/api/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+   "email": "test3@test.com",
+    "password": "test"
+    }
