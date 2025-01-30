@@ -7,3 +7,9 @@ export interface RecipeI {
   description: string;
   image_url: string;
 }
+
+export interface ingredientI {
+  id: number;
+  nom: string;
+  icone_categorie: string;
+}
