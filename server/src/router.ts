@@ -34,12 +34,14 @@ import recetteActions from "./modules/recette/recetteActions";
 
 // Routes pour les ingrédients
 router.get("/api/ingredient", ingredientActions.browse);
+router.get("/api/ingredients-season", ingredientActions.browseSeason);
 router.post("/api/ingredient", ingredientActions.add);
 router.put("/api/ingredient/:id", ingredientActions.edit);
 
 // Routes liées aux recettes
 router.get("/api/recette", recetteActions.browse);
-router.get("/api/daterecette", recetteActions.browseLatestArrival);
+router.get("/api/date-recette", recetteActions.browseLatestArrival);
+router.get("/api/recette-saison", recetteActions.browseSeason);
 router.get("/api/recette/:id", recetteActions.read);
 router.post("/api/recette", recetteActions.add);
 router.put("/api/recette/:id", recetteActions.edit);
