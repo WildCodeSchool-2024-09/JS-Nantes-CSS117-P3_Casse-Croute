@@ -1,3 +1,11 @@
+
+
+####### - Recovery ingredient season
+
+GET http://localhost:3310/api/ingredients-season
+
+#######
+
 GET http://localhost:3310/api/users
 
 ### - Create a new user
