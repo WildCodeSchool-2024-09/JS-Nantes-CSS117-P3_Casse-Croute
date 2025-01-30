@@ -1,3 +1,4 @@
+import type { ChangeEvent } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -45,6 +46,7 @@ function AddRecipe() {
 
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [ingredientData, setIngredientData] = useState<IngredientData[]>([]);
+  const [letters, setLetters] = useState("");
 
   const handleInputRecipe = (
     e: React.ChangeEvent<
@@ -100,6 +102,15 @@ function AddRecipe() {
       ),
     );
   };
+
+  // Filter for ingredients
+  const filteredIngredients =
+    letters !== ""
+      ? ingredients.filter((el) => el.nom.toLowerCase().includes(letters))
+      : ingredients;
+  function handleSearch(e: ChangeEvent<HTMLInputElement>) {
+    setLetters(e.target.value.toLowerCase());
+  }
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/ingredient`)
@@ -183,143 +194,158 @@ function AddRecipe() {
   //DISPLAY THE FORM
 
   return (
-    <form onSubmit={handleSubmit} className="create-recipe-form">
-      <label htmlFor="titre">Titre:</label>
-      <input
-        required
-        type="text"
-        id="title"
-        name="titre"
-        onChange={handleInputRecipe}
-        className="generic-input"
-      />
-      <label htmlFor="description">Description:</label>
-      <input
-        required
-        type="text"
-        id="description"
-        name="description"
-        onChange={handleInputRecipe}
-        className="generic-input"
-      />
-      <label htmlFor="time">Temps: {recipeData.temps} minutes</label>
-      <input type="range" id="time" name="temps" onChange={handleInputRecipe} />
-      <label htmlFor="difficulty">Difficulté:</label>
-      <select
-        required
-        id="difficulty"
-        name="difficulté"
-        onChange={handleInputRecipe}
-        className="generic-input"
-      >
-        <option value="1">debutant</option>
-        <option value="2">habitué</option>
-        <option value="3">top chef</option>
-      </select>
+    <main className="add-recipe-main">
+      <form onSubmit={handleSubmit} className="create-recipe-form">
+        <label htmlFor="titre">Titre:</label>
+        <input
+          required
+          type="text"
+          id="title"
+          name="titre"
+          onChange={handleInputRecipe}
+          className="generic-input"
+        />
+        <label htmlFor="description">Description:</label>
+        <input
+          required
+          type="text"
+          id="description"
+          name="description"
+          onChange={handleInputRecipe}
+          className="generic-input"
+        />
+        <label htmlFor="time">Temps: {recipeData.temps} minutes</label>
+        <input
+          type="range"
+          id="time"
+          name="temps"
+          onChange={handleInputRecipe}
+        />
+        <label htmlFor="difficulty">Difficulté:</label>
+        <select
+          required
+          id="difficulty"
+          name="difficulté"
+          onChange={handleInputRecipe}
+          className="generic-input"
+        >
+          <option value="1">debutant</option>
+          <option value="2">habitué</option>
+          <option value="3">top chef</option>
+        </select>
 
-      <label htmlFor="type">Type de plat:</label>
-      <select
-        required
-        id="type"
-        name="type"
-        onChange={handleInputRecipe}
-        className="generic-input"
-      >
-        <option value="plat">plat principal</option>
-        <option value="entree">entrée</option>
-        <option value="dessert">dessert</option>
-        <option value="boisson">boisson</option>
-      </select>
-      <label htmlFor="ingredients">Ingredients:</label>
-      <section className="container-ingredients-season">
-        {ingredientData.map((ingredient) => (
-          <div key={ingredient.id}>
-            <input
-              type="button"
-              name={ingredient.nom}
-              aria-label="delete"
-              className="delete-button"
-              onClick={() => handleDelete(ingredient.nom)}
-              value="X"
-            />
-            <figure>
-              <img src={ingredient.icone_categorie} alt={ingredient.nom} />
-              <figcaption>
-                {ingredient.quantity}
-                <select
-                  name={ingredient.nom}
-                  onChange={(e) => handleInputUnits(e, ingredient.nom)} // Pass ingredient name
-                  value={ingredient.unite}
-                  className="unit-selector"
-                >
-                  <option value="g">g</option>
-                  <option value="00 g">00 g</option>
-                  <option value="kg">kg</option>
-                  <option value="ml">ml</option>
-                  <option value="cl">cl</option>
-                  <option value="l">l</option>
-                </select>
-                {ingredient.nom}
-              </figcaption>
-            </figure>
-            <section>
-              <input
-                type="button"
-                aria-label="minus"
-                className="minus-button"
-                onClick={() => handleMinus(ingredient.nom)} // Pass ingredient name
-                value="-"
-              />
-              <input
-                type="button"
-                aria-label="add"
-                className="add-button"
-                onClick={() => handlePlus(ingredient.nom)} // Pass ingredient name
-                value="+"
-              />
-            </section>
-          </div>
-        ))}
-      </section>
-
-      <section className="container-ingredients-season">
-        <ul>
-          {ingredients.map((ingredient) => (
+        <label htmlFor="type">Type de plat:</label>
+        <select
+          required
+          id="type"
+          name="type"
+          onChange={handleInputRecipe}
+          className="generic-input"
+        >
+          <option value="plat">plat principal</option>
+          <option value="entree">entrée</option>
+          <option value="dessert">dessert</option>
+          <option value="boisson">boisson</option>
+        </select>
+        <label htmlFor="ingredients">Ingredients:</label>
+        <section className="container-ingredients-season">
+          {ingredientData.map((ingredient) => (
             <div key={ingredient.id}>
               <input
                 type="button"
-                onClick={() => handleInputIngredients(ingredient)}
-                value="+"
-                className="add-button"
+                name={ingredient.nom}
+                aria-label="delete"
+                className="delete-button"
+                onClick={() => handleDelete(ingredient.nom)}
+                value="X"
               />
-              <label htmlFor={ingredient.nom}>
-                <img
-                  src={ingredient.icone_categorie}
-                  alt={`${ingredient.nom} icon`}
+              <figure>
+                <img src={ingredient.icone_categorie} alt={ingredient.nom} />
+                <figcaption>
+                  {ingredient.quantity}
+                  <select
+                    name={ingredient.nom}
+                    onChange={(e) => handleInputUnits(e, ingredient.nom)} // Pass ingredient name
+                    value={ingredient.unite}
+                    className="unit-selector"
+                  >
+                    <option value="g">g</option>
+                    <option value="00 g">00 g</option>
+                    <option value="kg">kg</option>
+                    <option value="ml">ml</option>
+                    <option value="cl">cl</option>
+                    <option value="l">l</option>
+                  </select>
+                  {ingredient.nom}
+                </figcaption>
+              </figure>
+              <section>
+                <input
+                  type="button"
+                  aria-label="minus"
+                  className="minus-button"
+                  onClick={() => handleMinus(ingredient.nom)} // Pass ingredient name
+                  value="-"
                 />
-                {ingredient.nom}
-              </label>
+                <input
+                  type="button"
+                  aria-label="add"
+                  className="add-button"
+                  onClick={() => handlePlus(ingredient.nom)} // Pass ingredient name
+                  value="+"
+                />
+              </section>
             </div>
           ))}
-        </ul>
-      </section>
+        </section>
 
-      <label htmlFor="instructions">Instructions:</label>
-      <textarea
-        id="instructions"
-        name="preparation"
-        onChange={handleInputRecipe}
-        className="generic-input"
-      />
-      <button
-        type="submit"
-        id="submit"
-        aria-label="submit"
-        className="submit-button"
-      >
-        Submit
-      </button>
-    </form>
+        <section className="container-ingredients-season filter-ingredients">
+          <input
+            type="text"
+            placeholder="Allez chercher..."
+            onChange={handleSearch}
+          />
+          <ul>
+            {filteredIngredients.map((ingredient) => (
+              <div key={ingredient.id}>
+                <input
+                  type="button"
+                  onClick={() => handleInputIngredients(ingredient)}
+                  value="+"
+                  className="add-button"
+                />
+                <label htmlFor={ingredient.nom}>
+                  <img
+                    src={ingredient.icone_categorie}
+                    alt={`${ingredient.nom} icon`}
+                  />
+                  {ingredient.nom}
+                </label>
+              </div>
+              // <div>
+              // <input></input>
+              // </div>
+            ))}
+          </ul>
+        </section>
+
+        <label htmlFor="instructions">Instructions:</label>
+        <textarea
+          id="instructions"
+          name="preparation"
+          onChange={handleInputRecipe}
+          className="generic-input"
+        />
+        <button
+          type="submit"
+          id="submit"
+          aria-label="submit"
+          className="submit-button"
+        >
+          Submit
+        </button>
+      </form>
+    </main>
   );
 }
 export default AddRecipe;

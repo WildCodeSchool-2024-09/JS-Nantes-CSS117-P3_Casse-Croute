@@ -1,4 +1,8 @@
 /* create recipe form */
+.add-recipe-main {
+  display: flex;
+  justify-content: center;
+}
 .create-recipe-form img {
   max-width: 140px;
 }
@@ -7,6 +11,11 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
+}
+.filter-ingredients {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .create-recipe-form > section {
   display: flex;
