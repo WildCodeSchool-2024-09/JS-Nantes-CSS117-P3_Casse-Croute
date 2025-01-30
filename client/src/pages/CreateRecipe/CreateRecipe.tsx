@@ -1,5 +1,11 @@
+import AddRecipe from "../../components/AddRecipe";
+
 function CreateRecipe() {
-  return <h1>Hello from CreateRecipe</h1>;
+  return (
+    <div>
+      <AddRecipe />
+    </div>
+  );
 }
 
 export default CreateRecipe;

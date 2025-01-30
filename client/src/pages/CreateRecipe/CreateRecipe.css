@@ -1,0 +1,93 @@
+/* create recipe form */
+.create-recipe-form img {
+  max-width: 140px;
+}
+.create-recipe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+.create-recipe-form > section {
+  display: flex;
+  border: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.create-recipe-form > section > div {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--primary-color);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-recipe-form > section > div > section {
+  display: flex;
+  gap: 80px;
+}
+.create-recipe-form > section > ul {
+  max-width: 300px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 1rem;
+  scrollbar-width: thin;
+  scroll-padding: 180px 180px;
+  scrollbar-color: var(--quaternary-color) var(--secondary-color-1);
+  border: 2px solid var(--quaternary-color);
+  border-radius: 40px;
+}
+
+.unit-selector {
+  background-color: var(--secondary-color-1);
+  border: none;
+  font-family: var(--font-primary);
+  font-size: large;
+}
+
+.create-recipe-form > section > ul > div {
+  min-width: 200px;
+  min-height: 200px;
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--quaternary-color);
+  border-radius: 40px;
+}
+.create-recipe-form > section > ul > div > label {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* buttons */
+.add-button {
+  background-color: var(--primary-color);
+  color: var(--quaternary-color);
+}
+
+.minus-button {
+  background-color: var(--quaternary-color);
+  color: var(--primary-color);
+}
+
+.delete-button {
+  background-color: rgb(189, 11, 1);
+  color: white;
+}
+
+.minus-button,
+.add-button,
+.delete-button {
+  min-width: 36px;
+  min-height: 36px;
+  font-size: xx-large;
+  border-radius: 8px;
+  border: none;
+}
+.minus-button:hover,
+.add-button:hover,
+.delete-button:hover {
+  cursor: pointer;
+  outline: var(--secondary-color-2) auto 2px;
+  color: var(--secondary-color-2);
+}
