@@ -4,6 +4,7 @@ import Login from "../pages/Login/AuthForm";
 import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import Account from "../pages/account/Account";
 import Catalogue from "../pages/catalogue/Catalogue";
+import DashboardUser from "../pages/dashboard-admin/DashBoardUser";
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
   {
     path: "/create-recipe",
     element: <CreateRecipe />,
+  },
+  {
+    path: "/dashboard-user",
+    element: <DashboardUser />,
   },
   {
     path: "/login",
