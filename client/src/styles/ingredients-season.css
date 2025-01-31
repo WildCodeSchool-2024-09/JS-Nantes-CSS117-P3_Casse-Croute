@@ -6,29 +6,36 @@
 
 .container-ingredients-season > ul {
   display: flex;
+  align-items: center;
   text-align: center;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   width: 100%;
+  height: 30vh;
   gap: 30%;
-  padding: 20px 20%;
+  padding: 10px 20%;
 }
 
 .container-ingredients-season > ul > li {
   display: block;
-  max-width: 250px;
-  max-height: 250px;
+  justify-items: center;
+  width: 100%;
+  height: 90%;
   background-color: var(--secondary-color-2);
-  padding: 10px;
   border-radius: 20%;
   border: 5px solid rgba(61, 61, 61, 0.242);
   flex-shrink: 0;
   flex-basis: 100%;
+  padding: 5px;
   scroll-snap-align: center;
   & img {
-    max-width: 80%;
-    max-height: 80%;
+    width: 170px;
+    height: 170px;
   }
+}
+.container-ingredients-season > ul > li > figure {
+  width: 80%;
+  height: 80%;
 }
 
 .container-ingredients-season figcaption {
