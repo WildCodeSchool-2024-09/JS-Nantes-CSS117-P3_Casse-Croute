@@ -1,8 +1,8 @@
 import "../../styles/Header.css";
 import "../../styles/Global.css";
 import { Link } from "react-router-dom";
-import HamburgerMenu from "./HamburgerMenu";
 import SearchBar from "../SearchFilter";
+import HamburgerMenu from "./HamburgerMenu";
 
 function Header() {
   return (

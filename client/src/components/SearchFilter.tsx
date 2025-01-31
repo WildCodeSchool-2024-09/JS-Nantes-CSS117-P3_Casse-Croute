@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { ChangeEvent } from "react";
-import type { RecipeI } from "../types/RecipeValues";
 import { FaSearch } from "react-icons/fa";
+import type { RecipeI } from "../types/RecipeValues";
 import "../styles/SearchFilter.css";
 
 function SearchFilter() {
