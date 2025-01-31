@@ -47,7 +47,7 @@
 
 @media screen and (min-width: 1440px) {
   .container-titre-accueil {
-    margin-top: 6em;
+    margin-top: 3em;
     & h2 {
       font-size: 42px;
     }

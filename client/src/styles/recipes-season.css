@@ -55,7 +55,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    padding: 7%;
+    padding: 4% 0 3% 0;
     overflow-x: visible;
     gap: 10em 20px;
     scroll-snap-type: none;
