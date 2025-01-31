@@ -11,12 +11,12 @@
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   width: 100%;
-  height: 30vh;
-  gap: 30%;
+  height: 100%;
+  gap: 20%;
   padding: 10px 20%;
 }
 
-.container-ingredients-season > ul > li {
+.container-ingredients-season > ul > button {
   display: block;
   justify-items: center;
   width: 100%;
@@ -33,11 +33,44 @@
     height: 170px;
   }
 }
-.container-ingredients-season > ul > li > figure {
+.container-ingredients-season > ul > button > figure {
   width: 80%;
   height: 80%;
 }
 
-.container-ingredients-season figcaption {
+.container-ingredients-season > ul > button > figure > figcaption {
   font-size: 20px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* * Responsive Desktop */
+
+@media screen and (min-width: 440px) {
+  .container-ingredients-season > ul {
+    height: 100%;
+    gap: 8em;
+    padding: 10px 1%;
+    & li {
+      flex-shrink: initial;
+    }
+    & button {
+      flex-shrink: initial;
+    }
+  }
+  /* Carousel scroll bar */
+  .container-ingredients-season {
+    /* Principal */
+    ::-webkit-scrollbar {
+      display: contents;
+      max-width: 100%;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(0, 0, 0);
+      width: 20px;
+      border-radius: 10px;
+    }
+  }
 }

@@ -21,12 +21,19 @@ function IngredientsSeason() {
         <ul>
           {ingredients.map((el) => {
             return (
-              <li key={el.id}>
+              <button
+                aria-label={`image de ${el.nom}`}
+                type="button"
+                key={el.id}
+              >
                 <figure>
-                  <img src={el.icone_categorie} alt="" />
+                  <img
+                    src={el.icone_categorie}
+                    alt={`representation de ${el.nom}`}
+                  />
                   <figcaption>{el.nom}</figcaption>
                 </figure>
-              </li>
+              </button>
             );
           })}
         </ul>
