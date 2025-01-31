@@ -3,16 +3,17 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../pages/CreateRecipe/CreateRecipe.css";
-
+//interfaces for Recipe and Ingredient data that we want to send
 interface RecipeData {
   titre: string;
   image_url: string;
   description: string;
-  temps: string;
-  difficulté: string;
-  type: string;
-  ingredients: [Ingredient];
+  temps_id: number;
+  difficulte_id: number;
+  type_id: number;
   preparation: string;
+  saison: string;
+  utilisateur_id: number;
 }
 
 interface Ingredient {
@@ -36,11 +37,12 @@ function AddRecipe() {
     titre: "",
     image_url: "",
     description: "",
-    temps: "",
-    difficulté: "",
-    type: "",
-    ingredients: [{ nom: "", id: "", unite: "", icone_categorie: "" }],
+    temps_id: 1,
+    difficulte_id: 1,
+    type_id: 0,
     preparation: "",
+    saison: "",
+    utilisateur_id: 1,
   });
   const navigate = useNavigate();
 
@@ -153,23 +155,23 @@ function AddRecipe() {
     const {
       titre,
       description,
-      temps,
-      difficulté,
-      type,
-      ingredients,
+      temps_id,
+      difficulte_id,
+      type_id,
       preparation,
     } = recipeData;
     if (
       !titre ||
       !description ||
-      !temps ||
-      !difficulté ||
-      !type ||
-      !ingredients ||
+      !temps_id ||
+      !difficulte_id ||
+      !type_id ||
       !preparation
     ) {
       toast.error("Veuillez remplir tous les champs 🤦‍♀️");
-    } else {
+      return;
+    }
+    try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/receipe`,
         {
@@ -186,8 +188,11 @@ function AddRecipe() {
       } else if (response.status === 409) {
         toast.error("cette recette existe déjà 🤷‍♀️");
       } else {
-        toast.error("Demande crammée 🤦‍♀️");
+        toast.error("Une erreur s'est produite lors de la requête. 🤦‍♀️");
       }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      toast.error("Une erreur s'est produite lors de la requête. 🤦‍♀️");
     }
   }
 
@@ -214,18 +219,18 @@ function AddRecipe() {
           onChange={handleInputRecipe}
           className="generic-input"
         />
-        <label htmlFor="time">Temps: {recipeData.temps} minutes</label>
+        <label htmlFor="time">Temps: {recipeData.temps_id} minutes</label>
         <input
           type="range"
           id="time"
-          name="temps"
+          name="temps_id"
           onChange={handleInputRecipe}
         />
         <label htmlFor="difficulty">Difficulté:</label>
         <select
           required
           id="difficulty"
-          name="difficulté"
+          name="difficulte_id"
           onChange={handleInputRecipe}
           className="generic-input"
         >
@@ -234,18 +239,34 @@ function AddRecipe() {
           <option value="3">top chef</option>
         </select>
 
+        {/* Select season */}
+        <label htmlFor="saison">Saison:</label>
+        <select
+          required
+          id="saison"
+          name="saison"
+          onChange={handleInputRecipe}
+          className="generic-input"
+        >
+          <option value="hiver">hiver</option>
+          <option value="printemps">printemps</option>
+          <option value="été">été</option>
+          <option value="automne">automne</option>
+          <option value="toutes"> toutes saison</option>
+        </select>
+
         <label htmlFor="type">Type de plat:</label>
         <select
           required
           id="type"
-          name="type"
+          name="type_id"
           onChange={handleInputRecipe}
           className="generic-input"
         >
-          <option value="plat">plat principal</option>
-          <option value="entree">entrée</option>
-          <option value="dessert">dessert</option>
-          <option value="boisson">boisson</option>
+          <option value="1">plat principal</option>
+          <option value="2">entrée</option>
+          <option value="3">dessert</option>
+          <option value="4">boisson</option>
         </select>
         <label htmlFor="ingredients">Ingredients:</label>
         <section className="container-ingredients-season">
