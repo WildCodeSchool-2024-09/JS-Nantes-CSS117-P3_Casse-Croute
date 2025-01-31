@@ -19,8 +19,8 @@
 
 .container-carousel {
   background-color: rgb(27, 47, 64);
-  margin-top: -1px;
   padding: 0;
+  margin-top: -1px;
   height: 35vh;
   width: 100%;
 }
@@ -34,7 +34,7 @@
   list-style: none;
   height: 100%;
   margin: 0 auto;
-  padding: 20px 0 5px 0;
+  padding: 20px 0 0px 0;
 }
 .carousel-item {
   height: 100%;
@@ -82,12 +82,13 @@
     max-height: 80%;
     object-position: center;
     object-fit: cover;
-    margin: 10px 0 0 0;
-    padding: 30px 0 0 0;
+    margin: 3em 0 0 0;
+    filter: drop-shadow(0 0 0.75rem rgba(50, 49, 49, 0.715));
   }
   .container-points {
     display: block;
-    height: 5vh;
+    align-content: center;
+    height: 4em;
     background-color: rgb(27, 47, 64);
   }
 
@@ -96,7 +97,7 @@
     justify-content: center;
     gap: 20px;
     font-size: 0;
-    padding: 5px;
+    padding: 0px;
     & a {
       border-radius: 15px;
       border: solid white 15px;

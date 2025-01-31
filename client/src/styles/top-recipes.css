@@ -137,3 +137,11 @@
     position: absolute;
   }
 }
+
+/* * Responsive */
+
+@media screen and (min-width: 440px) {
+  .container-titre-accueil {
+    margin: 10em auto;
+  }
+}
