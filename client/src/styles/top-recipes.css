@@ -1,4 +1,4 @@
-.container-titre-accueil {
+.container-title-accueil {
   background-color: var(--secondary-color-2);
   width: 90%;
   margin: 3em auto;
@@ -9,7 +9,7 @@
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
 }
 
-.container-titre-accueil > h2 {
+.container-title-accueil > h2 {
   font-size: 32px;
 }
 
@@ -62,7 +62,7 @@
     height: 70vh;
   }
 
-  #TOP1 {
+  #top1 {
     display: block;
     border-radius: 10px;
     margin: 0;
@@ -78,14 +78,14 @@
       height: 60px;
     }
   }
-  #TOP1 > img {
+  #top1 > img {
     object-fit: cover;
     max-width: 100%;
     max-height: 100%;
   }
 
-  #TOP2,
-  #TOP3 {
+  #top2,
+  #top3 {
     display: inline-block;
     margin: 0;
     width: 50%;
@@ -101,17 +101,17 @@
       align-content: center;
     }
   }
-  #TOP2 > h3 {
+  #top2 > h3 {
     transform: translate(-100%, -50%);
     position: absolute;
   }
-  #TOP3 > h3 {
+  #top3 > h3 {
     transform: translate(0%, -50%);
     position: absolute;
   }
 
-  #TOP4,
-  #TOP5 {
+  #top4,
+  #top5 {
     display: inline-block;
     margin: 0;
     width: 50%;
@@ -128,11 +128,11 @@
       height: 70px;
     }
   }
-  #TOP4 > h3 {
+  #top4 > h3 {
     transform: translate(-100%, -50%);
     position: absolute;
   }
-  #TOP5 > h3 {
+  #top5 > h3 {
     transform: translate(0%, -50%);
     position: absolute;
   }
@@ -141,7 +141,7 @@
 /* * Responsive */
 
 @media screen and (min-width: 440px) {
-  .container-titre-accueil {
+  .container-title-accueil {
     margin: 10em auto;
   }
 }
