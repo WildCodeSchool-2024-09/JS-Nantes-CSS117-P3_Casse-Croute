@@ -1,11 +1,4 @@
 import "../../styles/Footer.css";
-import {
-  faFacebook,
-  faInstagram,
-  faXTwitter,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -18,22 +11,38 @@ function Footer() {
       <nav className="footer-links">
         <li>
           <Link to="/">
-            <FontAwesomeIcon icon={faFacebook} />
+            <img
+              className="footer-icons facebook"
+              src="assets/images/facebook-icon.png"
+              alt="logo facebook"
+            />
           </Link>
         </li>
         <li>
           <Link to="/">
-            <FontAwesomeIcon icon={faInstagram} />
+            <img
+              className="footer-icons instagram"
+              src="assets/images/instagram-icon.png"
+              alt="logo instagram"
+            />
           </Link>
         </li>
         <li>
           <Link to="/">
-            <FontAwesomeIcon icon={faXTwitter} />
+            <img
+              className="footer-icons"
+              src="assets/images/x-icon.png"
+              alt="logo instagram"
+            />
           </Link>
         </li>
         <li>
           <Link to="/">
-            <FontAwesomeIcon icon={faYoutube} />
+            <img
+              className="footer-icons"
+              src="assets/images/youtube-icon.png"
+              alt="logo instagram"
+            />
           </Link>
         </li>
       </nav>
