@@ -1,0 +1,51 @@
+/* * Recherche bar */
+
+.container-user-dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  background-color: var(--secondary-color-2);
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
+  height: 100vh;
+}
+
+.container-user-dashboard > label {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.container-user-dashboard > input {
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  border: solid black 1px;
+  font-size: 20px;
+  height: 50px;
+  width: 80%;
+}
+
+.container-user-dashboard > ul {
+  width: 75%;
+  height: 20em;
+  margin: 2em auto;
+  border-radius: 15px;
+  background-color: var(--primary-color);
+  padding: 10px 20px 0 10px;
+  list-style: none;
+}
+
+.container-user-dashboard > ul > li {
+  font-size: 20px;
+  height: 40px;
+  align-content: center;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+}
+
+/* * Scroll utilisateur */

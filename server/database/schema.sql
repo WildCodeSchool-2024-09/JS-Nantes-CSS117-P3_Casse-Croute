@@ -97,7 +97,13 @@ CREATE TABLE avis (
 INSERT INTO utilisateur (pseudo, email, mot_de_passe, date_inscription, est_admin) VALUES
 ("admin", "admin@example.com", "adminpasswordhash", CURDATE(), TRUE),
 ("user1", "user1@example.com", "user1passwordhash", CURDATE(), FALSE),
-("user2", "user2@example.com", "user2passwordhash", CURDATE(), FALSE);
+("user3", "user3@example.com", "user3passwordhash", CURDATE(), FALSE),
+("user4", "user4@example.com", "user4passwordhash", CURDATE(), FALSE),
+("user5", "user5@example.com", "user5passwordhash", CURDATE(), FALSE),
+("user6", "user6@example.com", "user6passwordhash", CURDATE(), FALSE),
+("user7", "user7@example.com", "user7passwordhash", CURDATE(), FALSE),
+("user8", "user8@example.com", "user8passwordhash", CURDATE(), FALSE),
+("user9", "user9@example.com", "user9passwordhash", CURDATE(), FALSE);
 
 -- Types de recettes
 INSERT INTO type_recette (nom, image) VALUES

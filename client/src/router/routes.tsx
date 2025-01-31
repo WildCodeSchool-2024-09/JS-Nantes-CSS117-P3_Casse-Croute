@@ -4,7 +4,9 @@ import Login from "../pages/Login/AuthForm";
 import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import Account from "../pages/account/Account";
 import Catalogue from "../pages/catalogue/Catalogue";
-import DashboardUser from "../pages/dashboard-admin/DashBoardUser";
+import DashboardAdmin from "../pages/dashboard-admin/DashBoardAdmin";
+import DashboardRecipes from "../pages/dashboard-admin/DashboardRecipes";
+import DashBoardUser from "../pages/dashboard-admin/DashboardUser";
 
 const routes = [
   {
@@ -24,14 +26,25 @@ const routes = [
     element: <CreateRecipe />,
   },
   {
-    path: "/dashboard-user",
-    element: <DashboardUser />,
-  },
-  {
     path: "/login",
     element: <Login />,
   },
   { path: "/view-profile", element: <ViewProfile /> },
+  {
+    path: "/dashboard-admin",
+    element: <DashboardAdmin />,
+    children: [
+      {
+        index: true,
+        path: "dashboard-user",
+        element: <DashBoardUser />,
+      },
+      {
+        path: "dashboard-recipes", // Relative path
+        element: <DashboardRecipes />,
+      },
+    ],
+  },
 ];
 
 export default routes;
