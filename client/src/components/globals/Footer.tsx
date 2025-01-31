@@ -10,7 +10,7 @@ function Footer() {
 
       <nav className="footer-links">
         <li>
-          <Link to="/">
+          <Link to="https://www.facebook.com/">
             <img
               className="footer-icons facebook"
               src="assets/images/facebook-icon.png"
@@ -19,7 +19,7 @@ function Footer() {
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="https://www.instagram.com/">
             <img
               className="footer-icons instagram"
               src="assets/images/instagram-icon.png"
@@ -28,7 +28,7 @@ function Footer() {
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="https://x.com/">
             <img
               className="footer-icons"
               src="assets/images/x-icon.png"
@@ -37,7 +37,7 @@ function Footer() {
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="https://www.youtube.com/">
             <img
               className="footer-icons"
               src="assets/images/youtube-icon.png"
