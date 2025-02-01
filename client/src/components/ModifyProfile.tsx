@@ -4,6 +4,7 @@ import type { userDataTypes } from "../types/UserData";
 function ModifyProfile() {
   const forbiddenCharacters = /[^a-zA-Z0-9]/g;
   const [userData, setUserData] = useState<userDataTypes>({
+    id: 0,
     email: "",
     pseudo: "",
     password: "",
