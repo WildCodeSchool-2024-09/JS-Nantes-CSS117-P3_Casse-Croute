@@ -14,7 +14,7 @@ function LatestArrival() {
   }, []);
   return (
     <>
-      <section className="container-titre-accueil">
+      <section className="container-title-accueil">
         <h2>Dernier arrivage</h2>
       </section>
       <section className="container-recipes-latest-arrival">
