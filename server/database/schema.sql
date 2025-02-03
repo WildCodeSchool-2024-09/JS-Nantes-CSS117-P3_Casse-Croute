@@ -48,14 +48,10 @@ CREATE TABLE recette (
     date_publication DATETIME DEFAULT CURRENT_TIMESTAMP,
     image_url VARCHAR(255),
     saison ENUM("printemps", "été", "automne", "hiver", "toutes saisons") DEFAULT NULL,
-    type_id VARCHAR (10) ,
+    type_id VARCHAR (10),
     difficulte_id VARCHAR (20),
     temps_id VARCHAR (4),
-    utilisateur_id INT,
-    FOREIGN KEY (type_id) REFERENCES type_recette(id),
-    FOREIGN KEY (difficulte_id) REFERENCES difficulte(id),
-    FOREIGN KEY (temps_id) REFERENCES temps_preparation(id),
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
+    utilisateur_id INT
 );
 
 -- Table ingredient_recette

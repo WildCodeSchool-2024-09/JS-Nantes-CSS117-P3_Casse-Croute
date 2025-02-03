@@ -173,7 +173,7 @@ function AddRecipe() {
     }
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/receipe`,
+        `${import.meta.env.VITE_API_URL}/api/recette`,
         {
           method: "POST",
           headers: {
