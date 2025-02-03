@@ -1,5 +1,6 @@
 import databaseClient from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
+import { getSeason } from "../../utils/helpers";
 import type { Recette } from "./recette";
 
 class RecetteRepository {
@@ -11,8 +12,10 @@ class RecetteRepository {
     return rows;
   }
   async seasonReadAll() {
+    const currentSeason = getSeason();
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM recette WHERE saison = ? ORDER BY nom ASC",
+      "SELECT * FROM recette WHERE saison = ? ORDER BY description ASC LIMIT 6",
+      [currentSeason],
     );
     return rows;
   }
