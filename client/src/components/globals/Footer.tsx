@@ -1,11 +1,11 @@
 import "../../styles/Footer.css";
-import {
-  faFacebook,
-  faInstagram,
-  faXTwitter,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faFacebook,
+//   faInstagram,
+//   faXTwitter,
+//   faYoutube,
+// } from "@fortawesome/free-brands-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -17,7 +17,7 @@ function Footer() {
 
       <nav className="footer-links">
         <li>
-          <Link to="/">
+          {/* <Link to="/">
             <FontAwesomeIcon icon={faFacebook} />
           </Link>
         </li>
@@ -34,7 +34,7 @@ function Footer() {
         <li>
           <Link to="/">
             <FontAwesomeIcon icon={faYoutube} />
-          </Link>
+          </Link> */}
         </li>
       </nav>
     </footer>
