@@ -29,6 +29,7 @@ router.post("/api/users/login", authActions.login);
 /* ************************************************************************* */
 
 // Define casseCroute-related routes
+import ingToRecActions from "./modules/ingToRec/ingToRecActions";
 import ingredientActions from "./modules/ingredient/ingredientActions";
 import recetteActions from "./modules/recette/recetteActions";
 
@@ -44,5 +45,9 @@ router.get("/api/recette/:id", recetteActions.read);
 router.post("/api/recette", recetteActions.add);
 router.put("/api/recette/:id", recetteActions.edit);
 router.delete("/api/recette/:id", recetteActions.del);
+
+//Routes pour ajouter une ingredient à une recette
+router.get("/api/ingredientsAdded", ingToRecActions.browse);
+router.post("/api/ingredientsAdded", ingToRecActions.add);
 
 export default router;

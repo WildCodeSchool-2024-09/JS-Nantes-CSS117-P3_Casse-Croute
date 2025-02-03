@@ -1,11 +1,12 @@
 import type { ChangeEvent } from "react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../pages/CreateRecipe/CreateRecipe.css";
 //interfaces for Recipe and Ingredient data that we want to send
 interface RecipeData {
   titre: string;
+  recette_ref: string;
   image_url: string;
   description: string;
   temps_id: number;
@@ -26,15 +27,17 @@ interface Ingredient {
 interface IngredientData {
   nom: string;
   id: string;
-  quantity: number;
+  quantite: number;
   unite: string;
   icone_categorie: string;
+  recette_ref: string;
 }
 
 function AddRecipe() {
   //declaration of states
   const [recipeData, setRecipeData] = useState<RecipeData>({
     titre: "",
+    recette_ref: `${Date.now()}`,
     image_url: "",
     description: "",
     temps_id: 1,
@@ -44,7 +47,7 @@ function AddRecipe() {
     saison: "",
     utilisateur_id: 1,
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [ingredientData, setIngredientData] = useState<IngredientData[]>([]);
@@ -73,7 +76,7 @@ function AddRecipe() {
           existingIngredient.nom === ingredient.nom
             ? {
                 ...existingIngredient,
-                quantity: existingIngredient.quantity + 1,
+                quantite: existingIngredient.quantite + 1,
               }
             : existingIngredient,
         ),
@@ -83,8 +86,9 @@ function AddRecipe() {
         ...ingredientData,
         {
           ...ingredient,
-          quantity: 1,
+          quantite: 1,
           unite: "00 g",
+          recette_ref: recipeData.recette_ref,
         },
       ]);
     }
@@ -113,7 +117,8 @@ function AddRecipe() {
   function handleSearch(e: ChangeEvent<HTMLInputElement>) {
     setLetters(e.target.value.toLowerCase());
   }
-
+  console.warn("recipeData:", recipeData);
+  console.warn("ingredientData", ingredientData);
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/ingredient`)
       .then((response) => response.json())
@@ -124,7 +129,7 @@ function AddRecipe() {
     setIngredientData((prevIngredientData) =>
       prevIngredientData.map((ingredient) =>
         ingredient.nom === ingredientName
-          ? { ...ingredient, quantity: ingredient.quantity + 1 }
+          ? { ...ingredient, quantite: ingredient.quantite + 1 }
           : ingredient,
       ),
     );
@@ -133,8 +138,8 @@ function AddRecipe() {
   const handleMinus = (ingredientName: string) => {
     setIngredientData((prevIngredientData) =>
       prevIngredientData.map((ingredient) =>
-        ingredient.nom === ingredientName && ingredient.quantity > 1
-          ? { ...ingredient, quantity: ingredient.quantity - 1 }
+        ingredient.nom === ingredientName && ingredient.quantite > 1
+          ? { ...ingredient, quantite: ingredient.quantite - 1 }
           : ingredient,
       ),
     );
@@ -172,7 +177,7 @@ function AddRecipe() {
       return;
     }
     try {
-      const response = await fetch(
+      const recipeResponse = await fetch(
         `${import.meta.env.VITE_API_URL}/api/recette`,
         {
           method: "POST",
@@ -182,17 +187,52 @@ function AddRecipe() {
           body: JSON.stringify(recipeData),
         },
       );
-      if (response.ok) {
-        toast.success("Recette crée ! 👨‍🍳");
-        navigate("/view-profile");
-      } else if (response.status === 409) {
-        toast.error("cette recette existe déjà 🤷‍♀️");
-      } else {
-        toast.error("Une erreur s'est produite lors de la requête. 🤦‍♀️");
+      if (recipeResponse.ok) {
+        console.warn("Recette crée ! 👨‍🍳");
+        try {
+          const ingredientResponse = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/ingredientsAdded`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(ingredientData),
+            },
+          );
+
+          if (ingredientResponse.ok) {
+            console.warn("Ingredients ajouté ! 🍲");
+            // navigate(/seeProfile);
+          } else {
+            const ingredientErrorText = await ingredientResponse.text(); // Get ingredient error details!
+            console.error(
+              "Erreur ajout ingrédients:",
+              ingredientResponse.status,
+              ingredientErrorText, // Log the details!
+            );
+            toast.error(
+              "Erreur lors de l'ajout des ingrédients. Vérifiez les données.",
+            );
+            // Consider deleting the recipe here if needed.
+          }
+        } catch (ingredientError) {
+          console.error("Fetch error (ingrédients):", ingredientError);
+          toast.error("Erreur lors de l'ajout des ingrédients.");
+          // Consider deleting the recipe here as well.
+        }
+      } else if (recipeResponse.status === 409) {
+        const errorText = await recipeResponse.text(); // Get error details
+        console.error(
+          "Erreur création recette:",
+          recipeResponse.status,
+          errorText,
+        );
+        toast.error("Erreur lors de la création de la recette.");
       }
     } catch (error) {
-      console.error("Fetch error:", error);
-      toast.error("Une erreur s'est produite lors de la requête. 🤦‍♀️");
+      console.error("Fetch error (global):", error);
+      toast.error("Une erreur s'est produite lors de la requête.");
     }
   }
 
@@ -283,7 +323,7 @@ function AddRecipe() {
               <figure>
                 <img src={ingredient.icone_categorie} alt={ingredient.nom} />
                 <figcaption>
-                  {ingredient.quantity}
+                  {ingredient.quantite}
                   <select
                     name={ingredient.nom}
                     onChange={(e) => handleInputUnits(e, ingredient.nom)} // Pass ingredient name
@@ -369,4 +409,5 @@ function AddRecipe() {
     </main>
   );
 }
+
 export default AddRecipe;
