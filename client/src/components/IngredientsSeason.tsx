@@ -14,7 +14,7 @@ function IngredientsSeason() {
   }, []);
   return (
     <>
-      <section className="container-title-accueil">
+      <section className="container-title-home">
         <h2>Vos ingrédients de saison</h2>
       </section>
       <section className="container-ingredients-season">

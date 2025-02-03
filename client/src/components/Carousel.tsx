@@ -36,7 +36,7 @@ function Carousel() {
 
   return (
     <>
-      <section className="home-recette-semaine">
+      <section className="home-recipe-week">
         <h2>idée de recette de la semaine</h2>
       </section>
       <section className="container-carousel">

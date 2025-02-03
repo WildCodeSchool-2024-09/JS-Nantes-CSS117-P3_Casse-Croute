@@ -1,4 +1,4 @@
-.home-recette-semaine {
+.home-recipe-week {
   background-color: rgb(27, 47, 64);
   width: 70%;
   height: 30px;
@@ -61,7 +61,7 @@
 /* * Responsive Desktop */
 
 @media screen and (min-width: 440px) {
-  .home-recette-semaine {
+  .home-recipe-week {
     width: 50%;
     height: 50px;
     & h2 {

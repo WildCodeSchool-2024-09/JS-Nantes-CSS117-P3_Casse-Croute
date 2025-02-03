@@ -81,14 +81,9 @@
   button:focus {
     transform: scale(1.1);
   }
-  .container-ingredients-season > ul > button:hover figure,
-  .container-ingredients-season > ul > button:focus figure {
-    filter: grayscale(0%);
-  }
   .container-ingredients-season > ul > button > figure {
     width: 80%;
     height: 80%;
-    filter: grayscale(100%);
   }
 
   .container-ingredients-season > ul > button > figure > figcaption {

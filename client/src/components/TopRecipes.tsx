@@ -43,7 +43,7 @@ const topCard = [
 function TopRecipes() {
   return (
     <>
-      <section className="container-title-accueil">
+      <section className="container-title-home">
         <h2>Les recettes les mieux notées ce mois-ci</h2>
       </section>
       <div className="top-recipes-container">
