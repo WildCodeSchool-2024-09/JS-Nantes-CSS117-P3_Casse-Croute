@@ -1,5 +1,6 @@
 footer {
   background-color: var(--primary-color);
+  margin: 0;
 }
 
 .logo-footer {
@@ -18,7 +19,6 @@ footer {
   gap: 2.5rem;
   position: relative;
   top: -10px;
-  margin-bottom: 20px;
 }
 
 .footer-links li svg {
