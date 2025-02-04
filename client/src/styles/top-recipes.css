@@ -1,44 +1,147 @@
-.container-titre {
+.container-title-home {
   background-color: var(--secondary-color-2);
   width: 90%;
   margin: 3em auto;
   padding: 15px;
+  font-family: var(--font-secondary);
   text-align: center;
   border-radius: 15px;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
 }
 
-.container-titre > h2 {
+.container-title-home > h2 {
   font-size: 32px;
 }
 
-.container-podium {
+.top-rank {
   display: block;
   border-radius: 10px;
   margin: 0 auto;
-  width: 80%;
-  height: 20vh;
+  width: 90%;
+  font-family: var(--font-secondary);
+  height: 25vh;
   margin-top: 5em;
 }
 
-.container-podium > h3 {
+.top-rank > h3 {
   position: absolute;
-  transform: translate(-50%, -0%);
+  transform: translate(-50%, -100%);
   left: 50%;
   text-align: center;
   background-color: white;
   border-radius: 0px 0px 10px 10px;
-  padding: 5px;
+  padding: 0px;
   width: 80px;
   z-index: 2;
 }
 
-.container-podium > img {
+.top-rank > img {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 10px;
   box-shadow: 2px 6px 8px 0px rgba(0, 0, 0, 0.45);
+}
+
+@media screen and (min-width: 1440px) {
+  .container-title-home {
+    margin-top: 3em;
+    & h2 {
+      font-size: 42px;
+    }
+  }
+  .top-recipes-container {
+    margin: 0 auto;
+    width: 95%;
+  }
+  .top-rank {
+    border-radius: 10px;
+    padding: 4em 30px 0px 30px;
+    height: 70vh;
+  }
+
+  #top1 {
+    display: block;
+    border-radius: 10px;
+    margin: 0;
+    height: 50em;
+    margin-top: 5em;
+    width: 95vw;
+    & h3 {
+      transform: translate(-55%, -55%);
+      position: absolute;
+      align-content: center;
+      font-size: 32px;
+      width: 200px;
+      height: 60px;
+    }
+  }
+  #top1 > img {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  #top2,
+  #top3 {
+    display: inline-block;
+    margin: 0;
+    width: 50%;
+    & picture {
+      margin: 0;
+      width: 100%;
+      height: 50%;
+    }
+    & h3 {
+      width: 200px;
+      height: 70px;
+      font-size: 32px;
+      align-content: center;
+    }
+  }
+  #top2 > h3 {
+    transform: translate(-100%, -50%);
+    position: absolute;
+  }
+  #top3 > h3 {
+    transform: translate(0%, -50%);
+    position: absolute;
+  }
+
+  #top4,
+  #top5 {
+    display: inline-block;
+    margin: 0;
+    width: 50%;
+
+    & picture {
+      margin: 0;
+      width: 100%;
+      height: 50%;
+    }
+    & h3 {
+      align-content: center;
+      font-size: 32px;
+      width: 200px;
+      height: 70px;
+    }
+  }
+  #top4 > h3 {
+    transform: translate(-100%, -50%);
+    position: absolute;
+  }
+  #top5 > h3 {
+    transform: translate(0%, -50%);
+    position: absolute;
+  }
+}
+
+/* * Responsive */
+
+@media screen and (min-width: 440px) {
+  .container-title-home {
+    margin: 10em auto;
+  }
 }

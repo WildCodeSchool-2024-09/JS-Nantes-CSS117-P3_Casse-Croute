@@ -6,7 +6,6 @@
   padding: 15px;
   font-family: var(--font-primary);
   position: relative;
-  top: 100px;
   box-shadow: 0 0 20px rgba(181, 168, 168, 0.416);
 }
 
@@ -33,21 +32,26 @@
 .title {
   color: var(--quaternary-color);
   margin: 8px 0;
+  height: 45px;
 }
 
 .description {
   font-size: small;
+  height: 80px;
 }
 
 /* Logos */
 
 .recipe-container ul {
   display: flex;
+  justify-content: center;
   font-size: small;
   margin-top: 8px;
+  padding: 3px;
+  gap: 10px;
   position: relative;
-  top: 40px;
 }
+
 .recipe-container ul li {
   list-style: none;
   display: flex;
@@ -75,11 +79,29 @@
 
 .difficulty {
   position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
   top: 2px;
 }
 
 .type {
   height: 35px;
+  width: 90%;
+  height: 90%;
+  padding: 5px;
   position: relative;
   top: 2px;
+}
+
+/* * Responsive */
+
+@media screen and (min-width: 440px) {
+  .recipe-container {
+    width: 230px;
+    height: 360px;
+  }
+  .title + .description {
+    font-size: 16px;
+  }
 }

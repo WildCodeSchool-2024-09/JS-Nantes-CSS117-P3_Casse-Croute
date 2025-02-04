@@ -1,12 +1,12 @@
 -- Table utilisateur
 CREATE TABLE utilisateur (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    pseudo VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
+    pseudo VARCHAR(50),
+    email VARCHAR(255) UNIQUE,
     mot_de_passe VARCHAR(255) NOT NULL,
-    date_inscription DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    date_inscription DATETIME DEFAULT CURRENT_TIMESTAMP,
     photo_profil VARCHAR(255),
-    est_admin BOOLEAN NOT NULL DEFAULT FALSE
+    est_admin BOOLEAN DEFAULT FALSE
 );
 
 -- Table type_recette
@@ -153,24 +153,24 @@ INSERT INTO ingredient (nom, categorie, icone_categorie, saison) VALUES
 ("Bœuf haché", "Viande", "/images/categories/viande.jpg", "toutes saisons"),
 
 -- Poissons
-("Saumon", "Poisson", "/images/categories/poisson.jpg", "hiver"),
-("Cabillaud", "Poisson", "/images/categories/poisson.jpg", "hiver"),
+("Saumon", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
+("Cabillaud", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
 ("Thon", "Poisson", "/images/categories/poisson.jpg", "été"),
 ("Crevettes", "Fruits de mer", "/images/categories/poisson.jpg", "toutes saisons"),
 ("Moules", "Fruits de mer", "/images/categories/poisson.jpg", "automne"),
 ("Saint-Jacques", "Fruits de mer", "/images/categories/poisson.jpg", "automne"),
 ("Sardine", "Poisson", "/images/categories/poisson.jpg", "été"),
-("Haddock", "Poisson", "/images/categories/poisson.jpg", "hiver"),
+("Haddock", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
 ("Merlu", "Poisson", "/images/categories/poisson.jpg", "printemps"),
 ("Lieu noir", "Poisson", "/images/categories/poisson.jpg", "printemps"),
 ("Lieu jaune", "Poisson", "/images/categories/poisson.jpg", "printemps"),
 ("Sole", "Poisson", "/images/categories/poisson.jpg", "printemps"),
 ("Turbot", "Poisson", "/images/categories/poisson.jpg", "automne"),
-("Colin", "Poisson", "/images/categories/poisson.jpg", "hiver"),
-("Lingue", "Poisson", "/images/categories/poisson.jpg", "hiver"),
+("Colin", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
+("Lingue", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
 ("Maquereau", "Poisson", "/images/categories/poisson.jpg", "été"),
 ("Truite", "Poisson", "/images/categories/poisson.jpg", "printemps"),
-("Hareng", "Poisson", "/images/categories/poisson.jpg", "hiver"),
+("Hareng", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
 ("Sandre", "Poisson", "/images/categories/poisson.jpg", "printemps"),
 ("Perche", "Poisson", "/images/categories/poisson.jpg", "printemps"),
 ("Brochet", "Poisson", "/images/categories/poisson.jpg", "printemps"),
@@ -188,7 +188,7 @@ INSERT INTO ingredient (nom, categorie, icone_categorie, saison) VALUES
 ("Roquefort", "Produits laitiers", "/images/categories/produits_laitiers.jpg", "automne"),
 ("Chèvre", "Produits laitiers", "/images/categories/produits_laitiers.jpg", "printemps"),
 ("Comté", "Produits laitiers", "/images/categories/produits_laitiers.jpg", "automne"),
-("Reblochon", "Produits laitiers", "/images/categories/produits_laitiers.jpg", "hiver"),
+("Reblochon", "Produits laitiers", "https://cdn-icons-png.flaticon.com/128/4900/4900721.png", "hiver"),
 ("Bleu dAuvergne", "Produits laitiers", "/images/categories/produits_laitiers.jpg", "automne"),
 ("Gruyère", "Produits laitiers", "/images/categories/produits_laitiers.jpg", "toutes saisons"),
 ("Ricotta", "Produits laitiers", "/images/categories/produits_laitiers.jpg", "été"),
@@ -203,28 +203,35 @@ INSERT INTO ingredient (nom, categorie, icone_categorie, saison) VALUES
 ("Oeuf de caille", "Oeuf", "/images/categories/oeuf.jpg", "toutes saisons"),
 ("Oeuf de canard", "Oeuf", "/images/categories/oeuf.jpg", "toutes saisons"),
 ("Oeuf d'oie", "Oeuf", "/images/categories/oeuf.jpg", "toutes saisons"),
-("Oeuf de poisson", "Oeuf", "/images/categories/oeuf.jpg", "hiver"),
+("Oeuf de poisson", "Oeuf", "   https://cdn-icons-png.flaticon.com/512/18287/18287966.png ", "hiver"),
+
+-- Legumes
+
+("Chou rouge", "Legume", "https://cdn-icons-png.flaticon.com/128/3944/3944192.png", "hiver"),
+("Chou frisé", "Legume", "https://cdn-icons-png.flaticon.com/128/8026/8026244.png", "hiver"),
+
 -- Fruits
 ("Pomme", "Fruit", "/images/categories/fruit.jpg", "automne"),
 ("Banane", "Fruit", "/images/categories/fruit.jpg", "toutes saisons"),
-("Orange", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Citron", "Fruit", "/images/categories/fruit.jpg", "hiver"),
+("Orange", "Fruit", "https://cdn-icons-png.flaticon.com/128/1728/1728765.png", "hiver"),
+("Citron", "Fruit", "https://cdn-icons-png.flaticon.com/128/6866/6866595.png", "hiver"),
+("Citrouille", "Fruit", "https://cdn-icons-png.flaticon.com/512/6135/6135960.png", "hiver"),
 ("Fraise", "Fruit", "/images/categories/fruit.jpg", "printemps"),
 ("Framboise", "Fruit", "/images/categories/fruit.jpg", "été"),
 ("Ananas", "Fruit", "/images/categories/fruit.jpg", "toutes saisons"),
-("Mangue", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Papaye", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Fruit de la passion", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Kiwi", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Litchi", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Goyave", "Fruit", "/images/categories/fruit.jpg", "hiver"),
+("Mangue", "Fruit", "https://cdn-icons-png.flaticon.com/128/6866/6866546.png", "hiver"),
+("Papaye", "Fruit", "https://cdn-icons-png.flaticon.com/128/14476/14476708.png", "hiver"),
+("Fruit de la passion", "Fruit", "https://cdn-icons-png.flaticon.com/128/5402/5402298.png", "hiver"),
+("Kiwi", "Fruit", "https://cdn-icons-png.flaticon.com/128/3944/3944170.png", "hiver"),
+("Litchi", "Fruit", "https://cdn-icons-png.flaticon.com/128/3944/3944244.png", "hiver"),
+("Goyave", "Fruit", "https://cdn-icons-png.flaticon.com/128/5402/5402118.png", "hiver"),
 ("Mytille", "Fruit", "/images/categories/fruit.jpg", "été"),
 ("Cassis", "Fruit", "/images/categories/fruit.jpg", "été"),
 ("Groseille", "Fruit", "/images/categories/fruit.jpg", "été"),
-("Clémentine", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Pamplemousse", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Bergamote", "Fruit", "/images/categories/fruit.jpg", "hiver"),
-("Kumquat", "Fruit", "/images/categories/fruit.jpg", "hiver"),
+("Clémentine", "Fruit", "https://cdn-icons-png.flaticon.com/128/1704/1704398.png", "hiver"),
+("Pamplemousse", "Fruit", "https://cdn-icons-png.flaticon.com/128/2659/2659549.png", "hiver"),
+("Bergamote", "Fruit", "https://cdn-icons-png.flaticon.com/128/14923/14923315.png", "hiver"),
+("Kumquat", "Fruit", "https://cdn-icons-png.flaticon.com/128/1135/1135517.png", "hiver"),
 ("Pêche", "Fruit", "/images/categories/fruit.jpg", "été"),
 ("Nectarine", "Fruit", "/images/categories/fruit.jpg", "été"),
 ("Prune", "Fruit", "/images/categories/fruit.jpg", "été"),
@@ -256,8 +263,18 @@ INSERT INTO ingredient (nom, categorie, icone_categorie, saison) VALUES
 -- Table recette
 INSERT INTO recette (titre, description, date_publication, image_url, saison, type_id, difficulte_id, temps_id, utilisateur_id)
 VALUES
-("Soupe d'hiver", "Une soupe chaude pour l'hiver.", "2025-01-15", "path/to/soupe.jpg", "hiver", 2, 2, 3, 1),
-("Salade estivale", "Une salade fraîche pour l'été.", "2025-06-15", "path/to/salade.jpg", "été", 1, 1, 1, 2);
+("Soupe d'hiver", "Une soupe chaude pour l'hiver.", "2023-01-15", "https://media.istockphoto.com/id/1038979532/fr/photo/soupe-tomate-aux-lentilles-rouges-au-curry-et-noix-de-coco-d%C3%A9licieuse-nourriture-v%C3%A9g%C3%A9tarienne.jpg?s=612x612&w=0&k=20&c=P9aAkXmxQ4h4bfhFWuTtJfw8JefqxbPZ2VqWo-W0vtw=", "hiver", 2, 2, 3, 1),
+("Buddha Bowl", "Pour une alimentation équilibrée avec du tofu, du quinoa, des légumes", "2025-01-23", "https://media.istockphoto.com/id/2150471415/fr/photo/buddha-bowl-v%C3%A9g%C3%A9talien-pour-une-alimentation-%C3%A9quilibr%C3%A9e-avec-du-tofu-du-quinoa-des-l%C3%A9gumes-et.jpg?s=612x612&w=0&k=20&c=a2RkFZlMwaLKucEgj7aEwZW6uGCEuAUWX8tdB7Mpj88=", "été", 1, 1, 1, 2),
+("Poulet bresé", "Poulet rôti avec pommes de terre et oignons", "2025-01-23", "https://media.istockphoto.com/id/1360064510/fr/photo/poulet-r%C3%B4ti-avec-pommes-de-terre-et-oignons.jpg?s=612x612&w=0&k=20&c=iZlsp-xAaw8h3SKU_MJ7pOPWPB_u4r9UgTmSkScDf20=", "été", 1, 1, 1, 2),
+("Gâteau de Noël", "Gâteau de Noël italien traditionnel Panettone", "2022-01-23", "https://media.istockphoto.com/id/1805465945/fr/photo/g%C3%A2teau-de-no%C3%ABl-italien-traditionnel-panettone-avec-d%C3%A9corations-festives.jpg?s=612x612&w=0&k=20&c=mIDta2Rcx_rEGkgRH7VtZD6MyVtjvF8IggarLrtfMb4=", "hiver", 1, 1, 1, 2),
+("Fondue au fromage", "Fondue au fromage avec vin de pain et raisin", "2022-01-23", "https://media.istockphoto.com/id/1154139425/fr/photo/fondue-au-fromage-avec-vin-de-pain-et-raisin.jpg?s=612x612&w=0&k=20&c=PNR9MytdVe3l3zbBCHPWm10U8h-2Vk5sh0fqgLNaDTU=", "hiver", 1, 1, 1, 2),
+("Ragoût", "Ragoût fait maison avec de la viande et des légumes", "2022-01-23", "https://media.istockphoto.com/id/614712998/fr/photo/rago%C3%BBt-fait-maison-avec-de-la-viande-et-des-l%C3%A9gumes.jpg?s=612x612&w=0&k=20&c=w3K22nteo-a_8d56FsCjUj89dpCBj0jdSDL3-LCdOA0=", "hiver", 1, 1, 1, 2),
+("Poulet Riggies", "Pâtes de blé entier cuites au four avec du boeuf haché et du fromage", "2025-01-23", "https://media.istockphoto.com/id/1098150768/fr/photo/poulet-riggies.jpg?s=612x612&w=0&k=20&c=xRyWBscDAlDA_ke4iZQqrOi_4KY63vVSD_Q9Vb-pnhg=", "hiver", 1, 1, 1, 2),
+("Gratin", "Gratin de pommes de terre au fromage maison", "2025-01-23", "https://media.istockphoto.com/id/1442601396/fr/photo/gratin-de-pommes-de-terre-au-fromage-maison.jpg?s=612x612&w=0&k=20&c=yJp1IfY2kuj7ShcCkzOWWABT0YMS-6C1CyuBFptCSSQ=", "hiver",1, 1, 1, 2),
+("Salade estivale", "Une salade fraîche pour l'été.", "2023-06-15", "path/to/salade.jpg", "été", 1, 1, 1, 2);
+
+
+
 
 
 -- Table ingredient_recette

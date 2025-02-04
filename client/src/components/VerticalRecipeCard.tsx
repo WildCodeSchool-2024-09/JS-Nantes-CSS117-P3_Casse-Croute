@@ -1,21 +1,26 @@
 import "../styles/VerticalRecipeCard.css";
+import type { RecipeI } from "../types/RecipeValues";
 
-function VerticalRecipeCard() {
+function VerticalRecipeCard({
+  titre,
+  temps_id,
+  difficulte_id,
+  type_id,
+  description,
+  image_url,
+}: RecipeI) {
   return (
     <article className="recipe-container">
       <div className="img-container">
         <img
           className="circular-img"
-          src="https://img.cuisineaz.com/660x495/2018/03/19/i137285-saute-de-porc-a-l-ananas-fait-maison.jpeg"
+          src={image_url}
           alt="sauté de porc à l'ananas"
         />
       </div>
       <section className="text-container">
-        <h1 className="title">Mead glazed ham</h1>
-        <p className="description">
-          Cider brined roast chicken, seasoned with frash orange and herbs and a
-          reduced cider maple glaze
-        </p>
+        <h1 className="title">{titre}</h1>
+        <p className="description">{description}</p>
 
         <ul>
           <li>
@@ -26,17 +31,17 @@ function VerticalRecipeCard() {
                 alt="logo horloge"
               />
             </div>
-            <p>30 min</p>
+            <p>{temps_id}</p>
           </li>
           <li>
             <div className="circle">
               <img
                 className="difficulty"
-                src="../../public/assets/images/icone-difficulty.png"
+                src="assets/images/level-difficult/icon-difficult.png"
                 alt="logo indiquant un niveau de difficulté"
               />{" "}
             </div>
-            <p>Easy</p>
+            <p>{difficulte_id}</p>
           </li>
           <li>
             <div className="circle">
@@ -47,7 +52,7 @@ function VerticalRecipeCard() {
                 alt="logo d'un poulet cuit"
               />
             </div>
-            <p>Main course</p>
+            <p>{type_id}</p>
           </li>
         </ul>
       </section>

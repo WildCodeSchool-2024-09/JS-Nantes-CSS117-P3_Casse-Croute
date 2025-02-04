@@ -1,0 +1,35 @@
+.main-page-recipe-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.main-page-recipe-container > .recipe-container:nth-child(n + 3) {
+  margin-top: 110px;
+}
+
+.main-page-recipe-filter-container {
+  display: flex;
+  justify-content: center;
+}
+
+.main-page-recipe-filter-container > select {
+  width: 100px;
+  padding: 5px 26px;
+  appearance: none;
+  border: none;
+  background-color: var(--primary-color);
+  color: bisque;
+}
+
+.main-page-recipe-filter-container select:first-of-type {
+  border-radius: 0px 0 0 12px;
+}
+
+.main-page-recipe-filter-container select:nth-of-type(2) {
+  border: 0 3px 0 3px solid var(--secondary-color-1);
+}
+
+.main-page-recipe-filter-container select:nth-of-type(3) {
+  border-radius: 0 0 12px 0px;
+}

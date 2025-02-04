@@ -1,0 +1,15 @@
+.container-recipes-latest-arrival {
+  display: flex;
+  justify-content: center;
+  gap: 9em 10px;
+  flex-wrap: wrap;
+  padding: 6em 0 6em 0;
+}
+
+/*  * Responsive  */
+
+@media screen and (min-width: 440px) {
+  .container-recipes-latest-arrival {
+    gap: 9em 5em;
+  }
+}
