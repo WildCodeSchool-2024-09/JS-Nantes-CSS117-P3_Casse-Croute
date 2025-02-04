@@ -10,6 +10,8 @@ export interface userData {
   id?: number;
   email: string;
   pseudo: string;
+  est_admin: string;
+  photo_profil: string;
 }
 
 export interface UserPropsI extends userDataTypes {

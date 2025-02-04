@@ -25,6 +25,10 @@
   width: 100%;
 }
 
+.carousel-items::-webkit-scrollbar {
+  display: none;
+}
+
 .carousel-items {
   display: flex;
   overflow-x: auto;

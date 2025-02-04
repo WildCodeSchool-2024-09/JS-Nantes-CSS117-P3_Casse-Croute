@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/AuthForm";
@@ -5,7 +6,6 @@ import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import Account from "../pages/account/Account";
 import Catalogue from "../pages/catalogue/Catalogue";
 import DashboardAdmin from "../pages/dashboard-admin/DashBoardAdmin";
-import DashboardRecipes from "../pages/dashboard-admin/DashboardRecipes";
 import DashBoardUser from "../pages/dashboard-admin/DashboardUser";
 
 const routes = [
@@ -36,12 +36,11 @@ const routes = [
     children: [
       {
         index: true,
-        path: "dashboard-user",
-        element: <DashBoardUser />,
+        element: <Navigate to="dashboard-user" replace />,
       },
       {
-        path: "dashboard-recipes", // Relative path
-        element: <DashboardRecipes />,
+        path: "dashboard-user",
+        element: <DashBoardUser />,
       },
     ],
   },

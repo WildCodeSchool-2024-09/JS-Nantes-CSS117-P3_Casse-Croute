@@ -25,6 +25,8 @@ router.get("/api/users", userActions.browse);
 router.post("/api/users", userActions.hashPassword, userActions.add);
 //Login
 router.post("/api/users/login", authActions.login);
+//Update
+router.put("/api/users/:id", userActions.edit);
 
 /* ************************************************************************* */
 

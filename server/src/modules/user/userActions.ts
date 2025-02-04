@@ -33,6 +33,28 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const user = {
+      id: Number(req.params.id),
+      pseudo: req.body.pseudo,
+      email: req.body.email,
+      mot_de_passe: req.body.mot_de_passe,
+      date_inscription: req.body.date_inscription,
+      photo_profil: req.body.photo_profil,
+      est_admin: req.body.est_admin,
+    };
+    const affectedRows = await userRepository.updateAdmin(user);
+    if (affectedRows === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const hashPassword: RequestHandler = async (req, res, next) => {
   //Definir les options de hashage
   const hashOptions = {
@@ -57,4 +79,4 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, hashPassword };
+export default { browse, add, hashPassword, edit };

@@ -2,6 +2,9 @@
   width: 100%;
   border-width: 5px 0;
 }
+.container-ingredients-season > ul::-webkit-scrollbar {
+  display: none;
+}
 
 .container-ingredients-season > ul {
   display: flex;
@@ -32,9 +35,6 @@
     width: 170px;
     height: 170px;
   }
-}
-::-webkit-scrollbar {
-  display: none;
 }
 
 /* * Responsive Desktop */
