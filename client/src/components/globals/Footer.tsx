@@ -10,16 +10,40 @@ function Footer() {
 
       <nav className="footer-links">
         <li>
-          <Link to="/">{/* <FontAwesomeIcon icon={faFacebook} /> */}</Link>
+          <Link to="https://www.facebook.com/">
+            <img
+              className="footer-icons facebook"
+              src="assets/images/facebook-icon.png"
+              alt="logo facebook"
+            />
+          </Link>
         </li>
         <li>
-          <Link to="/">{/* <FontAwesomeIcon icon={faInstagram} /> */}</Link>
+          <Link to="https://www.instagram.com/">
+            <img
+              className="footer-icons instagram"
+              src="assets/images/instagram-icon.png"
+              alt="logo instagram"
+            />
+          </Link>
         </li>
         <li>
-          <Link to="/">{/* <FontAwesomeIcon icon={faXTwitter} /> */}</Link>
+          <Link to="https://x.com/">
+            <img
+              className="footer-icons"
+              src="assets/images/x-icon.png"
+              alt="logo instagram"
+            />
+          </Link>
         </li>
         <li>
-          <Link to="/">{/* <FontAwesomeIcon icon={faYoutube} /> */}</Link>
+          <Link to="https://www.youtube.com/">
+            <img
+              className="footer-icons"
+              src="assets/images/youtube-icon.png"
+              alt="logo instagram"
+            />
+          </Link>
         </li>
       </nav>
     </footer>
