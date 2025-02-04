@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import type { ChangeEvent } from "react";
-import { FaSearch } from "react-icons/fa";
 import type { RecipeI } from "../types/RecipeValues";
 import "../styles/SearchFilter.css";
 
@@ -39,7 +38,6 @@ function SearchFilter() {
   return (
     <div className="search-filter-container">
       <div className="input-wrapper">
-        <FaSearch id="search-icon" />
         <input
           type="text"
           placeholder="Search for a recipe..."
