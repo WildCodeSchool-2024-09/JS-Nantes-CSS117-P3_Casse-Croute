@@ -12,23 +12,20 @@ CREATE TABLE utilisateur (
 -- Table type_recette
 CREATE TABLE type_recette (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(50) NOT NULL,
-    image VARCHAR(255) NOT NULL
+    nom VARCHAR(50) NOT NULL
 );
 
 -- Table difficulte
 CREATE TABLE difficulte (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(50) NOT NULL,
-    image VARCHAR(255) NOT NULL
+    nom VARCHAR(50) NOT NULL
 );
 
 -- Table temps_preparation
 CREATE TABLE temps_preparation (
     id INT PRIMARY KEY AUTO_INCREMENT,
     heure INT NOT NULL CHECK (heure BETWEEN 0 AND 72),
-    minute INT NOT NULL CHECK (minute BETWEEN 0 AND 59),
-    image VARCHAR(255) NOT NULL
+    minute INT NOT NULL CHECK (minute BETWEEN 0 AND 59)
 );
 
 -- Table ingredient
@@ -83,12 +80,27 @@ CREATE TABLE avis (
     id INT PRIMARY KEY AUTO_INCREMENT,
     recette_id INT NOT NULL,
     utilisateur_id INT NOT NULL,
-    note TINYINT NOT NULL CHECK (note BETWEEN 1 AND 5), -- Note sur 5
-    commentaire VARCHAR(500), -- Limitation à 500 caractères
+    note TINYINT NOT NULL CHECK (note BETWEEN 1 AND 5),
+    commentaire VARCHAR(500),
     date_avis DATE NOT NULL,
     FOREIGN KEY (recette_id) REFERENCES recette(id) ON DELETE CASCADE,
     FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
 );
+
+-- Modification de la requête pour récupérer les ingrédients avec leurs détails
+SELECT 
+    ir.recette_id,
+    i.id AS ingredient_id,
+    i.nom AS ingredient_nom,
+    i.categorie AS ingredient_categorie,
+    i.saison AS ingredient_saison,
+    i.icone_categorie AS ingredient_icone,
+    ir.quantite,
+    ir.unite
+FROM ingredient_recette ir
+JOIN ingredient i ON ir.ingredient_id = i.id
+WHERE ir.recette_id = ?;
+
 
 
 
@@ -101,23 +113,23 @@ INSERT INTO utilisateur (pseudo, email, mot_de_passe, date_inscription, est_admi
 
 -- Types de recettes
 INSERT INTO type_recette (nom, image) VALUES
-("Entrée", "/images/types/entree.jpg"),
-("Plat", "/images/types/plat.jpg"),
-("Dessert", "/images/types/dessert.jpg"),
-("Boisson", "/images/types/boisson.jpg");
+("Entrée"),
+("Plat"),
+("Dessert"),
+("Boisson");
 
 -- Niveaux de difficulté
 INSERT INTO difficulte (nom, image) VALUES
-("Facile", "/images/difficulte/niveau.jpg"),
-("Moyen", "/images/difficulte/niveau.jpg"),
-("Difficile", "/images/difficulte/niveau.jpg");
+("Facile"),
+("Moyen"),
+("Difficile");
 
 -- Temps de préparation
 INSERT INTO temps_preparation (heure, minute, image) VALUES
-(0, 30, "/images/temps/icone.jpg"),
-(1, 0, "/images/temps/icone.jpg"),
-(1, 30, "/images/temps/icone.jpg"),
-(2, 0, "/images/temps/icone.jpg");
+(1, 30),
+(0, 30),
+(1, 0),
+(2, 0);
 
 -- Table ingredient
 INSERT INTO ingredient (nom, categorie, icone_categorie, saison) VALUES

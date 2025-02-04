@@ -1,16 +1,16 @@
 import "../styles/recipe-description.css";
 
-function RecipeDescription() {
+interface DescriptionProps {
+  description: string;
+}
+
+const RecipeDescription: React.FC<DescriptionProps> = ({ description }) => {
   return (
     <section className="container-description">
       <h2>Description</h2>
-      <p>
-        Régalez-vous avec cette recette de magret de canard des plus automnales
-        ! Cuite à la plancha, la viande est dressée sur des brochettes et
-        accompagnée d'une délicieuse salade de poires grillées.
-      </p>
+      <p>{description}</p>
     </section>
   );
-}
+};
 
 export default RecipeDescription;

@@ -1,0 +1,60 @@
+.recipe-details {
+  font-family: var(--font-primary);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.cooking-time {
+  width: 225px;
+  height: 84px;
+}
+
+.recipe-details > .cooking-time > div {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--secondary-color-2);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.cooking-time > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 86px;
+  height: 55px;
+}
+
+.cooking-time > div > div > span {
+  color: var(--secondary-color-3);
+}
+
+.recipe-details > .difficulty,
+.recipe-details > .recipe-type {
+  margin-bottom: 2rem;
+}
+
+.recipe-details > .preparation > div {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--secondary-color-1);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-details > .preparation > div > h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+/* .recipe-details > .preparation > div > p {
+    font-size: 1rem;
+    line-height: 1.5;
+  } */

@@ -1,27 +1,13 @@
+import type { IngredientRecette } from "../types/RecetteByID";
 import "../styles/recipe-ingredients.css";
 
-const ingredientsSeason = [
-  {
-    id: "1",
-    image: "assets/images/ingredients/chou-frise.png",
-    alt: "chou frisé",
-    name: "Chou frisé",
-  },
-  {
-    id: "2",
-    image: "assets/images/ingredients/citrouille.png",
-    alt: "citrouille",
-    name: "Citrouille",
-  },
-  {
-    id: "3",
-    image: "assets/images/ingredients/chou-rouge.png",
-    alt: "chou rouge",
-    name: "Chou-rouge",
-  },
-];
+interface RecipeIngredientsProps {
+  ingredients: IngredientRecette[];
+}
 
-function RecipeIngredients() {
+const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({
+  ingredients,
+}) => {
   return (
     <>
       <section className="container-ingredient">
@@ -29,20 +15,23 @@ function RecipeIngredients() {
       </section>
       <section className="container-recipe-ingredients">
         <ul>
-          {ingredientsSeason.map((el) => {
-            return (
-              <li key={el.id}>
-                <figure>
-                  <img src={el.image} alt="chou frisé" />
-                  <figcaption>{el.name}</figcaption>
-                </figure>
-              </li>
-            );
-          })}
+          {ingredients.map((el) => (
+            <li key={el.ingredient.id}>
+              <figure>
+                <img
+                  src={el.ingredient.icone_categorie || "path/to/default.png"}
+                  alt={el.ingredient.nom}
+                />
+                <figcaption>
+                  {el.ingredient.nom} - {el.quantite} {el.unite}
+                </figcaption>
+              </figure>
+            </li>
+          ))}
         </ul>
       </section>
     </>
   );
-}
+};
 
 export default RecipeIngredients;
