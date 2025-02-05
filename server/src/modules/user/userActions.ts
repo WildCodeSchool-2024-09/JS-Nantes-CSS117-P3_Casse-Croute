@@ -35,7 +35,6 @@ const add: RequestHandler = async (req, res, next) => {
 
 const edit: RequestHandler = async (req, res, next) => {
   try {
-    console.warn(req.body);
     const user = {
       id: Number(req.params.id),
       pseudo: req.body.pseudo,
@@ -45,7 +44,6 @@ const edit: RequestHandler = async (req, res, next) => {
       photo_profil: req.body.photo_profil,
       est_admin: req.body.est_admin,
     };
-    console.warn(user);
     const affectedRows = await userRepository.updateAdmin(user);
     if (affectedRows === 0) {
       res.sendStatus(404);

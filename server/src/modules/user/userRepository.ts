@@ -25,7 +25,6 @@ class userRepository {
   }
 
   async updateAdmin(user: User) {
-    const isAdminValue = user.est_admin ? 1 : 0;
     const [result] = await databaseClient.query<Result>(
       "update utilisateur set est_admin = ? WHERE id = ?",
       [user.est_admin, user.id],

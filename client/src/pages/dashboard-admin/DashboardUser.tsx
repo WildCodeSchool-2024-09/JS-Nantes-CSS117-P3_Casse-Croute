@@ -42,7 +42,6 @@ function DashBoardUser() {
     fetch(`${import.meta.env.VITE_API_URL}/api/users`)
       .then((response) => response.json())
       .then((data: userData[]) => {
-        console.warn(data);
         setUsers(data);
       })
       .catch((err) => {
