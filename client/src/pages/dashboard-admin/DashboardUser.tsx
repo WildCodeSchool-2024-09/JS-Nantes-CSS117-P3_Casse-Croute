@@ -100,7 +100,6 @@ function DashBoardUser() {
               type="checkbox"
               aria-label="Activer les droits administrateur"
               checked={!!selectUser.est_admin}
-              defaultChecked={!!selectUser.est_admin}
               onChange={() => handleChange(selectUser)}
             />
             <span>.</span>
