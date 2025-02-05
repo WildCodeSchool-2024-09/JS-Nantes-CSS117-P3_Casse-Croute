@@ -82,6 +82,8 @@ function DashBoardUser() {
         >
           Supprimer le compte
         </button>
+        {visible && <div className="overlay-user-delete">.</div>}
+
         {visible && selectUser ? (
           <DeleteUsers
             selectUser={selectUser}
