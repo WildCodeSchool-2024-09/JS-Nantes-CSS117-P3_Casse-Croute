@@ -55,7 +55,7 @@ CREATE TABLE recette (
     FOREIGN KEY (type_id) REFERENCES type_recette(id),
     FOREIGN KEY (difficulte_id) REFERENCES difficulte(id),
     FOREIGN KEY (temps_id) REFERENCES temps_preparation(id),
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
+    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id) ON DELETE CASCADE
 );
 
 -- Table ingredient_recette
@@ -83,11 +83,11 @@ CREATE TABLE avis (
     id INT PRIMARY KEY AUTO_INCREMENT,
     recette_id INT NOT NULL,
     utilisateur_id INT NOT NULL,
-    note TINYINT NOT NULL CHECK (note BETWEEN 1 AND 5), -- Note sur 5
-    commentaire VARCHAR(500), -- Limitation à 500 caractères
+    note TINYINT NOT NULL CHECK (note BETWEEN 1 AND 5),
+    commentaire VARCHAR(500),
     date_avis DATE NOT NULL,
     FOREIGN KEY (recette_id) REFERENCES recette(id) ON DELETE CASCADE,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
+    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id) ON DELETE CASCADE
 );
 
 

@@ -35,6 +35,7 @@ const add: RequestHandler = async (req, res, next) => {
 
 const edit: RequestHandler = async (req, res, next) => {
   try {
+    console.warn(req.body);
     const user = {
       id: Number(req.params.id),
       pseudo: req.body.pseudo,
@@ -44,12 +45,23 @@ const edit: RequestHandler = async (req, res, next) => {
       photo_profil: req.body.photo_profil,
       est_admin: req.body.est_admin,
     };
+    console.warn(user);
     const affectedRows = await userRepository.updateAdmin(user);
     if (affectedRows === 0) {
       res.sendStatus(404);
     } else {
       res.sendStatus(204);
     }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number(req.params.id);
+    await userRepository.delete(userId);
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
@@ -79,4 +91,4 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, hashPassword, edit };
+export default { browse, add, hashPassword, edit, destroy };

@@ -33,6 +33,14 @@ class userRepository {
     return result.affectedRows;
   }
 
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "DELETE FROM utilisateur WHERE id = ?",
+      [id],
+    );
+    return result.insertId;
+  }
+
   async readAll(where = {}) {
     // Execute the SQL SELECT query to retrieve all users from the "utilisateur" table
     const [rows] = await databaseClient.query<Rows>(

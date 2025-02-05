@@ -6,6 +6,7 @@ type UserScrollI = {
 };
 
 function UserScroll({ users, setSelectUser }: UserScrollI) {
+  console.info(users);
   return (
     <menu>
       <ul>

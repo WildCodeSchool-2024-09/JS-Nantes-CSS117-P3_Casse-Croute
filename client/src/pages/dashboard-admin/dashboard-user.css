@@ -11,7 +11,7 @@
   height: 90vh;
 }
 
-.container-dashboard-admin > label {
+.container-dashboard-admin > label:first-of-type {
   width: 100%;
   text-align: center;
   padding: 10px;
@@ -122,9 +122,10 @@
     align-content: center;
     text-align: center;
     border-radius: 10px;
+    color: black;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
   }
-  & button:first-of-type {
+  & .button-delete-user {
     width: 50%;
     height: 50px;
     border-radius: 10px;
@@ -136,15 +137,11 @@
 
 /* * Toggle switch */
 
-.container-dashboard-admin > label:last-of-type {
-  width: 30%;
-  margin: 0 0 0 10%;
-}
-
 .container-toggle-switch {
   display: inline-block;
+  margin: 0 0 0 10%;
   position: relative;
-  width: 30px;
+  width: 30%;
   height: 40px;
   cursor: pointer;
   overflow: hidden;

@@ -27,6 +27,8 @@ router.post("/api/users", userActions.hashPassword, userActions.add);
 router.post("/api/users/login", authActions.login);
 //Update
 router.put("/api/users/:id", userActions.edit);
+//Delete
+router.delete("/api/users/:id", userActions.destroy);
 
 /* ************************************************************************* */
 
