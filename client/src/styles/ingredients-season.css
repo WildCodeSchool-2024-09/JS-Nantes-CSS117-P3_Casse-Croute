@@ -1,7 +1,6 @@
 .container-ingredients-season {
   width: 100%;
   border-width: 5px 0;
-  border-style: solid;
 }
 
 .container-ingredients-season > ul {
@@ -11,12 +10,13 @@
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   width: 100%;
-  height: 30vh;
-  gap: 30%;
+  height: 100%;
+  gap: 20%;
   padding: 10px 20%;
+  margin: 0;
 }
 
-.container-ingredients-season > ul > li {
+.container-ingredients-season > ul > button {
   display: block;
   justify-items: center;
   width: 100%;
@@ -33,11 +33,60 @@
     height: 170px;
   }
 }
-.container-ingredients-season > ul > li > figure {
-  width: 80%;
-  height: 80%;
+::-webkit-scrollbar {
+  display: none;
 }
 
-.container-ingredients-season figcaption {
-  font-size: 20px;
+/* * Responsive Desktop */
+
+@media screen and (min-width: 440px) {
+  .container-ingredients-season > ul {
+    height: 300px;
+    gap: 8em;
+    padding: 10px 1%;
+    & li {
+      flex-shrink: initial;
+    }
+    & button {
+      flex-shrink: initial;
+    }
+  }
+  /* Carousel scroll bar */
+  .container-ingredients-season {
+    /* Principal */
+    ::-webkit-scrollbar {
+      display: contents;
+      max-width: 100%;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(0, 0, 0);
+      width: 20px;
+      border-radius: 10px;
+    }
+  }
+  .container-ingredients-season > ul > button {
+    scroll-snap-align: center;
+  }
+  /*  Effect Hover Ingredients */
+  .container-ingredients-season > ul > button:hover,
+  button:focus {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  .container-ingredients-season > ul > button:hover,
+  button:focus {
+    transform: scale(1.1);
+  }
+  .container-ingredients-season > ul > button > figure {
+    width: 80%;
+    height: 80%;
+  }
+
+  .container-ingredients-season > ul > button > figure > figcaption {
+    font-size: 20px;
+  }
 }

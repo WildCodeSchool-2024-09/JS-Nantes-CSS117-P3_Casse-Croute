@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lava+Devanagari:wght@300;400;500;600;700&family=Enriqueta:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Roboto:ital,wght@0,300;1,300&display=swap");
 
 * {
   box-sizing: border-box;
@@ -14,6 +15,7 @@ body {
   outline-width: 3px;
   outline-offset: 4px;
 }
+
 :root {
   /* Couleurs principales  */
   --primary-color: #1b3041;
@@ -26,7 +28,7 @@ body {
 
   /* Polices */
   --font-primary: "Lava Devanagari", serif;
-  --font-secondary: "Enriqueta", serif;
+  --font-secondary: "Lexend", sans-serif;
 
   /* Taille des polices */
   --font-size-small: 0.875rem;
