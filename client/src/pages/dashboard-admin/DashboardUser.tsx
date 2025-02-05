@@ -8,6 +8,7 @@ function DashBoardUser() {
   const [selectUser, setSelectUser] = useState<userData | null>(null);
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [searchUser, setSearchUser] = useState("");
 
   const handleVisibility = () => {
     if (selectUser) {
@@ -53,8 +54,19 @@ function DashBoardUser() {
   return (
     <section className="container-dashboard-admin">
       <label htmlFor="Recherche">Utilisateur</label>
-      <input type="text" placeholder="Recherche un utilisateur" />
-      <UserScroll users={users} setSelectUser={setSelectUser} />
+      <input
+        type="text"
+        name="name"
+        placeholder="Recherche un utilisateur"
+        onChange={(event) => {
+          setSearchUser(event.currentTarget.value);
+        }}
+      />
+      <UserScroll
+        users={users}
+        searchUser={searchUser}
+        setSelectUser={setSelectUser}
+      />
       {selectUser && (
         <section>
           <figure>
