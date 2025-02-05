@@ -27,3 +27,15 @@ footer {
   color: white;
   margin-bottom: 20px;
 }
+
+.footer-icons {
+  height: 50px;
+}
+
+.facebook {
+  height: 45px;
+}
+
+.instagram {
+  height: 55px;
+}
