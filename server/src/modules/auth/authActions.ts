@@ -1,6 +1,7 @@
-import type { RequestHandler } from "express";
 import { verify } from "argon2";
+import type { RequestHandler } from "express";
 import { sign } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import userRepository from "../user/userRepository";
 
 const login: RequestHandler = async (req, res, next) => {
@@ -34,4 +35,25 @@ const login: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { login };
+const verifyToken: RequestHandler = (req, res, next) => {
+  try {
+    const authHeader = req.get("Authorization");
+    if (!authHeader) {
+      throw new Error("No token provided");
+    }
+    const [type, token] = authHeader.split(" ");
+    if (type !== "Bearer") {
+      throw new Error("Invalid token type");
+    }
+    const secretKey = process.env.APP_SECRET;
+    if (!secretKey) {
+      throw new Error("APP_SECRET is not defined");
+    }
+    jwt.verify(token, secretKey);
+    next();
+  } catch (err) {
+    res.status(401).json({ message: "Invalid token" });
+  }
+};
+
+export default { login, verifyToken };

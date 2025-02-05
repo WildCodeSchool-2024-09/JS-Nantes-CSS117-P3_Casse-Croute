@@ -1,36 +1,92 @@
 .container-ingredients-season {
   width: 100%;
   border-width: 5px 0;
-  border-style: solid;
 }
 
 .container-ingredients-season > ul {
   display: flex;
+  align-items: center;
   text-align: center;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   width: 100%;
-  gap: 30%;
-  padding: 20px 20%;
+  height: 100%;
+  gap: 20%;
+  padding: 10px 20%;
+  margin: 0;
 }
 
-.container-ingredients-season > ul > li {
+.container-ingredients-season > ul > button {
   display: block;
-  max-width: 250px;
-  max-height: 250px;
+  justify-items: center;
+  width: 100%;
+  height: 90%;
   background-color: var(--secondary-color-2);
-  padding: 10px;
   border-radius: 20%;
   border: 5px solid rgba(61, 61, 61, 0.242);
   flex-shrink: 0;
   flex-basis: 100%;
+  padding: 5px;
   scroll-snap-align: center;
   & img {
-    max-width: 80%;
-    max-height: 80%;
+    width: 170px;
+    height: 170px;
   }
 }
+::-webkit-scrollbar {
+  display: none;
+}
 
-.container-ingredients-season figcaption {
-  font-size: 20px;
+/* * Responsive Desktop */
+
+@media screen and (min-width: 440px) {
+  .container-ingredients-season > ul {
+    height: 300px;
+    gap: 8em;
+    padding: 10px 1%;
+    & li {
+      flex-shrink: initial;
+    }
+    & button {
+      flex-shrink: initial;
+    }
+  }
+  /* Carousel scroll bar */
+  .container-ingredients-season {
+    /* Principal */
+    ::-webkit-scrollbar {
+      display: contents;
+      max-width: 100%;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(0, 0, 0);
+      width: 20px;
+      border-radius: 10px;
+    }
+  }
+  .container-ingredients-season > ul > button {
+    scroll-snap-align: center;
+  }
+  /*  Effect Hover Ingredients */
+  .container-ingredients-season > ul > button:hover,
+  button:focus {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  .container-ingredients-season > ul > button:hover,
+  button:focus {
+    transform: scale(1.1);
+  }
+  .container-ingredients-season > ul > button > figure {
+    width: 80%;
+    height: 80%;
+  }
+
+  .container-ingredients-season > ul > button > figure > figcaption {
+    font-size: 20px;
+  }
 }

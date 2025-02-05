@@ -3,6 +3,7 @@
 .main-nav {
   background-color: var(--primary-color);
   color: var(--secondary-color-2);
+  max-height: 194px;
 }
 
 .logo-header {
@@ -15,6 +16,7 @@
 }
 
 nav ul {
+  margin: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,18 +28,7 @@ header nav ul li:first-child {
   padding-right: 30px;
 }
 
-/* Barre de recherche */
-
 .search-container {
   display: flex;
-  justify-content: center;
-}
-
-.search {
-  margin-bottom: 29px;
-  width: 85%;
-  height: 40px;
-  border-radius: 20px;
-  padding: 15px;
-  font-size: large;
+  margin-top: 10px;
 }

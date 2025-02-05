@@ -6,7 +6,7 @@ import type { RecipeI } from "../types/RecipeValues";
 function LatestArrival() {
   const [recette, setRecette] = useState([] as RecipeI[]);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/daterecette`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/date-recette`)
       .then((response) => response.json())
       .then((data: RecipeI[]) => {
         setRecette(data);
@@ -14,7 +14,7 @@ function LatestArrival() {
   }, []);
   return (
     <>
-      <section className="container-titre-accueil">
+      <section className="container-title-home">
         <h2>Dernier arrivage</h2>
       </section>
       <section className="container-recipes-latest-arrival">

@@ -6,7 +6,6 @@
   padding: 15px;
   font-family: var(--font-primary);
   position: relative;
-  top: 100px;
   box-shadow: 0 0 20px rgba(181, 168, 168, 0.416);
 }
 
@@ -38,7 +37,7 @@
 
 .description {
   font-size: small;
-  height: 100px;
+  height: 80px;
 }
 
 /* Logos */
@@ -93,4 +92,16 @@
   padding: 5px;
   position: relative;
   top: 2px;
+}
+
+/* * Responsive */
+
+@media screen and (min-width: 440px) {
+  .recipe-container {
+    width: 230px;
+    height: 360px;
+  }
+  .title + .description {
+    font-size: 16px;
+  }
 }
