@@ -69,10 +69,10 @@ CREATE TABLE ingredient_recette (
 -- Table etape_preparation
 CREATE TABLE etape_preparation (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    recette_id INT NOT NULL,
+    recette_ref VARCHAR(100) NOT NULL,
     ordre INT NOT NULL,
-    description TEXT NOT NULL,
-    FOREIGN KEY (recette_id) REFERENCES recette(id) ON DELETE CASCADE
+    description TEXT NOT NULL
+    -- FOREIGN KEY (recette_ref) REFERENCES recette(recette_ref) ON DELETE CASCADE
 );
 
 -- Table avis
@@ -261,7 +261,7 @@ VALUES
 (2, 3, 200, "g");
 
 -- Table etape_preparation
-INSERT INTO etape_preparation (recette_id, ordre, description)
+INSERT INTO etape_preparation (recette_ref, ordre, description)
 VALUES
 (1, 1, "Épluchez et coupez les carottes."),
 (1, 2, "Faites cuire les carottes dans l'eau bouillante pendant 20 minutes."),

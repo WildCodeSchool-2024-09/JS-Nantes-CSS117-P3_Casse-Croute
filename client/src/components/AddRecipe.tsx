@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../pages/CreateRecipe/CreateRecipe.css";
-//interfaces for Recipe and Ingredient data that we want to send
-interface RecipeData {
+//interfaces to be put in a .d.ts, but still potentially going to change them, so hopefully can leave them here in the meantime.
+
+export interface RecipeData {
   titre: string;
   recette_ref: string;
   image_url: string;
@@ -12,19 +13,19 @@ interface RecipeData {
   temps_id: number;
   difficulte_id: number;
   type_id: number;
-  preparation: string;
+  preparation: { id: string; ordre: number; description: string }[];
   saison: string;
   utilisateur_id: number;
 }
 
-interface Ingredient {
+export interface Ingredient {
   nom: string;
   id: string;
   icone_categorie: string;
   unite: string;
 }
 
-interface IngredientData {
+export interface IngredientData {
   nom: string;
   id: string;
   quantite: number;
@@ -43,7 +44,7 @@ function AddRecipe() {
     temps_id: 1,
     difficulte_id: 1,
     type_id: 0,
-    preparation: "",
+    preparation: [{ id: `${Date.now()}`, ordre: 1, description: "" }],
     saison: "",
     utilisateur_id: 1,
   });
@@ -153,6 +154,53 @@ function AddRecipe() {
     );
   };
 
+  const handleSteps = () => {
+    setRecipeData((prevRecipeData) => ({
+      ...prevRecipeData,
+      preparation: [
+        ...prevRecipeData.preparation,
+        {
+          id: `${Date.now()}`,
+          ordre: prevRecipeData.preparation.length + 1,
+          description: "",
+        },
+      ],
+    }));
+  };
+
+  const handleStepDelete = (index: number) => {
+    setRecipeData((prevRecipeData) => {
+      const updatedPreparation = prevRecipeData.preparation.filter(
+        (_, i) => i !== index,
+      );
+      const reorderedPreparation = updatedPreparation.map((step, i) => ({
+        ...step,
+        ordre: i + 1,
+      }));
+      return { ...prevRecipeData, preparation: reorderedPreparation };
+    });
+  };
+
+  const handleStepDescriptionChange = (
+    index: number,
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
+    const { value } = event.target;
+
+    setRecipeData((prevRecipeData) => {
+      // Create a *new* array for preparation
+      const updatedPreparation = prevRecipeData.preparation.map((step, i) => {
+        if (i === index) {
+          // Correctly target the step to update
+          return { ...step, description: value }; // Update the description
+        }
+        return step; // Keep other steps unchanged
+      });
+
+      return { ...prevRecipeData, preparation: updatedPreparation };
+    });
+  };
+
   //submit the form
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -204,6 +252,25 @@ function AddRecipe() {
           if (ingredientResponse.ok) {
             console.warn("Ingredients ajouté ! 🍲");
             // navigate(/seeProfile);
+            try {
+              const stepResponse = await fetch(
+                `${import.meta.env.VITE_API_URL}/api/stepsAdded`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(recipeData),
+                },
+              );
+              if (stepResponse.ok) {
+                console.warn("Etapes de préparation ajoutées ! 🥦🔪");
+              } else {
+                console.warn("pas reussi");
+              }
+            } catch {
+              console.error("Erreur ajout etapes de preparation");
+            }
           } else {
             const ingredientErrorText = await ingredientResponse.text(); // Get ingredient error details!
             console.error(
@@ -292,7 +359,7 @@ function AddRecipe() {
           <option value="printemps">printemps</option>
           <option value="été">été</option>
           <option value="automne">automne</option>
-          <option value="toutes"> toutes saison</option>
+          <option value="toutes saisons"> toutes saison</option>
         </select>
 
         <label htmlFor="type">Type de plat:</label>
@@ -336,7 +403,7 @@ function AddRecipe() {
                     <option value="ml">ml</option>
                     <option value="cl">cl</option>
                     <option value="l">l</option>
-                  </select>
+                  </select>{" "}
                   {ingredient.nom}
                 </figcaption>
               </figure>
@@ -391,12 +458,35 @@ function AddRecipe() {
         </section>
 
         <label htmlFor="instructions">Instructions:</label>
-        <textarea
-          id="instructions"
-          name="preparation"
-          onChange={handleInputRecipe}
-          className="generic-input"
-        />
+        {recipeData.preparation.map((step, index) => (
+          // Je sais que ce n'est pas une bonne pratique d'utiliser une index comme valeur pour la clé, mais je ne sais pas quoi d'ature utiliser dans ce cas.
+          <div key={step.id}>
+            <textarea
+              id={`instructions-${index}`}
+              name={`preparation[${index}].description`} // This name is important for form submission
+              value={step.description} // Controlled component: value from state
+              onChange={(event) => handleStepDescriptionChange(index, event)}
+            />
+            <button
+              type="button"
+              aria-label="remove step"
+              className="delete-button"
+              onClick={() => handleStepDelete(index)}
+            >
+              X
+            </button>
+          </div>
+        ))}
+
+        <button
+          type="button"
+          id="addStep"
+          aria-label="add step"
+          className="add-button"
+          onClick={handleSteps}
+        >
+          +
+        </button>
         <button
           type="submit"
           id="submit"
