@@ -1,6 +1,6 @@
 import Hamburger from "hamburger-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../../styles/HamburgerMenu.css";
 
 function HamburgerMenu() {
@@ -10,11 +10,11 @@ function HamburgerMenu() {
     <div className="menu-container">
       <Hamburger size={40} toggled={open} toggle={setOpen} />
       {open && (
-        <div className="open-menu">
-          <header className="menu-wrapper">
+        <div>
+          <header>
             <Hamburger size={40} toggled={open} toggle={setOpen} />
           </header>
-          <ul className="category-list">
+          <ul>
             <li>
               <Link to="/">Catégorie 1</Link>
             </li>
@@ -28,7 +28,7 @@ function HamburgerMenu() {
               <Link to="/">Catégorie 4</Link>
             </li>
             <li>
-              <Link to="/">Catégorie 5</Link>
+              <NavLink to="/legal-notices">Mentions l'égales</NavLink>
             </li>
           </ul>
         </div>
