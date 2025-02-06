@@ -1,7 +1,7 @@
 import CreateAccount from "../../components/CreateAccountForm";
 import "./AuthForm.css";
 import { useState } from "react";
-import LoginFormula from "../../components/loginForm";
+import LoginForm from "../../components/loginForm";
 
 function AuthForm() {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
@@ -29,7 +29,7 @@ function AuthForm() {
           </button>
         </section>
         <section style={{ display: isLoginFormVisible ? "block" : "none" }}>
-          <LoginFormula />
+          <LoginForm />
           <button
             type="button"
             id="login"
