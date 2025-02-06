@@ -70,4 +70,13 @@ const verified: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, hashPassword, verified };
+//addition of image
+const imageUpload: RequestHandler = async (req, res) => {
+  try {
+    res.status(200).send({ message: `${req.file?.filename} a été crée` });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export default { browse, add, hashPassword, verified, imageUpload };
