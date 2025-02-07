@@ -14,7 +14,7 @@ function DashBoardUser() {
     if (selectUser) {
       return setVisible(!visible);
     }
-    alert("Veuillez selectionné un utilisateur");
+    alert("Veuillez selectionner un utilisateur");
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function DashBoardUser() {
         setUsers(data);
       })
       .catch((err) => {
-        console.error("Erreur lors de la récupération des utilisateurs", err);
+        alert(`Erreur lors de la récupération des utilisateurs ${err}`);
       });
   }, []);
 
@@ -46,7 +46,7 @@ function DashBoardUser() {
         setUsers(data);
       })
       .catch((err) => {
-        console.error("Erreur lors de la récupération des utilisateurs", err);
+        alert(`Erreur lors de la récupération des utilisateurs ${err}`);
       });
     setLoading(false);
   };
@@ -76,7 +76,7 @@ function DashBoardUser() {
                   ? selectUser.photo_profil
                   : "/assets/images/favicon.png"
               }
-              alt=""
+              alt="Une illustration de profile"
             />
           </figure>
           <article>
