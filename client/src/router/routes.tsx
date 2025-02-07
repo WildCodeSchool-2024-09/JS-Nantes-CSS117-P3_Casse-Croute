@@ -4,6 +4,7 @@ import Login from "../pages/Login/AuthForm";
 import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import Account from "../pages/account/Account";
 import Catalogue from "../pages/catalogue/Catalogue";
+import NotFound from "../pages/error/NotFound";
 
 const routes = [
   {
@@ -27,6 +28,10 @@ const routes = [
     element: <Login />,
   },
   { path: "/view-profile", element: <ViewProfile /> },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ];
 
 export default routes;
