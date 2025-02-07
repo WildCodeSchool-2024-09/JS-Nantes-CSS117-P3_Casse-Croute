@@ -1,3 +1,6 @@
+import UserRecipes from "../components/UserRecipes";
+import UserRecipesDelete from "../components/UserRecipesDelete";
+import UserRecipesModify from "../components/UserRecipesModify";
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/AuthForm";
@@ -27,6 +30,20 @@ const routes = [
     element: <Login />,
   },
   { path: "/view-profile", element: <ViewProfile /> },
+  {
+    path: "/user-recipes",
+    element: <UserRecipes />,
+    children: [
+      {
+        path: "modify",
+        element: <UserRecipesModify />,
+      },
+      {
+        path: "delete",
+        element: <UserRecipesDelete />,
+      },
+    ],
+  },
 ];
 
 export default routes;

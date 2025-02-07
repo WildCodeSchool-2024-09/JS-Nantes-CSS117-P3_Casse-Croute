@@ -32,6 +32,20 @@ const browseLatestArrival: RequestHandler = async (req, res, next) => {
   }
 };
 
+const browsUserRecipes: RequestHandler = async (req, res, next) => {
+  try {
+    const userRecipes = await recetteRepository.userRecipes();
+    if (!userRecipes) {
+      res.status(404).send("Aucune recette trouvée.");
+    } else {
+      res.status(200).json(userRecipes);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erreur serveur.");
+  }
+};
+
 // Récupérer une recette spécifique par ID
 const read: RequestHandler = async (req, res, next) => {
   try {
@@ -113,4 +127,5 @@ export default {
   del,
   browseLatestArrival,
   browseSeason,
+  browsUserRecipes,
 };
