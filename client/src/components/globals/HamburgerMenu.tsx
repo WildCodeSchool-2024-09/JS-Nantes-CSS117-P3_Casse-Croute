@@ -1,6 +1,6 @@
 import Hamburger from "hamburger-react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../../styles/HamburgerMenu.css";
 
 function HamburgerMenu() {
@@ -15,18 +15,6 @@ function HamburgerMenu() {
             <Hamburger size={40} toggled={open} toggle={setOpen} />
           </header>
           <ul>
-            <li>
-              <Link to="/">Catégorie 1</Link>
-            </li>
-            <li>
-              <Link to="/">Catégorie 2</Link>
-            </li>
-            <li>
-              <Link to="/">Catégorie 3</Link>
-            </li>
-            <li>
-              <Link to="/">Catégorie 4</Link>
-            </li>
             <li>
               <NavLink to="/legal-notices">Mentions l'égales</NavLink>
             </li>
