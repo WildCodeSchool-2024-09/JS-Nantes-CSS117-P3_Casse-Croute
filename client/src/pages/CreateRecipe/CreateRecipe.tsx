@@ -1,11 +1,7 @@
 import AddRecipe from "../../components/AddRecipe";
 
 function CreateRecipe() {
-  return (
-    <div>
-      <AddRecipe />
-    </div>
-  );
+  return <AddRecipe />;
 }
 
 export default CreateRecipe;

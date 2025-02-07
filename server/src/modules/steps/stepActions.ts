@@ -26,7 +26,6 @@ const add: RequestHandler = async (req, res) => {
       res.status(200).send("No steps were added (or perhaps some failed).");
     }
   } catch (err) {
-    console.error("Global error adding steps:", err);
     res.status(500).send("A global error occurred adding steps.");
   }
 };

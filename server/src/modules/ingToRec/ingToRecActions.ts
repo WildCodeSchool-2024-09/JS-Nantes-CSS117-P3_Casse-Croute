@@ -43,7 +43,6 @@ const add: RequestHandler = async (req, res) => {
       res.status(500).send("Failed to add any ingredients."); // None were added
     }
   } catch (err) {
-    console.error("Global error adding ingredients:", err);
     res.status(500).send("A global error occurred adding ingredients."); // More general error message
   }
 };

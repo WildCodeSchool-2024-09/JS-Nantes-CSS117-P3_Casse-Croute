@@ -64,9 +64,6 @@ input[type="range"]::-webkit-slider-thumb {
   display: flex;
   flex-direction: row;
   margin: 0 1rem;
-  /* scrollbar-width: thin;
-  scroll-padding: 180px 180px;
-  scrollbar-color: var(--quaternary-color) var(--secondary-color-1); */
   border: 2px solid var(--quaternary-color);
   border-radius: 40px;
 }
