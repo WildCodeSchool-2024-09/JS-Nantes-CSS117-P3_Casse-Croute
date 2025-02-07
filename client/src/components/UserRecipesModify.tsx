@@ -1,9 +1,5 @@
 function UserRecipesModify() {
-  return (
-    <>
-      <h1>modify</h1>
-    </>
-  );
+  return <h2>modify</h2>;
 }
 
 export default UserRecipesModify;
