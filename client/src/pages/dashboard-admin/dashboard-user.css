@@ -17,11 +17,13 @@
   text-align: center;
   padding: 10px;
   font-size: 16px;
+  font-family: var(--font-secondary);
 }
 
 .container-dashboard-admin > input {
   text-align: center;
   margin: 0 auto;
+  font-family: var(--font-secondary);
   border-radius: 10px;
   background-color: var(--primary-color);
   border: solid black 1px;
@@ -72,6 +74,7 @@
   font-size: 20px;
   height: 40px;
   width: 100%;
+  font-family: var(--font-secondary);
   background: white;
   border-radius: 10px;
 }
@@ -113,6 +116,7 @@
   display: flex;
   justify-content: center;
   margin: 20px 0 0 0 auto;
+  font-family: var(--font-primary);
   gap: 20px;
   width: 100%;
   padding: 30px 20px;
@@ -129,6 +133,9 @@
   & .button-delete-user {
     width: 50%;
     height: 50px;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    padding: 0;
     border-radius: 10px;
     background-color: var(--secondary-color-1);
     border: none;

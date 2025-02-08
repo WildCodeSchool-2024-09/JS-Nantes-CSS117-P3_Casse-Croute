@@ -40,7 +40,7 @@ class userRepository {
     return result.insertId;
   }
 
-  async readAll(where = {}) {
+  async readAll() {
     // Execute the SQL SELECT query to retrieve all users from the "utilisateur" table
     const [rows] = await databaseClient.query<Rows>(
       "select id, pseudo, email, photo_profil, est_admin from utilisateur",
