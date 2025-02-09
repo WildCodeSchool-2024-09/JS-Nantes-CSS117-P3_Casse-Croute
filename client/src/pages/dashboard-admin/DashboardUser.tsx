@@ -21,7 +21,8 @@ function DashBoardUser() {
     fetch(`${import.meta.env.VITE_API_URL}/api/users`)
       .then((response) => response.json())
       .then((data: userData[]) => {
-        setUsers(data);
+        const filteredData = data.filter((user) => user.pseudo);
+        setUsers(filteredData);
       })
       .catch((err) => {
         alert(`Erreur lors de la récupération des utilisateurs ${err}`);
@@ -29,25 +30,33 @@ function DashBoardUser() {
   }, []);
 
   const handleChange = (selectUser: userData) => {
+    const updatedUser = { selectUser, est_admin: !selectUser.est_admin };
     setLoading(true);
-    const user = {
-      est_admin: !selectUser.est_admin,
-    };
     fetch(`${import.meta.env.VITE_API_URL}/api/users/${selectUser.id}`, {
       method: "put",
       headers: {
+        Authorisation: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
-    });
-    fetch(`${import.meta.env.VITE_API_URL}/api/users`)
+      body: JSON.stringify({ est_admin: updatedUser.est_admin }),
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          alert("Rôle de l'utilisateur mis à jour avec succès 🎉");
+        } else if (response.status === 401) {
+          alert("Accès refusé : droits insuffisants.");
+        } else {
+          alert("Erreur lors de la mise à jour des droits administrateur.");
+        }
+        return fetch(`${import.meta.env.VITE_API_URL}/api/users`);
+      })
       .then((response) => response.json())
       .then((data: userData[]) => {
         setUsers(data);
-      })
-      .catch((err) => {
-        alert(`Erreur lors de la récupération des utilisateurs ${err}`);
+        const reloadUser = data.find((user) => user.id === selectUser.id);
+        if (reloadUser) setSelectUser(reloadUser);
       });
+
     setLoading(false);
   };
 
@@ -74,7 +83,7 @@ function DashBoardUser() {
               src={
                 selectUser.photo_profil
                   ? selectUser.photo_profil
-                  : "/assets/images/favicon.png"
+                  : "/assets/images/profil.png"
               }
               alt="Une illustration de profile"
             />
@@ -106,19 +115,16 @@ function DashBoardUser() {
         )}
       </section>
       {selectUser && (
-        <>
-          <p>{selectUser.est_admin.toString()}</p>
-          <label className="container-toggle-switch">
-            <input
-              disabled={loading}
-              type="checkbox"
-              aria-label="Activer les droits administrateur"
-              checked={!!selectUser.est_admin}
-              onChange={() => handleChange(selectUser)}
-            />
-            <span>.</span>
-          </label>
-        </>
+        <label className="container-toggle-switch">
+          <input
+            disabled={loading}
+            type="checkbox"
+            aria-label="Activer les droits administrateur"
+            checked={!!selectUser.est_admin}
+            onChange={() => handleChange(selectUser)}
+          />
+          <span>.</span>
+        </label>
       )}
     </section>
   );

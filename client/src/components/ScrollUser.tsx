@@ -12,12 +12,11 @@ function UserScroll({ searchUser, users, setSelectUser }: UserScrollI) {
       <ul>
         {users
           .filter((val) => {
-            if (searchUser === "") {
+            if (
+              searchUser === "" ||
+              val.pseudo.toLowerCase().includes(searchUser.toLowerCase())
+            )
               return val;
-            }
-            if (val.pseudo.toLowerCase().includes(searchUser.toLowerCase())) {
-              return val;
-            }
           })
           .map((el) => (
             <li key={el.id}>

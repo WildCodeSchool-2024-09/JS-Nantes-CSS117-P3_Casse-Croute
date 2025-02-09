@@ -24,6 +24,7 @@ const add: RequestHandler = async (req, res, next) => {
     const newUser: User = {
       email: req.body.email,
       mot_de_passe: req.body.password,
+      pseudo: req.body.pseudo,
     };
     // Insert the new user into the database
     const insertedUser = await userRepository.create(newUser);
