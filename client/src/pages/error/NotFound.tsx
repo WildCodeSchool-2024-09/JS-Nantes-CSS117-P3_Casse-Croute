@@ -5,7 +5,10 @@ function NotFound() {
   return (
     <section className="container-not-found">
       <picture>
-        <img src="assets/images/not-found.png" alt="" />
+        <img
+          src="assets/images/not-found.png"
+          alt="Représentation d'un monsieur cookie qui boit son café"
+        />
       </picture>
       <article>
         <h1>Ooooops...</h1>
