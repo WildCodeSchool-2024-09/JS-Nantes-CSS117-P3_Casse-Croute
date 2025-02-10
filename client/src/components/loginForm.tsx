@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { loginDataTypes } from "../types/LoginData";
 
-export function LoginFormula() {
+export function LoginForm() {
   const [loginData, setLoginData] = useState<loginDataTypes>({});
 
   const handleInputLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,3 +39,4 @@ export function LoginFormula() {
     </>
   );
 }
+export default LoginForm;
