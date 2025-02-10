@@ -61,7 +61,7 @@ function CreateAccount() {
           id="email"
           name="email"
           onChange={handleInputUserData}
-          className="login-input"
+          className="generic-input"
         />
 
         <label htmlFor="password" className="login-label">
@@ -72,7 +72,7 @@ function CreateAccount() {
           id="password"
           name="password"
           onChange={handleInputUserData}
-          className="login-input"
+          className="generic-input"
         />
 
         <label htmlFor="passwordConfirm" className="login-label">
@@ -83,7 +83,7 @@ function CreateAccount() {
           id="passwordConfirm"
           name="passwordConfirm"
           onChange={handleInputUserData}
-          className="login-input"
+          className="generic-input"
         />
 
         <fieldset className="login-fieldset">

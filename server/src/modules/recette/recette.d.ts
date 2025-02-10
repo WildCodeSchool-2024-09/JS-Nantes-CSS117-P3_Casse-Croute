@@ -1,6 +1,7 @@
 export interface Recette {
   id?: number;
   titre: string;
+  recette_ref: number;
   description: string;
   date_publication: string;
   image_url: string;

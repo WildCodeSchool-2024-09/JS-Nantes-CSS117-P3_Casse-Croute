@@ -17,7 +17,7 @@
 .login-label {
   font-size: 1rem;
 }
-.login-input {
+.generic-input {
   margin-bottom: 10px;
   background-color: var(--principalElements);
   width: 80%;
