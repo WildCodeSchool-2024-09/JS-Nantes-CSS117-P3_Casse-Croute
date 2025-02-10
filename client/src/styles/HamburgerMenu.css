@@ -1,13 +1,13 @@
 /* Police */
 
 .menu-container {
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
   font-size: large;
 }
 
 /* Menu cliqué */
 
-.open-menu {
+.menu-container > div {
   position: fixed;
   position: absolute;
   top: 0;
@@ -22,24 +22,26 @@
 
 /* croix */
 
-.menu-wrapper {
+.menu-container > div > header {
   margin-left: 40px;
   margin-top: 32px;
 }
 
 /* Liste */
 
-.category-list {
+.menu-container > div > ul {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 15px;
 }
 
-.category-list li {
+.menu-container > div > ul > li > a {
   gap: 10px;
+  color: white;
+  text-decoration: none;
 }
 
-.category-list li:first-child {
+.menu-container > div > ul > li:first-child {
   margin-top: 20px;
 }

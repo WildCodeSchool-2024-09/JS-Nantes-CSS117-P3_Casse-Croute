@@ -5,3 +5,9 @@ export interface Ingredient {
   saison: string;
   icone_categorie: string;
 }
+export interface IngredientToRecette {
+  recette_ref: string;
+  id: number;
+  quantite: number;
+  unite: string;
+}

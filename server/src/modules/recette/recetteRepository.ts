@@ -60,9 +60,10 @@ class RecetteRepository {
   // Créer une recette
   async create(recette: Recette) {
     const [row] = await databaseClient.query<Result>(
-      "INSERT INTO recette (titre, description, date_publication, image_url, saison, type_id, difficulte_id, temps_id, utilisateur_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO recette (titre, recette_ref, description, date_publication, image_url, saison, type_id, difficulte_id, temps_id, utilisateur_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         recette.titre,
+        recette.recette_ref,
         recette.description,
         recette.date_publication,
         recette.image_url,
