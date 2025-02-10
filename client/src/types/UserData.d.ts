@@ -14,6 +14,17 @@ export interface userData {
   photo_profil: string;
 }
 
+export type UserScrollI = {
+  users: userData[];
+  setSelectUser: (user: userData) => void;
+  searchUser: string;
+};
+
+export interface DeleteUserProps {
+  handleVisibility: () => void;
+  selectUser: userData;
+}
+
 export interface UserPropsI extends userDataTypes {
   setUserData?: (userData: object | undefined) => void;
 }

@@ -76,8 +76,7 @@ router.put("/api/ingredient/:id", ingredientActions.edit);
 /* ************************************************************************* */
 router.use(authActions.verifyToken, authActions.isAdmin);
 
-router.delete("/api/users/:id", userActions.destroy);
 //Update admin
 router.put("/api/users/:id", userActions.edit);
-
+router.delete("/api/users/:id", userActions.destroy);
 export default router;

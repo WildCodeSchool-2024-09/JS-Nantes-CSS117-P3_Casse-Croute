@@ -47,9 +47,13 @@ const edit: RequestHandler = async (req, res, next) => {
     };
     const affectedRows = await userRepository.updateAdmin(user);
     if (affectedRows === 0) {
-      res.sendStatus(404);
+      res.status(404).json({
+        error: "Erreur lors de la mise à jour des droits administrateur.",
+      });
     } else {
-      res.sendStatus(204);
+      res
+        .status(204)
+        .json({ error: "Rôle de l'utilisateur mis à jour avec succès 🎉" });
     }
   } catch (err) {
     next(err);
@@ -59,8 +63,17 @@ const edit: RequestHandler = async (req, res, next) => {
 const destroy: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
-    await userRepository.delete(userId);
-    res.sendStatus(204);
+    if (!userId) {
+      res.status(400).json({ error: "L'ID utilisateur est invalide" });
+    }
+    const result = await userRepository.delete(userId);
+    if (result >= 0) {
+      res.sendStatus(204);
+    } else {
+      res
+        .status(404)
+        .json({ error: "Utilisateur non trouvé ou déjà supprimé" });
+    }
   } catch (err) {
     next(err);
   }

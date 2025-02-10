@@ -1,10 +1,4 @@
-import type { userData } from "../types/UserData";
-
-type UserScrollI = {
-  users: userData[];
-  setSelectUser: (user: userData) => void;
-  searchUser: string;
-};
+import type { UserScrollI } from "../types/UserData";
 
 function UserScroll({ searchUser, users, setSelectUser }: UserScrollI) {
   return (

@@ -109,13 +109,11 @@ function DashBoardUser() {
         </button>
         {visible && <div className="overlay-user-delete">.</div>}
 
-        {visible && selectUser ? (
+        {visible && selectUser && (
           <DeleteUsers
             selectUser={selectUser}
             handleVisibility={handleVisibility}
           />
-        ) : (
-          ""
         )}
       </section>
       {selectUser && (

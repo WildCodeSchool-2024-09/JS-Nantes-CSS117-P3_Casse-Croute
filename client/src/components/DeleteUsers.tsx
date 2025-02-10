@@ -1,11 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/delete.users.css";
-import type { userData } from "../types/UserData";
-
-interface DeleteUserProps {
-  handleVisibility: () => void;
-  selectUser: userData;
-}
+import type { DeleteUserProps } from "../types/UserData";
 
 function DeleteUsers({ handleVisibility, selectUser }: DeleteUserProps) {
   const navigation = useNavigate();
