@@ -19,8 +19,9 @@
 }
 
 .isLogged-header-true > img {
-  height: 70%;
-  width: 70%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 /* * User isLogged False */
@@ -29,17 +30,17 @@
   height: 40px;
   font-size: 16px;
   background: var(--secondary-color-2);
-  width: 100px;
+  width: 100%;
   border-radius: 10px;
 }
 
 nav ul {
   display: flex;
-  justify-content: center;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   list-style: none;
-  margin: 0;
+  padding: 0;
+  margin: 0 1em;
 }
 
 .search-container {

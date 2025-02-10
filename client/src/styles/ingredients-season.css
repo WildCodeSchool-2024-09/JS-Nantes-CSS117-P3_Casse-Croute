@@ -2,6 +2,9 @@
   width: 100%;
   border-width: 5px 0;
 }
+.container-ingredients-season > ul::-webkit-scrollbar {
+  display: none;
+}
 
 .container-ingredients-season > ul {
   display: flex;
@@ -33,9 +36,6 @@
     height: 170px;
   }
 }
-::-webkit-scrollbar {
-  display: none;
-}
 
 /* * Responsive Desktop */
 
@@ -52,19 +52,18 @@
     }
   }
   /* Carousel scroll bar */
-  .container-ingredients-season {
+  .container-ingredients-season > ul::-webkit-scrollbar {
     /* Principal */
-    ::-webkit-scrollbar {
-      display: contents;
-      max-width: 100%;
-    }
+    display: contents;
+    max-width: 100%;
     /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: rgb(0, 0, 0);
-      width: 20px;
-      border-radius: 10px;
-    }
   }
+  .container-ingredients-season > ul::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    width: 20px;
+    border-radius: 10px;
+  }
+
   .container-ingredients-season > ul > button {
     scroll-snap-align: center;
   }

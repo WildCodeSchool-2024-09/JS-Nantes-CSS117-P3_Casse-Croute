@@ -61,4 +61,14 @@ const isLogged: RequestHandler = (_, res) => {
   res.sendStatus(200);
 };
 
-export default { login, verifyToken, isLogged };
+const isAdmin: RequestHandler = async (req, res, next) => {
+  if (!req.user) {
+    res.status(401).json({ message: "Authentification requise" });
+  }
+  if (req.user.role !== "est_admin") {
+    res.status(403).json({ message: "Accès refusé : Administrateur requis" });
+  }
+  next();
+};
+
+export default { login, verifyToken, isAdmin, isLogged };

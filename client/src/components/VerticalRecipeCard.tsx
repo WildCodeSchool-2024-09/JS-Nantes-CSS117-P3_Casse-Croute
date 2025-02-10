@@ -27,7 +27,7 @@ function VerticalRecipeCard({
             <div className="circle">
               <img
                 className="time"
-                src="../../public/assets/images/icone-horloge.png"
+                src="/assets/images/icone-horloge.png"
                 alt="logo horloge"
               />
             </div>
@@ -48,7 +48,7 @@ function VerticalRecipeCard({
               {" "}
               <img
                 className="type"
-                src="../../public/assets/images/icone-chicken.png"
+                src="/assets/images/icone-chicken.png"
                 alt="logo d'un poulet cuit"
               />
             </div>
