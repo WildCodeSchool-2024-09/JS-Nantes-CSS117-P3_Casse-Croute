@@ -61,5 +61,13 @@ class userRepository {
     // Return the first row of the result, which represents the item
     return rows[0] as User;
   }
+
+  async verifiedEmail(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from utilisateur where email = ?",
+      [email],
+    );
+    return rows[0] as User;
+  }
 }
 export default new userRepository();

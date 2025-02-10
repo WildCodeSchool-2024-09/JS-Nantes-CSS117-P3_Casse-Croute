@@ -3,6 +3,7 @@ import UserRecipesDelete from "../components/UserRecipesDelete";
 import UserRecipesModify from "../components/UserRecipesModify";
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
 import Home from "../pages/Home/Home";
+import LegalNotices from "../pages/Legal-notices/LegalNotices";
 import Login from "../pages/Login/AuthForm";
 import ViewProfile from "../pages/ViewProfile/ViewProfile";
 import Account from "../pages/account/Account";
@@ -43,6 +44,10 @@ const routes = [
         element: <UserRecipesDelete />,
       },
     ],
+  },
+  {
+    path: "/legal-notices",
+    element: <LegalNotices />,
   },
 ];
 
