@@ -15,6 +15,7 @@ function App() {
         <NavLink to="/create-recipe">Create Recipe</NavLink>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/view-profile">Voir Profile</NavLink>
+        <NavLink to="/dashboard-admin">Admin</NavLink>
       </nav>
       <ToastContainer />
       <main>

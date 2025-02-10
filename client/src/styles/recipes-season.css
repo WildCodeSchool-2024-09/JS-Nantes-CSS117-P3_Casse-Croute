@@ -33,6 +33,10 @@
   padding: 20%;
 }
 
+.container-recipes-season > ul::-webkit-scrollbar {
+  display: none;
+}
+
 .container-recipes-season > ul > li {
   display: block;
   margin: 15px;
