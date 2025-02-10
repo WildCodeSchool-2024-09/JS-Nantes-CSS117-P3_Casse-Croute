@@ -21,13 +21,19 @@ function Header() {
               />
             </Link>
           </li>
+          <li className="bar2">
+            <div className="search-container2">
+              <SearchBar />
+            </div>
+          </li>
+
           <li>
-            <button className="identify" type="button">
-              S'identifier
+            <button className="identify nav-button" type="button">
+              <Link to="/login">S'identifier</Link>
             </button>
           </li>
         </ul>
-        <div className="search-container">
+        <div className="search-container1 bar1">
           <SearchBar />
         </div>
       </nav>

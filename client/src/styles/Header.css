@@ -6,13 +6,21 @@
   max-height: 194px;
 }
 
+.bar2 {
+  display: none;
+}
 .logo-header {
   width: 100px;
 }
 
-.identify {
+.nav-button {
   padding: 5px 15px;
   border-radius: 10px;
+}
+
+.about {
+  display: none;
+  min-width: 88px;
 }
 
 nav ul {
@@ -28,7 +36,37 @@ header nav ul li:first-child {
   padding-right: 30px;
 }
 
-.search-container {
+.search-container1 {
   display: flex;
   margin-top: 10px;
+}
+
+.logo-header {
+  text-align: center;
+}
+@media screen and (min-width: 1024px) {
+  .about {
+    display: flex;
+    flex: flex-end;
+  }
+
+  .search-container1 {
+    margin-top: 0px;
+  }
+
+  .bar1 {
+    display: none;
+  }
+
+  .bar2 {
+    display: flex;
+    flex-basis: 70%;
+    margin-top: 30px;
+  }
+
+  .search-container2 {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
