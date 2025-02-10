@@ -10,25 +10,38 @@
   width: 100px;
 }
 
-.identify {
-  padding: 5px 15px;
+/* * User isLogged True */
+
+.isLogged-header-true {
+  border: none;
+  border-radius: 10px;
+  background: none;
+}
+
+.isLogged-header-true > img {
+  height: 70%;
+  width: 70%;
+}
+
+/* * User isLogged False */
+
+.isLogged-header-false {
+  height: 40px;
+  font-size: 16px;
+  background: var(--secondary-color-2);
+  width: 100px;
   border-radius: 10px;
 }
 
 nav ul {
-  margin: 0px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   list-style: none;
-  padding: 0 40px;
-}
-
-header nav ul li:first-child {
-  padding-right: 30px;
+  margin: 0;
 }
 
 .search-container {
-  display: flex;
   margin-top: 10px;
 }

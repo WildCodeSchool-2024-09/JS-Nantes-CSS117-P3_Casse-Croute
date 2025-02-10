@@ -50,10 +50,15 @@ const verifyToken: RequestHandler = (req, res, next) => {
       throw new Error("APP_SECRET is not defined");
     }
     jwt.verify(token, secretKey);
+
     next();
   } catch (err) {
     res.status(401).json({ message: "Invalid token" });
   }
 };
 
-export default { login, verifyToken };
+const isLogged: RequestHandler = (_, res) => {
+  res.sendStatus(200);
+};
+
+export default { login, verifyToken, isLogged };

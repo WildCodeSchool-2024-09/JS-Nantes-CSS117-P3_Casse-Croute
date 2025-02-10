@@ -31,6 +31,7 @@ router.post(
 );
 //Login
 router.post("/api/users/login", authActions.login);
+router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
 // addition of a file - this allows an upload to be placed in the public folder, and is renamed, adding the date in miliseconds to the filename
 const storage = multer.diskStorage({
   destination: "./public/assets/images",

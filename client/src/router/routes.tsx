@@ -1,3 +1,4 @@
+import ProtectedRoutes from "../components/protect-context/ProtectedRoutes";
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
 import Home from "../pages/Home/Home";
 import LegalNotices from "../pages/Legal-notices/LegalNotices";
@@ -21,13 +22,24 @@ const routes = [
   },
   {
     path: "/create-recipe",
-    element: <CreateRecipe />,
+    element: (
+      <ProtectedRoutes>
+        <CreateRecipe />
+      </ProtectedRoutes>
+    ),
   },
   {
     path: "/login",
     element: <Login />,
   },
-  { path: "/view-profile", element: <ViewProfile /> },
+  {
+    path: "/view-profile",
+    element: (
+      <ProtectedRoutes>
+        <ViewProfile />
+      </ProtectedRoutes>
+    ),
+  },
   {
     path: "/legal-notices",
     element: <LegalNotices />,
