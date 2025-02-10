@@ -10,10 +10,14 @@ interface DeleteUserProps {
 function DeleteUsers({ handleVisibility, selectUser }: DeleteUserProps) {
   const navigation = useNavigate();
   const handleClick = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return alert("Accès refusé : droits insuffisants.");
+    }
     fetch(`${import.meta.env.VITE_API_URL}/api/users/${selectUser.id}`, {
       method: "DELETE",
       headers: {
-        Authorisation: `Bearer ${localStorage.getItem("token")}`,
+        Authorisation: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     }).then((response) => {

@@ -30,12 +30,16 @@ function DashBoardUser() {
   }, []);
 
   const handleChange = (selectUser: userData) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return alert("Accès refusé : droits insuffisants.");
+    }
     const updatedUser = { selectUser, est_admin: !selectUser.est_admin };
     setLoading(true);
     fetch(`${import.meta.env.VITE_API_URL}/api/users/${selectUser.id}`, {
       method: "put",
       headers: {
-        Authorisation: `Bearer ${localStorage.getItem("token")}`,
+        Authorisation: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ est_admin: updatedUser.est_admin }),
