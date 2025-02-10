@@ -31,6 +31,7 @@ router.post(
 );
 //Login
 router.post("/api/users/login", authActions.login);
+
 // addition of a file - this allows an upload to be placed in the public folder, and is renamed, adding the date in miliseconds to the filename
 const storage = multer.diskStorage({
   destination: "./public/assets/images",
@@ -77,7 +78,6 @@ router.delete("/api/recette/:id", recetteActions.del);
 
 router.post("/api/ingredient", ingredientActions.add);
 router.put("/api/ingredient/:id", ingredientActions.edit);
-
 //Routes pour ajouter une ingredient à une recette
 router.get("/api/ingredientsAdded", ingToRecActions.browse);
 router.post("/api/ingredientsAdded", ingToRecActions.add);
@@ -85,5 +85,16 @@ router.post("/api/ingredientsAdded", ingToRecActions.add);
 //Routes pour ajouter des étapes aux recettes
 router.get("/api/stepsAdded", stepActions.browse);
 router.post("/api/stepsAdded", stepActions.add);
+/* ************************************************************************* */
+// !!!!!!!!!!!!!!!!!!!!!!!!!!VERIFICATION WALL ADMIN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+/* ************************************************************************* */
+router.use(authActions.verifyToken, authActions.isAdmin);
 
+//Update admin
+router.put("/api/users/:id", userActions.edit);
+router.delete("/api/users/:id", userActions.destroy);
+
+//Update admin
+router.put("/api/users/:id", userActions.edit);
+router.delete("/api/users/:id", userActions.destroy);
 export default router;

@@ -24,10 +24,56 @@ const add: RequestHandler = async (req, res, next) => {
     const newUser: User = {
       email: req.body.email,
       mot_de_passe: req.body.password,
+      pseudo: req.body.pseudo,
     };
     // Insert the new user into the database
     const insertedUser = await userRepository.create(newUser);
     res.status(201).json({ insertedUser });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const user = {
+      id: Number(req.params.id),
+      pseudo: req.body.pseudo,
+      email: req.body.email,
+      mot_de_passe: req.body.mot_de_passe,
+      date_inscription: req.body.date_inscription,
+      photo_profil: req.body.photo_profil,
+      est_admin: req.body.est_admin,
+    };
+    const affectedRows = await userRepository.updateAdmin(user);
+    if (affectedRows === 0) {
+      res.status(404).json({
+        error: "Erreur lors de la mise à jour des droits administrateur.",
+      });
+    } else {
+      res
+        .status(204)
+        .json({ error: "Rôle de l'utilisateur mis à jour avec succès 🎉" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number(req.params.id);
+    if (!userId) {
+      res.status(400).json({ error: "L'ID utilisateur est invalide" });
+    }
+    const result = await userRepository.delete(userId);
+    if (result >= 0) {
+      res.sendStatus(204);
+    } else {
+      res
+        .status(404)
+        .json({ error: "Utilisateur non trouvé ou déjà supprimé" });
+    }
   } catch (err) {
     next(err);
   }
@@ -79,4 +125,12 @@ const imageUpload: RequestHandler = async (req, res) => {
   }
 };
 
-export default { browse, add, hashPassword, verified, imageUpload };
+export default {
+  browse,
+  add,
+  hashPassword,
+  verified,
+  imageUpload,
+  edit,
+  destroy,
+};
