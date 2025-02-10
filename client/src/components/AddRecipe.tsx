@@ -35,6 +35,9 @@ export interface IngredientData {
 }
 
 function AddRecipe() {
+  // get token
+  const token = localStorage.getItem("jwtToken");
+
   //declaration of states
   const [recipeData, setRecipeData] = useState<RecipeData>({
     titre: "",
@@ -230,6 +233,7 @@ function AddRecipe() {
         {
           method: "POST",
           headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(recipeData),
@@ -243,6 +247,7 @@ function AddRecipe() {
             {
               method: "POST",
               headers: {
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(ingredientData),
@@ -258,6 +263,7 @@ function AddRecipe() {
                 {
                   method: "POST",
                   headers: {
+                    Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                   },
                   body: JSON.stringify(recipeData),
