@@ -11,37 +11,14 @@ function AuthForm() {
   };
 
   return (
-    <>
-      <main className="login-container">
-        <h2 className="login-subheading">
-          Rejoignez la communauté Casse Croûte
-        </h2>
-        <section style={{ display: isLoginFormVisible ? "none" : "block" }}>
-          <CreateAccount />
-          <button
-            type="button"
-            id="register"
-            aria-label="register"
-            className="registerHere"
-            onClick={toggleForm}
-          >
-            Deja un compte ? Se connecter ici
-          </button>
-        </section>
-        <section style={{ display: isLoginFormVisible ? "block" : "none" }}>
-          <LoginForm />
-          <button
-            type="button"
-            id="login"
-            aria-label="login"
-            className="loginHere"
-            onClick={toggleForm}
-          >
-            Pas encore de compte ? S'inscrire ici.
-          </button>
-        </section>
-      </main>
-    </>
+    <main>
+      <section style={{ display: isLoginFormVisible ? "none" : "block" }}>
+        <CreateAccount toggleForm={toggleForm} />
+      </section>
+      <section style={{ display: isLoginFormVisible ? "block" : "none" }}>
+        <LoginForm toggleForm={toggleForm} />
+      </section>
+    </main>
   );
 }
 

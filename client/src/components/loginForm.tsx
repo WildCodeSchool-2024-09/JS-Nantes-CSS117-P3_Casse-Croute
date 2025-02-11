@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import type { loginDataTypes } from "../types/LoginData";
+import type { LoginFormProps, loginDataTypes } from "../types/LoginData";
+import "../pages/Login/login.css";
 
-export function LoginForm() {
+export function LoginForm({ toggleForm }: LoginFormProps) {
   const [loginData, setLoginData] = useState<loginDataTypes>({});
   const navigate = useNavigate();
 
@@ -67,8 +68,9 @@ export function LoginForm() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <form className="container-form-login" onSubmit={handleSubmit}>
+      <h2>Heureux de vous revoir !</h2>
+      <section>
         <label htmlFor="username">Email:</label>
         <input
           type="text"
@@ -85,11 +87,23 @@ export function LoginForm() {
           onChange={handleInputLogin}
           required // Add required attribute
         />
+      </section>
+      <section>
         <button type="submit" id="login" aria-label="login">
           Se connecter
         </button>
-      </form>
-    </>
+        <p>Ou</p>
+        <button
+          type="button"
+          id="login"
+          aria-label="login"
+          className="loginHere"
+          onClick={toggleForm}
+        >
+          Créer un compte
+        </button>
+      </section>
+    </form>
   );
 }
 

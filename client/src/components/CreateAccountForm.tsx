@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import type { LoginFormProps } from "../types/LoginData";
 import type { userDataTypes } from "../types/UserData";
 
-function CreateAccount() {
+function CreateAccount({ toggleForm }: LoginFormProps) {
   const navigate = useNavigate();
   const [userData, setUserData] = useState<userDataTypes>({
     email: "",
@@ -53,6 +54,7 @@ function CreateAccount() {
   return (
     <>
       <form className="login-form" onSubmit={handleSubmit}>
+        <h2>Rejoignez la communauté Casse-croûte !</h2>
         <label htmlFor="email" className="login-label">
           Email:
         </label>
@@ -86,16 +88,24 @@ function CreateAccount() {
           className="generic-input"
         />
 
-        <fieldset className="login-fieldset">
-          <button
-            type="submit"
-            id="register"
-            aria-label="register"
-            className="submit-button"
-          >
-            S'inscrire
-          </button>
-        </fieldset>
+        <button
+          type="submit"
+          id="register"
+          aria-label="register"
+          className="submit-button"
+        >
+          S'inscrire
+        </button>
+        <p>Ou</p>
+        <button
+          type="button"
+          id="register"
+          aria-label="register"
+          className="registerHere"
+          onClick={toggleForm}
+        >
+          Se connecter
+        </button>
       </form>
     </>
   );

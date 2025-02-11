@@ -1,4 +1,4 @@
-.login-container {
+/* .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,7 +52,7 @@ input[type="radio"]:checked:before {
   border: none;
   display: flex;
   gap: 32px;
-}
+} */
 
 .submit-button {
   margin-top: 10px;
