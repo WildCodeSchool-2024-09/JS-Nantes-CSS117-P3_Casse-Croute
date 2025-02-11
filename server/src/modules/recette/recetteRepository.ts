@@ -31,24 +31,50 @@ class RecetteRepository {
   async readById(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       `
-      SELECT 
-          r.id,
-          r.titre,
-          r.description,
-          r.date_publication,
-          r.image_url,
-          r.saison,
-          t.nom AS categorie, -- Récupération de la catégorie
-          (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', e.id, 'ordre', e.ordre, 'description', e.description)) 
-           FROM etape_preparation e WHERE e.recette_id = r.id) AS etapes,
-          (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', ir.ingredient_id, 'quantite', ir.quantite, 'unite', ir.unite)) 
-           FROM ingredient_recette ir WHERE ir.recette_id = r.id) AS ingredients,
-          (SELECT JSON_ARRAYAGG(JSON_OBJECT('id', a.id, 'note', a.note, 'commentaire', a.commentaire, 'date_avis', a.date_avis)) 
-           FROM avis a WHERE a.recette_id = r.id) AS commentaires
-      FROM recette r
-      LEFT JOIN type_recette t ON r.type_id = t.id -- Jointure avec type_recette
-      WHERE r.id = ?;
-    `,
+    SELECT 
+        r.id,
+        r.titre,
+        r.description,
+        r.date_publication,
+        r.image_url,
+        r.saison,
+        t.nom AS typeRecette,
+        d.nom AS difficulte,
+        tp.heure AS tempsPreparationHeure,
+        tp.minute AS tempsPreparationMinute,
+        (SELECT JSON_ARRAYAGG(JSON_OBJECT(
+          'id', e.id, 
+          'ordre', e.ordre, 
+          'description', e.description)) 
+         FROM etape_preparation e WHERE e.recette_id = r.id) AS etapes,
+        (SELECT JSON_ARRAYAGG(JSON_OBJECT(
+          'id', ir.ingredient_id, 
+          'nom', i.nom,
+          'categorie', i.categorie,
+          'saison', i.saison,
+          'icone_categorie', i.icone_categorie,
+          'quantite', ir.quantite, 
+          'unite', ir.unite)) 
+         FROM ingredient_recette ir
+         JOIN ingredient i ON ir.ingredient_id = i.id
+         WHERE ir.recette_id = r.id) AS ingredients,
+COALESCE(
+  (SELECT JSON_ARRAYAGG(JSON_OBJECT(
+    'id', a.id, 
+    'note', a.note, 
+    'commentaire', a.commentaire, 
+    'date_avis', a.date_avis,
+    'utilisateur', u.pseudo, 
+    'photo_profil', u.photo_profil)) 
+   FROM avis a 
+   JOIN utilisateur u ON a.utilisateur_id = u.id
+   WHERE a.recette_id = r.id), '[]') AS commentaires
+    FROM recette r
+    LEFT JOIN type_recette t ON r.type_id = t.id
+    LEFT JOIN difficulte d ON r.difficulte_id = d.id
+    LEFT JOIN temps_preparation tp ON r.temps_id = tp.id -- 🛠️ Ajout de la jointure ici
+    WHERE r.id = ?;
+  `,
       [id],
     );
 
