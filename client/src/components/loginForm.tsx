@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../pages/context/useAuth";
-import type { loginDataTypes } from "../types/LoginData";
+import type { LoginFormProps, loginDataTypes } from "../types/LoginData";
 
-export function LoginForm() {
+export function LoginForm({ toggleForm }: LoginFormProps) {
   const { setIsLogged } = useAuth();
   const [loginData, setLoginData] = useState<loginDataTypes>({});
 
@@ -77,13 +77,15 @@ export function LoginForm() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <form className="container-form-auth" onSubmit={handleSubmit}>
+      <h2>Heureux de vous revoir !</h2>
+      <section>
         <label htmlFor="username">Email:</label>
         <input
           type="text"
           id="email"
           name="email"
+          placeholder="thomas-42@email.fr"
           onChange={handleInputLogin}
           required // Add required attribute for form validation
         />
@@ -92,17 +94,29 @@ export function LoginForm() {
           type="password"
           id="password" // Corrected ID
           name="password"
+          placeholder="***********"
           onChange={handleInputLogin}
           required // Add required attribute
         />
+      </section>
+      <section>
         <button type="submit" id="login" aria-label="login">
           Se connecter
         </button>
-        <Link to="/" onClick={logout} type="button">
-          Deco
-        </Link>
-      </form>
-    </>
+        <p>Ou</p>
+        <button
+          type="button"
+          id="login"
+          aria-label="login"
+          onClick={toggleForm}
+        >
+          Créer un compte
+        </button>
+      </section>
+      <Link to="/" onClick={logout} type="button">
+        Deco
+      </Link>
+    </form>
   );
 }
 
