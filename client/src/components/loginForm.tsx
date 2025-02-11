@@ -75,6 +75,7 @@ export function LoginForm({ toggleForm }: LoginFormProps) {
           type="text"
           id="email"
           name="email"
+          placeholder="thomas-42@email.fr"
           onChange={handleInputLogin}
           required // Add required attribute for form validation
         />
@@ -83,6 +84,7 @@ export function LoginForm({ toggleForm }: LoginFormProps) {
           type="password"
           id="password" // Corrected ID
           name="password"
+          placeholder="***********"
           onChange={handleInputLogin}
           required // Add required attribute
         />

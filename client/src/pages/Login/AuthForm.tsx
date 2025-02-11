@@ -1,7 +1,7 @@
-import CreateAccount from "../../components/CreateAccountForm";
-import "./AuthForm.css";
 import { useState } from "react";
+import CreateAccount from "../../components/CreateAccountForm";
 import LoginForm from "../../components/loginForm";
+import "./auth-form.css";
 
 function AuthForm() {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);

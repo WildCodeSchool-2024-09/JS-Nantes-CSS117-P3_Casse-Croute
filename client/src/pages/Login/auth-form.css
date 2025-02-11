@@ -40,3 +40,43 @@
     font-size: 16px;
   }
 }
+
+/*  * RESPONSIVE  */
+
+@media screen and (min-width: 440px) {
+  .container-form-auth {
+    margin: 0% auto;
+    font-family: var(--font-primary);
+    height: 100%;
+    & h2 {
+      font-family: var(--font-primary);
+      font-size: 65px;
+      color: var(--primary-color);
+    }
+  }
+  .container-form-auth > section:first-of-type {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin: 10% auto;
+    width: 60%;
+    & input {
+      border-radius: 20px;
+      height: 100%;
+      padding: 30px;
+      font-size: 24px;
+    }
+  }
+
+  .container-form-auth > section:last-of-type {
+    margin: 10% auto;
+    & button {
+      font-size: 32px;
+      border-radius: 20px;
+      font-family: var(--font-primary);
+    }
+    & p {
+      font-size: 32px;
+      font-family: var(--font-primary);
+    }
+  }
+}

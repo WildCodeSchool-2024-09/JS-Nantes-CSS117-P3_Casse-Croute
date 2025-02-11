@@ -62,6 +62,7 @@ function CreateAccount({ toggleForm }: LoginFormProps) {
           type="email"
           id="email"
           name="email"
+          placeholder="thomas-42@email.fr"
           onChange={handleInputUserData}
         />
 
@@ -72,16 +73,19 @@ function CreateAccount({ toggleForm }: LoginFormProps) {
           type="password"
           id="password"
           name="password"
+          placeholder="***********"
           onChange={handleInputUserData}
         />
 
         <label htmlFor="passwordConfirm" className="login-label">
           Confirmer le mot de passe:
+          {userData.password === userData.passwordConfirm ? "✅" : "❌"}
         </label>
         <input
           type="password"
           id="passwordConfirm"
           name="passwordConfirm"
+          placeholder="***********"
           onChange={handleInputUserData}
         />
       </section>
