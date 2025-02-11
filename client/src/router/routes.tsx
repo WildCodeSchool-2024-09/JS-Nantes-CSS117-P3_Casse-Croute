@@ -10,6 +10,7 @@ import Catalogue from "../pages/catalogue/Catalogue";
 import DashboardAdmin from "../pages/dashboard-admin/DashBoardAdmin";
 import DashboardRecipes from "../pages/dashboard-admin/DashboardRecipes";
 import DashBoardUser from "../pages/dashboard-admin/DashboardUser";
+import NotFound from "../pages/error/NotFound";
 
 const routes = [
   {
@@ -73,6 +74,10 @@ const routes = [
   {
     path: "/legal-notices",
     element: <LegalNotices />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ];
 
