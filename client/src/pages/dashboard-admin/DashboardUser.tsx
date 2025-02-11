@@ -4,10 +4,13 @@ import UserScroll from "../../components/ScrollUser";
 import type { userData } from "../../types/UserData";
 import "./dashboard-recipes-user.css";
 import { NavLink } from "react-router-dom";
+import HorizontalRecipeCard from "../../components/HorizontalRecipeCard";
+import type { RecipeH } from "../../types/RecipeValues";
 
 function DashBoardUser() {
   const [users, setUsers] = useState<userData[]>([]);
   const [selectUser, setSelectUser] = useState<userData | null>(null);
+  const [recipes, setRecipes] = useState<RecipeH[]>([]);
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [searchUser, setSearchUser] = useState("");
@@ -30,6 +33,21 @@ function DashBoardUser() {
         alert(`Erreur lors de la récupération des utilisateurs ${err}`);
       });
   }, []);
+
+  useEffect(() => {
+    if (selectUser) {
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/${selectUser.id}/recipes`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setRecipes(data);
+        })
+        .catch((err) => {
+          alert(`Erreur lors de la récupération des recettes ${err}`);
+        });
+    }
+  }, [selectUser]);
 
   const handleChange = (selectUser: userData) => {
     const token = localStorage.getItem("token");
@@ -151,6 +169,19 @@ function DashBoardUser() {
             Supprimer
           </NavLink>
         </nav>
+        <figure>
+          {recipes.map((el) => {
+            return (
+              <figure key={el.id}>
+                <HorizontalRecipeCard
+                  titre={el.titre}
+                  description={el.description}
+                  image_url={el.image_url}
+                />
+              </figure>
+            );
+          })}
+        </figure>
       </section>
     </>
   );

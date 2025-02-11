@@ -22,6 +22,9 @@ import userActions from "./modules/user/userActions";
 
 //Retrieve user data
 router.get("/api/users", userActions.browse);
+// Recipes User
+router.get("/api/user/:id/recipes", userActions.browseRecipesUser);
+
 //Add user data
 router.post(
   "/api/users",
@@ -29,6 +32,7 @@ router.post(
   userActions.hashPassword,
   userActions.add,
 );
+
 //Login
 router.post("/api/users/login", authActions.login);
 
