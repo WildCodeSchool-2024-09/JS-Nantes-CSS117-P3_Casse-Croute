@@ -53,13 +53,12 @@ class userRepository {
   async create(user: User) {
     // Execute the SQL INSERT query to create a new user
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO utilisateur (pseudo, email, date_inscription, photo_profil, est_admin, mot_de_passe) values (?, ?, ?, ?, ?, ?)",
+      "INSERT INTO utilisateur (pseudo, email, date_inscription, photo_profil, mot_de_passe) values (?, ?, ?, ?, ?)",
       [
         user.pseudo,
         user.email,
         user.date_inscription,
         user.photo_profil,
-        user.est_admin,
         user.mot_de_passe,
       ],
     );

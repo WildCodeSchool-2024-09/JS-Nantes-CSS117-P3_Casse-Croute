@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom";
 import UserRecipes from "../components/UserRecipes";
 import UserRecipesDelete from "../components/UserRecipesDelete";
 import UserRecipesModify from "../components/UserRecipesModify";
+import ProtectedRoutes from "../components/protect-context/ProtectedRoutes";
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
 import Home from "../pages/Home/Home";
 import LegalNotices from "../pages/Legal-notices/LegalNotices";
@@ -12,6 +13,7 @@ import Catalogue from "../pages/catalogue/Catalogue";
 import DashboardAdmin from "../pages/dashboard-admin/DashBoardAdmin";
 import DashboardRecipes from "../pages/dashboard-admin/DashboardRecipes";
 import DashBoardUser from "../pages/dashboard-admin/DashboardUser";
+import NotFound from "../pages/error/NotFound";
 
 const routes = [
   {
@@ -28,13 +30,24 @@ const routes = [
   },
   {
     path: "/create-recipe",
-    element: <CreateRecipe />,
+    element: (
+      <ProtectedRoutes>
+        <CreateRecipe />
+      </ProtectedRoutes>
+    ),
   },
   {
     path: "/login",
     element: <Login />,
   },
-  { path: "/view-profile", element: <ViewProfile /> },
+  {
+    path: "/view-profile",
+    element: (
+      <ProtectedRoutes>
+        <ViewProfile />
+      </ProtectedRoutes>
+    ),
+  },
   {
     path: "/user-recipes",
     element: <UserRecipes />,
@@ -59,17 +72,29 @@ const routes = [
       },
       {
         path: "dashboard-user",
-        element: <DashBoardUser />,
+        element: (
+          <ProtectedRoutes>
+            <DashBoardUser />
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "dashboard-recipes",
-        element: <DashboardRecipes />,
+        element: (
+          <ProtectedRoutes>
+            <DashboardRecipes />
+          </ProtectedRoutes>
+        ),
       },
     ],
   },
   {
     path: "/legal-notices",
     element: <LegalNotices />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ];
 
