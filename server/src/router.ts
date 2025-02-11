@@ -63,6 +63,7 @@ router.get("/api/ingredients-season", ingredientActions.browseSeason);
 
 // Routes liées aux recettes
 router.get("/api/recette", recetteActions.browse);
+router.get("/api/recette-user", recetteActions.browsUserRecipes);
 router.get("/api/date-recette", recetteActions.browseLatestArrival);
 router.get("/api/recette-saison", recetteActions.browseSeason);
 router.get("/api/recette/:id", recetteActions.read);

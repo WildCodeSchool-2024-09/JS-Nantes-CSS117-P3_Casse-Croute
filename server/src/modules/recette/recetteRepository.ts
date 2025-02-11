@@ -20,6 +20,15 @@ class RecetteRepository {
     return rows;
   }
 
+  // Recipes Users
+
+  async userRecipes() {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM recette JOIN utilisateur WHERE utilisateur.id",
+    );
+    return rows;
+  }
+
   async lastReadFour() {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT * FROM recette ORDER BY date_publication DESC LIMIT 4",
