@@ -40,39 +40,36 @@ CREATE TABLE ingredient (
 -- Table recette
 CREATE TABLE recette (
     id INT PRIMARY KEY AUTO_INCREMENT,
+    recette_ref VARCHAR(100),
     titre VARCHAR(100) NOT NULL,
     description VARCHAR(200) NOT NULL,
-    date_publication DATE NOT NULL,
+    date_publication DATETIME DEFAULT CURRENT_TIMESTAMP,
     image_url VARCHAR(255),
     saison ENUM("printemps", "été", "automne", "hiver", "toutes saisons") DEFAULT NULL,
-    type_id INT NOT NULL,
-    difficulte_id INT NOT NULL,
-    temps_id INT NOT NULL,
-    utilisateur_id INT NOT NULL,
-    FOREIGN KEY (type_id) REFERENCES type_recette(id),
-    FOREIGN KEY (difficulte_id) REFERENCES difficulte(id),
-    FOREIGN KEY (temps_id) REFERENCES temps_preparation(id),
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
+    type_id VARCHAR (10),
+    difficulte_id VARCHAR (20),
+    temps_id VARCHAR (4),
+    utilisateur_id INT ON DELETE CASCADE
 );
 
 -- Table ingredient_recette (relation entre recettes et ingrédients)
 CREATE TABLE ingredient_recette (
-    recette_id INT NOT NULL,
+    recette_ref VARCHAR(100) NOT NULL,
     ingredient_id INT NOT NULL,
     quantite FLOAT NOT NULL,
     unite VARCHAR(15) NOT NULL,
-    PRIMARY KEY (recette_id, ingredient_id),
-    FOREIGN KEY (recette_id) REFERENCES recette(id) ON DELETE CASCADE,
-    FOREIGN KEY (ingredient_id) REFERENCES ingredient(id)
+    PRIMARY KEY (recette_ref, ingredient_id)
+    -- FOREIGN KEY (recette_id) REFERENCES recette(id) ON DELETE CASCADE,
+    -- FOREIGN KEY (ingredient_id) REFERENCES ingredient(id)
 );
 
 -- Table etape_preparation (étapes de préparation des recettes)
 CREATE TABLE etape_preparation (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    recette_id INT NOT NULL,
+    recette_ref VARCHAR(100) NOT NULL,
     ordre INT NOT NULL,
-    description TEXT NOT NULL,
-    FOREIGN KEY (recette_id) REFERENCES recette(id) ON DELETE CASCADE
+    description TEXT NOT NULL
+    -- FOREIGN KEY (recette_ref) REFERENCES recette(recette_ref) ON DELETE CASCADE
 );
 
 -- Table avis (avis des utilisateurs sur les recettes)
@@ -84,7 +81,7 @@ CREATE TABLE avis (
     commentaire VARCHAR(500),
     date_avis DATE NOT NULL,
     FOREIGN KEY (recette_id) REFERENCES recette(id) ON DELETE CASCADE,
-    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id)
+    FOREIGN KEY (utilisateur_id) REFERENCES utilisateur(id) ON DELETE CASCADE
 );
 
 
@@ -94,7 +91,13 @@ CREATE TABLE avis (
 INSERT INTO utilisateur (pseudo, email, mot_de_passe, date_inscription, est_admin) VALUES
 ("admin", "admin@example.com", "adminpasswordhash", CURDATE(), TRUE),
 ("user1", "user1@example.com", "user1passwordhash", CURDATE(), FALSE),
-("user2", "user2@example.com", "user2passwordhash", CURDATE(), FALSE);
+("user3", "user3@example.com", "user3passwordhash", CURDATE(), FALSE),
+("user4", "user4@example.com", "user4passwordhash", CURDATE(), FALSE),
+("user5", "user5@example.com", "user5passwordhash", CURDATE(), FALSE),
+("user6", "user6@example.com", "user6passwordhash", CURDATE(), FALSE),
+("user7", "user7@example.com", "user7passwordhash", CURDATE(), FALSE),
+("user8", "user8@example.com", "user8passwordhash", CURDATE(), FALSE),
+("user9", "user9@example.com", "user9passwordhash", CURDATE(), FALSE);
 
 -- Types de recettes
 INSERT INTO type_recette (nom) VALUES
@@ -139,27 +142,27 @@ INSERT INTO ingredient (nom, categorie, icone_categorie, saison) VALUES
 ("Bœuf haché", "Viande", "https://cdn-icons-png.flaticon.com/128/10806/10806535.png", "toutes saisons"),
 
 -- Poissons
-("Saumon", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
-("Cabillaud", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
-("Thon", "Poisson", "/images/categories/poisson.jpg", "été"),
-("Crevettes", "Fruits de mer", "/images/categories/poisson.jpg", "toutes saisons"),
-("Moules", "Fruits de mer", "/images/categories/poisson.jpg", "automne"),
-("Saint-Jacques", "Fruits de mer", "/images/categories/poisson.jpg", "automne"),
-("Sardine", "Poisson", "/images/categories/poisson.jpg", "été"),
-("Haddock", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
-("Merlu", "Poisson", "/images/categories/poisson.jpg", "printemps"),
-("Lieu noir", "Poisson", "/images/categories/poisson.jpg", "printemps"),
-("Lieu jaune", "Poisson", "/images/categories/poisson.jpg", "printemps"),
-("Sole", "Poisson", "/images/categories/poisson.jpg", "printemps"),
-("Turbot", "Poisson", "/images/categories/poisson.jpg", "automne"),
-("Colin", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
-("Lingue", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
-("Maquereau", "Poisson", "/images/categories/poisson.jpg", "été"),
-("Truite", "Poisson", "/images/categories/poisson.jpg", "printemps"),
-("Hareng", "Poisson", "https://cdn-icons-png.flaticon.com/512/6341/6341973.png", "hiver"),
-("Sandre", "Poisson", "/images/categories/poisson.jpg", "printemps"),
-("Perche", "Poisson", "/images/categories/poisson.jpg", "printemps"),
-("Brochet", "Poisson", "/images/categories/poisson.jpg", "printemps"),
+("Saumon", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "hiver"),
+("Cabillaud", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "hiver"),
+("Thon", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "été"),
+("Crevettes", "Fruits de mer", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "toutes saisons"),
+("Moules", "Fruits de mer", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "automne"),
+("Saint-Jacques", "Fruits de mer", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "automne"),
+("Sardine", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "été"),
+("Haddock", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "hiver"),
+("Merlu", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "printemps"),
+("Lieu noir", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "printemps"),
+("Lieu jaune", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "printemps"),
+("Sole", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "printemps"),
+("Turbot", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "automne"),
+("Colin", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "hiver"),
+("Lingue", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "hiver"),
+("Maquereau", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "été"),
+("Truite", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "printemps"),
+("Hareng", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "hiver"),
+("Sandre", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "printemps"),
+("Perche", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "printemps"),
+("Brochet", "Poisson", "https://static-00.iconduck.com/assets.00/fish-icon-1982x2048-xxayvvtg.png", "printemps"),
 
 -- Produits laitiers
 ("Beurre", "Produits laitiers", "https://cdn-icons-png.flaticon.com/128/4729/4729898.png", "toutes saisons"),
@@ -293,13 +296,7 @@ VALUES
 ("Salade estivale", "Une salade fraîche pour l'été.", "2023-06-15", "path/to/salade.jpg", "été", 1, 1, 1, 2);
 
 -- Table ingredient_recette
--- Correction de la table ingredient_recette pour avoir des ingrédients variés
-
--- Suppression des anciennes associations incorrectes
-DELETE FROM ingredient_recette;
-
--- 🌿 Soupe d'hiver (uniquement légumes)
-INSERT INTO ingredient_recette (recette_id, ingredient_id, quantite, unite)
+INSERT INTO ingredient_recette (recette_ref, ingredient_id, quantite, unite)
 VALUES
 (1, 81, 300, "g"), -- Carotte
 (1, 86, 200, "g"), -- Pomme de terre
@@ -371,7 +368,7 @@ VALUES
 
 
 -- Table etape_preparation
-INSERT INTO etape_preparation (recette_id, ordre, description)
+INSERT INTO etape_preparation (recette_ref, ordre, description)
 VALUES
 
 

@@ -1,0 +1,148 @@
+/* create recipe form */
+.add-recipe-main {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+.create-recipe-form img {
+  max-width: 140px;
+}
+.create-recipe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 16px;
+}
+.filter-ingredients {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-recipe-form > section {
+  display: flex;
+  border: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#time {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 15rem;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #053a5f;
+  height: 0.5rem;
+  border-radius: 5px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -12px; /* Centers thumb on the track */
+  background-color: var(--quaternary-color);
+  height: 2rem;
+  width: 1rem;
+  border-radius: 10px;
+}
+
+.create-recipe-form > section > div {
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--primary-color);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-recipe-form > section > div > section {
+  display: flex;
+  gap: 80px;
+}
+.create-recipe-form > section > ul {
+  max-width: 300px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 1rem;
+  border: 2px solid var(--quaternary-color);
+  border-radius: 40px;
+}
+.create-recipe-form > section > ul::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+  height: 8px;
+  color: #aaa;
+}
+
+.unit-selector {
+  appearance: none;
+  background-color: var(--secondary-color-1);
+  border: none;
+  font-family: var(--font-primary);
+  font-size: large;
+  border-radius: 4px;
+}
+.unit-selector:hover {
+  outline: var(--quaternary-color);
+}
+
+.create-recipe-form > section > ul > div {
+  min-width: 200px;
+  min-height: 200px;
+  background-color: var(--secondary-color-1);
+  border: 1px solid var(--quaternary-color);
+  border-radius: 40px;
+}
+.create-recipe-form > section > ul > div > label {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* buttons */
+.add-button {
+  background-color: var(--primary-color);
+  color: var(--quaternary-color);
+}
+
+.minus-button {
+  background-color: var(--quaternary-color);
+  color: var(--primary-color);
+}
+
+.delete-button {
+  background-color: rgb(189, 11, 1);
+  color: white;
+}
+
+.minus-button,
+.add-button,
+.delete-button {
+  min-width: 36px;
+  min-height: 36px;
+  font-size: xx-large;
+  border-radius: 8px;
+  border: none;
+}
+
+.minus-button:hover,
+.add-button:hover,
+.delete-button:hover {
+  cursor: pointer;
+  outline: var(--secondary-color-2) auto 2px;
+  color: var(--secondary-color-2);
+}
+.create-recipe-form > div {
+  display: flex;
+}
+.create-recipe-form > div > textarea {
+  width: 300px;
+  height: 100px;
+}
+.create-recipe-form > div > textarea {
+  background-color: var(--secondary-color-2);
+  border: none;
+}
+
+/* media queries */
