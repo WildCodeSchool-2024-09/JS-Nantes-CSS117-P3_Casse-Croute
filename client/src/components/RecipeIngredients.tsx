@@ -8,6 +8,18 @@ interface RecipeIngredientsProps {
 const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({
   ingredients,
 }) => {
+  if (!ingredients || ingredients.length === 0) {
+    return <p>Aucun ingrédient disponible.</p>;
+  }
+
+  const handleImageError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>,
+  ) => {
+    event.currentTarget.src =
+      "/assets/images/ingredients/ingredient-default.png";
+    event.currentTarget.onerror = null;
+  };
+
   return (
     <>
       <section className="container-ingredient">
@@ -15,15 +27,19 @@ const RecipeIngredients: React.FC<RecipeIngredientsProps> = ({
       </section>
       <section className="container-recipe-ingredients">
         <ul>
-          {ingredients.map((el) => (
-            <li key={el.ingredient.id}>
+          {ingredients.map((el, index) => (
+            <li key={el.id || index}>
               <figure>
                 <img
-                  src={el.ingredient.icone_categorie || "path/to/default.png"}
-                  alt={el.ingredient.nom}
+                  src={
+                    el.icone_categorie ||
+                    "/assets/images/ingredients/ingredient-default.png"
+                  }
+                  alt={el.nom}
+                  onError={handleImageError}
                 />
                 <figcaption>
-                  {el.ingredient.nom} - {el.quantite} {el.unite}
+                  {el.nom} - {el.quantite} {el.unite}
                 </figcaption>
               </figure>
             </li>

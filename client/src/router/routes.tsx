@@ -19,8 +19,9 @@ const routes = [
     path: "/catalogue",
     element: <Catalogue />,
   },
+
   {
-    path: "/recipe",
+    path: "/recipe/:id",
     element: <Recipe />,
   },
   {

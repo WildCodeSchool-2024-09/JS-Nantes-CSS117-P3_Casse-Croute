@@ -4,26 +4,28 @@ export interface EtapePreparation {
   description: string;
 }
 
-export interface Ingredient {
+export interface IngredientRecette {
   id: number;
   nom: string;
-  categorie?: string;
-  saison: "printemps" | "été" | "automne" | "hiver" | "toutes saisons";
-  icone_categorie?: string;
-}
-
-export interface IngredientRecette {
-  ingredient: Ingredient;
-  quantite: number;
   unite: string;
+  saison: "printemps" | "été" | "automne" | "hiver" | "toutes saisons";
+  quantite: number;
+  categorie?: string;
+  icone_categorie?: string;
 }
 
 export interface Avis {
   id: number;
-  utilisateur_id: number;
+  utilisateur: string;
+  photo_profil?: string;
   note: number;
-  commentaire?: string;
+  commentaire: string;
   date_avis: string;
+}
+
+export interface TempsPreparation {
+  heure: number;
+  minute: number;
 }
 
 export interface Recette {
@@ -33,8 +35,17 @@ export interface Recette {
   date_publication: string;
   image_url?: string;
   saison: "printemps" | "été" | "automne" | "hiver" | "toutes saisons";
-  categorie: string;
+  typeRecette: string;
+  difficulte: string;
+  tempsPreparation: TempsPreparation;
   etapes: EtapePreparation[];
   ingredients: IngredientRecette[];
   commentaires: Avis[];
+}
+
+export interface RecipePrepaProps {
+  steps: EtapePreparation[];
+  tempsPreparation: TempsPreparation;
+  difficulte: string;
+  typeRecette: string;
 }

@@ -11,7 +11,8 @@ function App() {
         <Link to="/">Accueil</Link>
         <Link to="/account">Compte</Link>
         <Link to="/catalogue">Catalogue</Link>
-        <Link to="/Recipe">Recette</Link>
+        <Link to="/recipe">Recette</Link>
+        <Link to="/recipe/1">Recette 1</Link>
         <Link to="/create-recipe">Create Recipe</Link>
         <Link to="/login">Login</Link>
         <Link to="/view-profile">Voir Profile</Link>

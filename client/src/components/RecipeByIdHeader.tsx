@@ -1,11 +1,23 @@
 import "../styles/recipe-by-id-header.css";
+import type { Recette } from "../types/RecetteByID";
 
-function RecipeByIdHeader() {
+interface RecipeByIdHeaderProps {
+  recette: Recette;
+}
+
+function RecipeByIdHeader({ recette }: RecipeByIdHeaderProps) {
+  // Calcul de la note moyenne des avis
+  const moyenneAvis =
+    recette.commentaires.length > 0
+      ? recette.commentaires.reduce((acc, avis) => acc + avis.note, 0) /
+        recette.commentaires.length
+      : 0;
+
   return (
     <article className="recipe-header-container">
       {/* Titre */}
       <section className="recipe-title-section">
-        <h1 className="recipe-title">Magret de canard au four</h1>
+        <h1 className="recipe-title">{recette.titre}</h1>
       </section>
 
       {/* Barre de navigation */}
@@ -21,26 +33,27 @@ function RecipeByIdHeader() {
             <a href="#preparation">Préparation</a>
           </li>
           <li>
-            <a href="#reviews">Avis</a>
+            <a href="#commentaire">Avis</a>
           </li>
         </ul>
       </nav>
 
       {/* Image principale */}
-
       <div className="image-rating">
         <img
-          src="https://images.unsplash.com/photo-1582391123232-6130296f1fcd?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bm91cnJpdHVyZSUyMG1hZ3JldCUyMGRlJTIwY2FuYXJkfGVufDB8fDB8fHww"
-          alt="Magret de canard au four"
+          src={recette.image_url || "path/to/default.jpg"}
+          alt={recette.titre}
         />
-        {/*sert à l'affichage d'une barre bleu sous la photo*/}
-        <div>.</div>
+        <div>.</div> {/* Barre bleue sous l'image */}
         {/* Note et avis */}
         <section className="recipe-rating">
           <article>
-            <span>4.5</span>
-            <div>★★★★☆</div>
-            <span>3 avis</span>
+            <span>{moyenneAvis.toFixed(1)}</span>
+            <div>
+              {"★".repeat(Math.round(moyenneAvis)) +
+                "☆".repeat(5 - Math.round(moyenneAvis))}
+            </div>
+            <span>{recette.commentaires.length} avis</span>
           </article>
         </section>
       </div>

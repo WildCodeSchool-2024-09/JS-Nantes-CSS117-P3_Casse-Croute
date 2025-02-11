@@ -1,0 +1,71 @@
+.recipe-comments {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.recipe-comments > h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  background-color: var(--secondary-color-1);
+  border-radius: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.recipe-comments > ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recipe-comments > ul > li {
+  background-color: var(--secondary-color-1);
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-comments > ul > li > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recipe-comments > ul > li > div > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.recipe-comments > ul > li > div > div {
+  flex-grow: 1;
+}
+
+.recipe-comments > ul > li > div > div > strong {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.recipe-comments > ul > li > div > div > p {
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.recipe-comments > ul > li > div > span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--tertiary-color);
+}
+
+.recipe-comments > ul > li > p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
