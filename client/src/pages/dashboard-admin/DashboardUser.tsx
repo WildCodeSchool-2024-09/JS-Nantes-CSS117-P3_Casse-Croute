@@ -4,6 +4,7 @@ import UserScroll from "../../components/ScrollUser";
 import type { userData } from "../../types/UserData";
 import "./dashboard-recipes-user.css";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import HorizontalRecipeCard from "../../components/HorizontalRecipeCard";
 import type { RecipeH } from "../../types/RecipeValues";
 
@@ -19,7 +20,7 @@ function DashBoardUser() {
     if (selectUser) {
       return setVisible(!visible);
     }
-    alert("Veuillez selectionner un utilisateur");
+    toast.warn("Veuillez selectionner un utilisateur");
   };
 
   // function to retrieve users and filter to retrieve only the nickname
@@ -32,7 +33,7 @@ function DashBoardUser() {
         setUsers(filteredData);
       })
       .catch((err) => {
-        alert(`Erreur lors de la récupération des utilisateurs ${err}`);
+        toast.error(`Erreur lors de la récupération des utilisateurs ${err}`);
       });
   }, []);
 
@@ -46,7 +47,7 @@ function DashBoardUser() {
           setRecipes(data);
         })
         .catch((err) => {
-          alert(`Erreur lors de la récupération des recettes ${err}`);
+          toast.error(`Erreur lors de la récupération des recettes ${err}`);
         });
     }
   }, [selectUser]);
@@ -56,7 +57,7 @@ function DashBoardUser() {
   const handleChange = (selectUser: userData) => {
     const token = localStorage.getItem("jwtToken");
     if (!token) {
-      return alert("Accès refusé : droits insuffisants.");
+      return toast.warn("Accès refusé : droits insuffisants.");
     }
     const updatedUser = { selectUser, est_admin: !selectUser.est_admin };
     setLoading(true);
@@ -70,11 +71,13 @@ function DashBoardUser() {
     })
       .then((response) => {
         if (response.status === 204) {
-          alert("Rôle de l'utilisateur mis à jour avec succès 🎉");
+          toast.success("Rôle de l'utilisateur mis à jour avec succès 🎉");
         } else if (response.status === 401) {
-          alert("Accès refusé : droits insuffisants.");
+          toast.warn("Accès refusé : droits insuffisants.");
         } else {
-          alert("Erreur lors de la mise à jour des droits administrateur.");
+          toast.error(
+            "Erreur lors de la mise à jour des droits administrateur.",
+          );
         }
         return fetch(`${import.meta.env.VITE_API_URL}/api/users`);
       })
