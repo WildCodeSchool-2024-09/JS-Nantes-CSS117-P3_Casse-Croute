@@ -1,12 +1,13 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { AuthContext } from "../pages/context/AuthProvider";
+import useAuth from "../pages/context/useAuth";
 import type { loginDataTypes } from "../types/LoginData";
 
 export function LoginForm() {
+  const { setIsLogged } = useAuth();
   const [loginData, setLoginData] = useState<loginDataTypes>({});
-  const { setIsLogged } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleInputLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +20,7 @@ export function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const { email, password } = loginData;
     if (!email) {
       // Simplified check
@@ -68,10 +70,10 @@ export function LoginForm() {
     }
   };
 
-  const handleClick = () => {
+  const logout = () => {
     localStorage.removeItem("jwtToken");
+    setIsLogged(false);
     navigate("/");
-    window.location.reload();
   };
 
   return (
@@ -96,7 +98,7 @@ export function LoginForm() {
         <button type="submit" id="login" aria-label="login">
           Se connecter
         </button>
-        <Link to="/" onClick={handleClick} type="button">
+        <Link to="/" onClick={logout} type="button">
           Deco
         </Link>
       </form>

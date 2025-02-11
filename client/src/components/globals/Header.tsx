@@ -1,13 +1,12 @@
 import "../../styles/Header.css";
 import "../../styles/Global.css";
-import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../pages/context/AuthProvider";
+import useAuth from "../../pages/context/useAuth";
 import SearchBar from "../SearchFilter";
 import HamburgerMenu from "./HamburgerMenu";
 
 function Header() {
-  const { isLogged } = useContext(AuthContext);
+  const { isLogged } = useAuth();
   return (
     <header>
       <nav className="main-nav">

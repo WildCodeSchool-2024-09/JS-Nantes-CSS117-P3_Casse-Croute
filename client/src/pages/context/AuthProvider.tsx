@@ -3,13 +3,13 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import type { AuthContextType } from "../../types/UserData";
 
-const AuthContext = createContext<AuthContextType>({
-  isLogged: false,
-  setIsLogged: () => {},
-});
+export const AuthContext = createContext<AuthContextType | null>(null);
 
-const AuthProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLogged, setIsLogged] = useState(false);
+
+  // loading state will control the rendering of the AuthProvider
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     checkLogin();
@@ -20,38 +20,39 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     if (!token) {
       setIsLogged(false);
+      setLoading(true);
       return;
     }
+
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/user/verify`,
         {
+          method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
           },
         },
       );
 
-      if (response.ok) {
-        setIsLogged(true);
-      } else if (response.status === 401) {
-        setIsLogged(false);
+      // response.ok can be true or false.
+      setIsLogged(response.ok);
+
+      if (!response.ok) {
         toast.error("Connexion expirée. Veuillez vous reconnecter.");
       }
     } catch (err) {
-      if (isLogged) {
-        console.error("Erreur serveur :", err);
-        setIsLogged(false);
-        toast.error("Erreur de connexion au serveur");
-      }
+      console.error(err);
+    } finally {
+      // this state is useful to render the AuthContext.Provider only when it's true.
+      setLoading(true);
     }
   }
 
-  return (
-    <AuthContext.Provider value={{ isLogged, setIsLogged }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  if (loading)
+    return (
+      <AuthContext.Provider value={{ isLogged, checkLogin, setIsLogged }}>
+        {children}
+      </AuthContext.Provider>
+    );
 };
-
-export { AuthContext, AuthProvider };

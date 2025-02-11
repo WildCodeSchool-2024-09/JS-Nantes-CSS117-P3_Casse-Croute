@@ -1,22 +1,18 @@
-import { type ReactNode, useContext, useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { AuthContext } from "../../pages/context/AuthProvider";
+import useAuth from "../../pages/context/useAuth";
 
 function ProtectedRoutes({ children }: { children: ReactNode }) {
-  const { isLogged } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const { isLogged } = useAuth();
 
   useEffect(() => {
     if (!isLogged) {
-      toast.warn("Vous n'êtes pas connecté !");
       navigate("/");
     }
-  }, [isLogged, navigate]);
-  if (!isLogged) {
-    return null;
-  }
+  });
 
-  return isLogged && children;
+  return isLogged ? children : null;
 }
 export default ProtectedRoutes;
