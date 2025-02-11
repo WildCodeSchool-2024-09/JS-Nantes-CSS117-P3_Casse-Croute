@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import DeleteUsers from "../../components/DeleteUsers";
 import UserScroll from "../../components/ScrollUser";
 import type { userData } from "../../types/UserData";
+import "./dashboard-recipes-user.css";
+import { NavLink } from "react-router-dom";
 
 function DashBoardUser() {
   const [users, setUsers] = useState<userData[]>([]);
@@ -65,70 +67,92 @@ function DashBoardUser() {
   };
 
   return (
-    <section className="container-dashboard-admin">
-      <label htmlFor="Recherche">Utilisateur</label>
-      <input
-        type="text"
-        name="name"
-        placeholder="Recherche un utilisateur"
-        onChange={(event) => {
-          setSearchUser(event.currentTarget.value);
-        }}
-      />
-      <UserScroll
-        users={users}
-        searchUser={searchUser}
-        setSelectUser={setSelectUser}
-      />
-      {selectUser && (
+    <>
+      <section className="container-dashboard-admin">
+        <label htmlFor="Recherche">Utilisateur</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Recherche un utilisateur"
+          onChange={(event) => {
+            setSearchUser(event.currentTarget.value);
+          }}
+        />
+        <UserScroll
+          users={users}
+          searchUser={searchUser}
+          setSelectUser={setSelectUser}
+        />
+        {selectUser && (
+          <section>
+            <figure>
+              <img
+                src={
+                  selectUser.photo_profil
+                    ? selectUser.photo_profil
+                    : "/assets/images/profil.png"
+                }
+                alt="Une illustration de profile"
+              />
+            </figure>
+            <article>
+              <h2>{selectUser.pseudo}</h2>
+              <p>{selectUser.email}</p>
+            </article>
+          </section>
+        )}
         <section>
-          <figure>
-            <img
-              src={
-                selectUser.photo_profil
-                  ? selectUser.photo_profil
-                  : "/assets/images/profil.png"
-              }
-              alt="Une illustration de profile"
-            />
-          </figure>
-          <article>
-            <h2>{selectUser.pseudo}</h2>
-            <p>{selectUser.email}</p>
-          </article>
-        </section>
-      )}
-      <section>
-        <legend>Administrateur</legend>
-        <button
-          className="button-delete-user"
-          onClick={handleVisibility}
-          type="button"
-        >
-          Supprimer le compte
-        </button>
-        {visible && <div className="overlay-user-delete">.</div>}
+          <legend>Administrateur</legend>
+          <button
+            className="button-delete-user"
+            onClick={handleVisibility}
+            type="button"
+          >
+            Supprimer le compte
+          </button>
+          {visible && <div className="overlay-user-delete">.</div>}
 
-        {visible && selectUser && (
-          <DeleteUsers
-            selectUser={selectUser}
-            handleVisibility={handleVisibility}
-          />
+          {visible && selectUser && (
+            <DeleteUsers
+              selectUser={selectUser}
+              handleVisibility={handleVisibility}
+            />
+          )}
+        </section>
+        {selectUser && (
+          <label className="container-toggle-switch">
+            <input
+              disabled={loading}
+              type="checkbox"
+              aria-label="Activer les droits administrateur"
+              checked={!!selectUser.est_admin}
+              onChange={() => handleChange(selectUser)}
+            />
+            <span>.</span>
+          </label>
         )}
       </section>
-      {selectUser && (
-        <label className="container-toggle-switch">
-          <input
-            disabled={loading}
-            type="checkbox"
-            aria-label="Activer les droits administrateur"
-            checked={!!selectUser.est_admin}
-            onChange={() => handleChange(selectUser)}
-          />
-          <span>.</span>
-        </label>
-      )}
-    </section>
+      <section className="container-recipes-user">
+        <nav>
+          <NavLink
+            to="user-recipes-modify"
+            className={({ isActive }) =>
+              isActive ? "active-background" : "inactive-background"
+            }
+          >
+            Modifier
+          </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "active-background" : "inactive-background"
+            }
+          >
+            Supprimer
+          </NavLink>
+        </nav>
+      </section>
+    </>
   );
 }
 

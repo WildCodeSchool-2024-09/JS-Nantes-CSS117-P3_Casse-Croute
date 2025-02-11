@@ -1,4 +1,5 @@
 import { Navigate } from "react-router-dom";
+import UserRecipesModify from "../components/admin-user-recipes/UserRecipesModify";
 import CreateRecipe from "../pages/CreateRecipe/CreateRecipe";
 import Home from "../pages/Home/Home";
 import LegalNotices from "../pages/Legal-notices/LegalNotices";
@@ -43,6 +44,12 @@ const routes = [
       {
         path: "dashboard-user",
         element: <DashBoardUser />,
+        children: [
+          {
+            path: "user-recipes-modify",
+            element: <UserRecipesModify />,
+          },
+        ],
       },
       {
         path: "dashboard-recipes",

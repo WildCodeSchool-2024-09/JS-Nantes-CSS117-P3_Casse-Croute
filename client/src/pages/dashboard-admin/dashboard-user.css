@@ -9,7 +9,7 @@
   width: 80%;
   margin: 10% auto;
   border-radius: 10px;
-  height: 90vh;
+  height: 100%;
 }
 
 .container-dashboard-admin > label:first-of-type {
@@ -162,7 +162,7 @@
 
 .container-toggle-switch {
   display: inline-block;
-  margin: 0 0 0 10%;
+  margin: 0 0 2em 10%;
   position: relative;
   width: 30%;
   height: 40px;
