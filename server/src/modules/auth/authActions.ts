@@ -1,8 +1,13 @@
+import { decode } from "node:punycode";
 import { verify } from "argon2";
 import type { RequestHandler } from "express";
 import { sign } from "jsonwebtoken";
 import jwt from "jsonwebtoken";
 import userRepository from "../user/userRepository";
+
+interface JwtPayload {
+  isAdmin: string;
+}
 
 const login: RequestHandler = async (req, res, next) => {
   const { email, password } = req.body;
@@ -17,7 +22,11 @@ const login: RequestHandler = async (req, res, next) => {
     // If the password is valid, create a token
     if (isValid) {
       // Create a token - payload is the 'body' of the token - header is automatically added
-      const payload = { id: user.id, email: user.email };
+      const payload = {
+        id: user.id,
+        email: user.email,
+        sub: user.est_admin,
+      };
       // Make sure to define the APP_SECRET in your .env file
       const secretKey = process.env.APP_SECRET;
       if (!secretKey) {
@@ -25,6 +34,7 @@ const login: RequestHandler = async (req, res, next) => {
       }
       // Sign the token with the payload, secret key, and expiration time - the signing is the last element to add to the token.
       const token = sign(payload, secretKey, { expiresIn: "1h" });
+
       res.json({ token, user: user.email });
       return;
     }
@@ -49,9 +59,20 @@ const verifyToken: RequestHandler = (req, res, next) => {
     if (!secretKey) {
       throw new Error("APP_SECRET is not defined");
     }
+
     jwt.verify(token, secretKey);
 
-    next();
+    const decodedToken = jwt.decode(token);
+
+    console.warn(decodedToken);
+
+    if (decodedToken?.sub) {
+      req.user = decodedToken.sub;
+
+      next();
+    } else {
+      next();
+    }
   } catch (err) {
     res.status(401).json({ message: "Invalid token" });
   }
@@ -62,13 +83,7 @@ const isLogged: RequestHandler = (_, res) => {
 };
 
 const isAdmin: RequestHandler = async (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Authentification requise" });
-  }
-  if (req.user.role !== "est_admin") {
-    res.status(403).json({ message: "Accès refusé : Administrateur requis" });
-  }
-  next();
+  console.warn("Je suis bien là ?? ", req.user);
 };
 
 export default { login, verifyToken, isAdmin, isLogged };

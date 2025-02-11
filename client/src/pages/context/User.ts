@@ -1,3 +1,0 @@
-interface AuthContextType {
-  isLogged: boolean;
-}

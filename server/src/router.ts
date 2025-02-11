@@ -97,4 +97,5 @@ router.delete("/api/users/:id", userActions.destroy);
 //Update admin
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.destroy);
+
 export default router;

@@ -9,10 +9,13 @@ function ProtectedRoutes({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!isLogged) {
-      navigate("/");
       toast.warn("Vous n'êtes pas connecté !");
+      navigate("/");
     }
   }, [isLogged, navigate]);
+  if (!isLogged) {
+    return null;
+  }
 
   return isLogged && children;
 }

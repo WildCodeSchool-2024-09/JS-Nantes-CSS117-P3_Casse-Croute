@@ -1,8 +1,12 @@
 import { type ReactNode, createContext, useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import type { AuthContextType } from "../../types/UserData";
 
-const AuthContext = createContext<AuthContextType>({ isLogged: false });
+const AuthContext = createContext<AuthContextType>({
+  isLogged: false,
+  setIsLogged: () => {},
+});
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLogged, setIsLogged] = useState(false);
@@ -13,6 +17,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   async function checkLogin() {
     const token = localStorage.getItem("jwtToken");
+
     if (!token) {
       setIsLogged(false);
       return;
@@ -26,25 +31,24 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
           },
         },
       );
+
       if (response.ok) {
         setIsLogged(true);
       } else if (response.status === 401) {
-        toast.error("Connexion expirée. Veuillez vous reconnecter.");
-        localStorage.removeItem("jwtToken");
         setIsLogged(false);
+        toast.error("Connexion expirée. Veuillez vous reconnecter.");
       }
     } catch (err) {
       if (isLogged) {
-        toast.error("Erreur de connexion au serveur");
         console.error("Erreur serveur :", err);
         setIsLogged(false);
+        toast.error("Erreur de connexion au serveur");
       }
     }
   }
 
   return (
-    <AuthContext.Provider value={{ isLogged }}>
-      <ToastContainer />
+    <AuthContext.Provider value={{ isLogged, setIsLogged }}>
       {children}
     </AuthContext.Provider>
   );

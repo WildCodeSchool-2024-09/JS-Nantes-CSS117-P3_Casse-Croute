@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../pages/context/AuthProvider";
 import type { loginDataTypes } from "../types/LoginData";
 
 export function LoginForm() {
   const [loginData, setLoginData] = useState<loginDataTypes>({});
+  const { setIsLogged } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleInputLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,8 +54,8 @@ export function LoginForm() {
 
       if (data.token) {
         localStorage.setItem("jwtToken", data.token);
-        console.warn("Token stored:", data.token);
         toast.success("Connexion réussie !");
+        setIsLogged(true);
         navigate("/view-profile");
       } else {
         toast.error(
@@ -64,6 +66,12 @@ export function LoginForm() {
       console.error("Login error:", error);
       toast.error("Erreur de connexion. Veuillez réessayer plus tard.");
     }
+  };
+
+  const handleClick = () => {
+    localStorage.removeItem("jwtToken");
+    navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -88,6 +96,9 @@ export function LoginForm() {
         <button type="submit" id="login" aria-label="login">
           Se connecter
         </button>
+        <Link to="/" onClick={handleClick} type="button">
+          Deco
+        </Link>
       </form>
     </>
   );
