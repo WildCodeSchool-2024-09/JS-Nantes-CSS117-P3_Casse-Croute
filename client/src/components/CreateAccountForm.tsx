@@ -52,9 +52,9 @@ function CreateAccount({ toggleForm }: LoginFormProps) {
     }
   }
   return (
-    <>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Rejoignez la communauté Casse-croûte !</h2>
+    <form className="container-form-auth" onSubmit={handleSubmit}>
+      <h2>Rejoignez la communauté Casse-croûte !</h2>
+      <section>
         <label htmlFor="email" className="login-label">
           Email:
         </label>
@@ -63,7 +63,6 @@ function CreateAccount({ toggleForm }: LoginFormProps) {
           id="email"
           name="email"
           onChange={handleInputUserData}
-          className="generic-input"
         />
 
         <label htmlFor="password" className="login-label">
@@ -74,7 +73,6 @@ function CreateAccount({ toggleForm }: LoginFormProps) {
           id="password"
           name="password"
           onChange={handleInputUserData}
-          className="generic-input"
         />
 
         <label htmlFor="passwordConfirm" className="login-label">
@@ -85,15 +83,10 @@ function CreateAccount({ toggleForm }: LoginFormProps) {
           id="passwordConfirm"
           name="passwordConfirm"
           onChange={handleInputUserData}
-          className="generic-input"
         />
-
-        <button
-          type="submit"
-          id="register"
-          aria-label="register"
-          className="submit-button"
-        >
+      </section>
+      <section>
+        <button type="submit" id="register" aria-label="register">
           S'inscrire
         </button>
         <p>Ou</p>
@@ -106,8 +99,8 @@ function CreateAccount({ toggleForm }: LoginFormProps) {
         >
           Se connecter
         </button>
-      </form>
-    </>
+      </section>
+    </form>
   );
 }
 

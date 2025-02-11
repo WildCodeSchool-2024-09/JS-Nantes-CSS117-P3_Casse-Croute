@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import type { LoginFormProps, loginDataTypes } from "../types/LoginData";
-import "../pages/Login/login.css";
 
 export function LoginForm({ toggleForm }: LoginFormProps) {
   const [loginData, setLoginData] = useState<loginDataTypes>({});
@@ -68,7 +67,7 @@ export function LoginForm({ toggleForm }: LoginFormProps) {
   };
 
   return (
-    <form className="container-form-login" onSubmit={handleSubmit}>
+    <form className="container-form-auth" onSubmit={handleSubmit}>
       <h2>Heureux de vous revoir !</h2>
       <section>
         <label htmlFor="username">Email:</label>
@@ -97,7 +96,6 @@ export function LoginForm({ toggleForm }: LoginFormProps) {
           type="button"
           id="login"
           aria-label="login"
-          className="loginHere"
           onClick={toggleForm}
         >
           Créer un compte
