@@ -30,7 +30,7 @@ function DashBoardUser() {
   }, []);
 
   const handleChange = (selectUser: userData) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("jwtToken");
     if (!token) {
       return alert("Accès refusé : droits insuffisants.");
     }

@@ -1,10 +1,12 @@
 import "../../styles/Header.css";
 import "../../styles/Global.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../pages/context/useAuth";
 import SearchBar from "../SearchFilter";
 import HamburgerMenu from "./HamburgerMenu";
 
 function Header() {
+  const { isLogged } = useAuth();
   return (
     <header>
       <nav className="main-nav">
@@ -22,9 +24,22 @@ function Header() {
             </Link>
           </li>
           <li>
-            <button className="identify" type="button">
-              S'identifier
-            </button>
+            {isLogged === true ? (
+              <NavLink to="/view-profile">
+                <button className="isLogged-header-true" type="button">
+                  <img
+                    src="/assets/images/favicon.png"
+                    alt="Représentation de l'utilisateur"
+                  />
+                </button>
+              </NavLink>
+            ) : (
+              <NavLink to="/login">
+                <button className="isLogged-header-false" type="button">
+                  S'identifier
+                </button>
+              </NavLink>
+            )}
           </li>
         </ul>
         <div className="search-container">

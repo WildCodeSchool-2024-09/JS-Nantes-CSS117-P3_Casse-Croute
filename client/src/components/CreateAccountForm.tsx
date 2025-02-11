@@ -43,7 +43,7 @@ function CreateAccount({ toggleForm }: LoginFormProps) {
       );
       if (response.ok) {
         toast.success("Inscription réussie 👨‍🍳");
-        navigate("/view-profile");
+        navigate("/login");
       } else if (response.status === 409) {
         toast.error("Email déjà utilisé");
       } else {

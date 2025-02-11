@@ -5,7 +5,7 @@ import type { DeleteUserProps } from "../types/UserData";
 function DeleteUsers({ handleVisibility, selectUser }: DeleteUserProps) {
   const navigation = useNavigate();
   const handleClick = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("jwtToken");
     if (!token) {
       return alert("Accès refusé : droits insuffisants.");
     }
