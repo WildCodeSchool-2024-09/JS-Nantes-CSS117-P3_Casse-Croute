@@ -25,6 +25,12 @@ export interface DeleteUserProps {
   selectUser: userData;
 }
 
+export interface AuthContextType {
+  isLogged: boolean;
+  checkLogin: () => Promise<void>;
+  setIsLogged: (value: boolean) => void;
+}
+
 export interface UserPropsI extends userDataTypes {
   setUserData?: (userData: object | undefined) => void;
 }
