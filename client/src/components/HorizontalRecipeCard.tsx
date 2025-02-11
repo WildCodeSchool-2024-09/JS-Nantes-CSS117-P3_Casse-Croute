@@ -11,7 +11,7 @@ function HorizontalRecipeCard({ titre, description, image_url }: RecipeH) {
           />
         </button>
 
-        <h2>Mead glazed ham</h2>
+        <h2>{titre}</h2>
       </header>
       <figure>
         <img src={image_url} alt={titre} />
