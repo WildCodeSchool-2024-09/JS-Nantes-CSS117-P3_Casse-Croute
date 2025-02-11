@@ -8,6 +8,13 @@ export interface RecipeI {
   image_url: string;
 }
 
+export interface RecipeH {
+  id?: number;
+  titre: string;
+  image_url: string;
+  description: string;
+}
+
 export interface ingredientI {
   id: number;
   nom: string;
