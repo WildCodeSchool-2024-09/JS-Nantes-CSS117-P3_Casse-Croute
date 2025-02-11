@@ -22,6 +22,8 @@ function DashBoardUser() {
     alert("Veuillez selectionner un utilisateur");
   };
 
+  // function to retrieve users and filter to retrieve only the nickname
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/users`)
       .then((response) => response.json())
@@ -34,13 +36,13 @@ function DashBoardUser() {
       });
   }, []);
 
+  // function to retrieve only the recipes of selected users
+
   useEffect(() => {
     if (selectUser) {
       fetch(`${import.meta.env.VITE_API_URL}/api/user/${selectUser.id}/recipes`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
+        .then((response) => response.json())
+        .then((data: RecipeH[]) => {
           setRecipes(data);
         })
         .catch((err) => {
@@ -48,6 +50,8 @@ function DashBoardUser() {
         });
     }
   }, [selectUser]);
+
+  // function to switch a user's role to admin or remove it
 
   const handleChange = (selectUser: userData) => {
     const token = localStorage.getItem("token");
@@ -170,15 +174,14 @@ function DashBoardUser() {
           </NavLink>
         </nav>
         <figure>
-          {recipes.map((el) => {
+          {recipes.map((el, index) => {
             return (
-              <figure key={el.id}>
-                <HorizontalRecipeCard
-                  titre={el.titre}
-                  description={el.description}
-                  image_url={el.image_url}
-                />
-              </figure>
+              <HorizontalRecipeCard
+                key={`${el.id}-${index}`}
+                titre={el.titre}
+                description={el.description}
+                image_url={el.image_url}
+              />
             );
           })}
         </figure>
