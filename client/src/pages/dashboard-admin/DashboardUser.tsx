@@ -54,7 +54,7 @@ function DashBoardUser() {
   // function to switch a user's role to admin or remove it
 
   const handleChange = (selectUser: userData) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("jwtToken");
     if (!token) {
       return alert("Accès refusé : droits insuffisants.");
     }

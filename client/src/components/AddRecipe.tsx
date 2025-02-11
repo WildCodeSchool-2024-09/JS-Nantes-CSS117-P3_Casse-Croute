@@ -118,8 +118,7 @@ function AddRecipe() {
   function handleSearch(e: ChangeEvent<HTMLInputElement>) {
     setLetters(e.target.value.toLowerCase());
   }
-  console.warn("recipeData:", recipeData);
-  console.warn("ingredientData", ingredientData);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/ingredient`)
       .then((response) => response.json())

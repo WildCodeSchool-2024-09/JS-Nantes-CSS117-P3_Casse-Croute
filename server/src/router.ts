@@ -76,6 +76,8 @@ router.get("/api/recette/:id", recetteActions.read);
 /* ************************************************************************* */
 router.use(authActions.verifyToken);
 
+router.post("/api/user/verify", authActions.isLogged);
+
 router.post("/api/recette", recetteActions.add);
 router.put("/api/recette/:id", recetteActions.edit);
 router.delete("/api/recette/:id", recetteActions.del);
@@ -89,16 +91,21 @@ router.post("/api/ingredientsAdded", ingToRecActions.add);
 //Routes pour ajouter des étapes aux recettes
 router.get("/api/stepsAdded", stepActions.browse);
 router.post("/api/stepsAdded", stepActions.add);
+
 /* ************************************************************************* */
 // !!!!!!!!!!!!!!!!!!!!!!!!!!VERIFICATION WALL ADMIN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
 /* ************************************************************************* */
-router.use(authActions.verifyToken, authActions.isAdmin);
 
 //Update admin
+// router.use(authActions.isAdmin);
+
+router.post("/api/admin", authActions.isAdmin);
+
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.destroy);
 
 //Update admin
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.destroy);
+
 export default router;
